@@ -126,9 +126,9 @@ $(window).on("load", function(){
   if (shift > $(window).height()-180) {
     shift = $(window).height()-180;
   }
-  gsap.to("footer", {
+  gsap.to(".pin-footer", {
     scrollTrigger: {
-      trigger: "footer",
+      trigger: ".pin-footer",
       start: (shift) + " bottom",
       end: (shift) + " top",
       scrub: true,
@@ -206,3 +206,15 @@ $("input[type=\"checkbox\"]").change(function(){
     $("button[type=\"submit\"]", $(this).closest("form")).addClass("disabled");
   }
 });
+
+function cssPropertyValueSupported(prop, value) {
+  var d = document.createElement('div');
+  d.style[prop] = value;
+  return d.style[prop] === value;
+}
+
+if (cssPropertyValueSupported("-webkit-mask-box-image", "url('../img/others/mask.png') 46 repeat") &&
+    cssPropertyValueSupported("-webkit-mask-border", "url('../img/others/mask.png') 46 repeat") &&
+    cssPropertyValueSupported("mask-border", "url('../img/others/mask.png') 46 repeat")) {
+  $("header").addClass("no-mask");
+}

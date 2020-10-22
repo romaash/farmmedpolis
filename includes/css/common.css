@@ -33,16 +33,14 @@ body:before {
   content: '';
   position: fixed;
   top: 0;
-  left: 50%;
-  width: 1680px;
-  margin-left: -840px;
+  right: 0;
+  left: 0;
   height: 900px;
   background: url("../img/bgs/1.jpg") no-repeat center top;
-  background-size: contain;
   z-index: 1;
 }
 
-main, header { padding: 0 30px; }
+.main, header { padding: 0 30px; }
 
 img, svg {
   width: 100%;
@@ -71,6 +69,7 @@ header > .wrap > .part-center:before {
   -webkit-mask-border: url('../img/others/mask.png') 46 repeat;
   mask-border: url('../img/others/mask.png') 46 repeat;
 }
+header.no-mask > .wrap > .part-center:before { height: 110px; }
 
 .container {
   max-width: 1320px;
@@ -83,25 +82,30 @@ header > .wrap > .part-center:before {
   table-layout: fixed;
 }
 
-.layout-block > .part,
-.layout-block > .row > .part {
+.layout-block > .part {
   display: table-cell;
   vertical-align: top;
   position: relative;
 }
 
+.layout-block.flex {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  align-content: stretch;
+}
+.layout-block.flex > .part { display: block; }
+
 .layout-main {
   max-width: 1608px;
   margin: 0 auto;
 }
-.layout-main > .part-left,
-.layout-main > .row > .part-left {
+.layout-main > .part-left {
   width: 144px;
   text-align: left;
   padding-top: 30px;
 }
-.layout-main > .part-right,
-.layout-main > .row > .part-right {
+.layout-main > .part-right {
   width: 144px;
   text-align: right;
   padding-top: 30px;
@@ -117,23 +121,16 @@ header > .wrap > .part-center:before {
   height: auto;
 }
 
-.layout-header > .part-left, .layout-header > .part-right,
-.layout-header > .row > .part-left, .layout-header > .row > .part-right {
+.layout-header > .part-left, .layout-header > .part-right {
   width: 50px;
   text-align: left;
 }
-.layout-header > .part-right,
-.layout-header > .row > .part-right { text-align: right; }
-.layout-header > .part-center,
-.layout-header > .row > .part-center { text-align: center; }
+.layout-header > .part-right { text-align: right; }
+.layout-header > .part-center { text-align: center; }
 .layout-header > .part-left,
 .layout-header > .part-right,
-.layout-header > .part-center,
-.layout-header > .row > .part-left,
-.layout-header > .row > .part-right,
-.layout-header > .row > .part-center { padding-top: 34px; }
-.layout-header > .part-center,
-.layout-header > .row > .part-center {
+.layout-header > .part-center { padding-top: 34px; }
+.layout-header > .part-center {
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -172,11 +169,11 @@ header a {
   background-color: #fff;
   visibility: hidden;
 
-  transition: width 0.25s, visibility 0.25s;
-  -o-transition: width 0.25s, visibility 0.25s;
-  -ms-transition: width 0.25s, visibility 0.25s;
-  -moz-transition: width 0.25s, visibility 0.25s;
-  -webkit-transition: width 0.25s, visibility 0.25s;
+  transition: width 0.35s, visibility 0.35s;
+  -o-transition: width 0.35s, visibility 0.35s;
+  -ms-transition: width 0.35s, visibility 0.35s;
+  -moz-transition: width 0.35s, visibility 0.35s;
+  -webkit-transition: width 0.35s, visibility 0.35s;
 }
 .anim-underline.green:before { background-color: #5FBA46; }
 .anim-underline.right:before {
@@ -187,11 +184,11 @@ header a {
   visibility: visible;
 }
 .anim-underline.animate:before {
-  transition: width 0.25s, left 0.25s, visibility 0.25s;
-  -o-transition: width 0.25s, left 0.25s, visibility 0.25s;
-  -ms-transition: width 0.25s, left 0.25s, visibility 0.25s;
-  -moz-transition: width 0.25s, left 0.25s, visibility 0.25s;
-  -webkit-transition: width 0.25s, left 0.25s, visibility 0.25s;
+  transition: width 0.35s, left 0.35s, visibility 0.35s;
+  -o-transition: width 0.35s, left 0.35s, visibility 0.35s;
+  -ms-transition: width 0.35s, left 0.35s, visibility 0.35s;
+  -moz-transition: width 0.35s, left 0.35s, visibility 0.35s;
+  -webkit-transition: width 0.35s, left 0.35s, visibility 0.35s;
 }
 .anim-underline.animate.right:hover:before { left: 0%; }
 
@@ -224,6 +221,7 @@ input, button, textarea, .textarea {
 
   color: #fff;
 }
+.header-search input:focus { border-color: rgba(255,255,255,0.3); }
 
 .header-search input::-webkit-input-placeholder { color: rgba(255,255,255,0.8); }
 .header-search input::-moz-placeholder { color: rgba(255,255,255,0.8); }
@@ -249,11 +247,11 @@ input, button, textarea, .textarea {
   visibility: hidden;
   opacity: 0;
 
-  transition: visibility 0.25s, opacity 0.25s;
-  -o-transition: visibility 0.25s, opacity 0.25s;
-  -ms-transition: visibility 0.25s, opacity 0.25s;
-  -moz-transition: visibility 0.25s, opacity 0.25s;
-  -webkit-transition: visibility 0.25s, opacity 0.25s;
+  transition: visibility 0.35s, opacity 0.35s;
+  -o-transition: visibility 0.35s, opacity 0.35s;
+  -ms-transition: visibility 0.35s, opacity 0.35s;
+  -moz-transition: visibility 0.35s, opacity 0.35s;
+  -webkit-transition: visibility 0.35s, opacity 0.35s;
 }
 
 .header-search-wrap.active .header-search .input {
@@ -262,22 +260,22 @@ input, button, textarea, .textarea {
 }
 
 .header-search-wrap {
-  transition: width 0.25s;
-  -o-transition: width 0.25s;
-  -ms-transition: width 0.25s;
-  -moz-transition: width 0.25s;
-  -webkit-transition: width 0.25s;
+  transition: width 0.35s;
+  -o-transition: width 0.35s;
+  -ms-transition: width 0.35s;
+  -moz-transition: width 0.35s;
+  -webkit-transition: width 0.35s;
 }
 .header-search-wrap.active { width: 200px; }
 .header-search-wrap .header-search {
   width: 24px;
   margin-top: -3px;
 
-  transition: width 0.25s;
-  -o-transition: width 0.25s;
-  -ms-transition: width 0.25s;
-  -moz-transition: width 0.25s;
-  -webkit-transition: width 0.25s;
+  transition: width 0.35s;
+  -o-transition: width 0.35s;
+  -ms-transition: width 0.35s;
+  -moz-transition: width 0.35s;
+  -webkit-transition: width 0.35s;
 }
 .header-search-wrap.active .header-search { width: 200px; }
 
@@ -311,18 +309,22 @@ input, button, textarea, .textarea {
   z-index: 1;
   border-radius: 50%;
 
-  transition: transform 0.25s;
-  -o-transition: -o-transform 0.25s;
-  -ms-transition: -ms-transform 0.25s;
-  -moz-transition: -moz-transform 0.25s;
-  -webkit-transition: -webkit-transform 0.25s;
+  transition: transform 0.35s;
+  -o-transition: -o-transform 0.35s;
+  -ms-transition: -ms-transform 0.35s;
+  -moz-transition: -moz-transform 0.35s;
+  -webkit-transition: -webkit-transform 0.35s;
+
+  will-change: transform;
 }
-.header-search a, a .obj-scaler img {
-  transition: transform 0.25s;
-  -o-transition: -o-transform 0.25s;
-  -ms-transition: -ms-transform 0.25s;
-  -moz-transition: -moz-transform 0.25s;
-  -webkit-transition: -webkit-transform 0.25s;
+.header-search a, a .obj-scaler img, .button-video .title:before {
+  transition: transform 0.35s;
+  -o-transition: -o-transform 0.35s;
+  -ms-transition: -ms-transform 0.35s;
+  -moz-transition: -moz-transform 0.35s;
+  -webkit-transition: -webkit-transform 0.35s;
+
+  will-change: transform;
 }
 .button.circle:hover:after, .header-search a:hover, a:hover div.button.circle:after {
   transform: scale(1.1);
@@ -333,7 +335,8 @@ input, button, textarea, .textarea {
 }
 .header-search-wrap.active .header-search a { pointer-events: none; }
 
-main {
+.main {
+  padding: 0 30px;
   padding-top: 160px;
   position: relative;
   z-index: 40;
@@ -436,13 +439,6 @@ p {
 }
 
 .button-video .preview { margin-bottom: 20px; }
-.obj-scaler img, .button-video .title:before {
-  transition: transform 0.25s;
-  -o-transition: -o-transform 0.25s;
-  -ms-transition: -ms-transform 0.25s;
-  -moz-transition: -moz-transform 0.25s;
-  -webkit-transition: -webkit-transform 0.25s;
-}
 a:hover .obj-scaler img {
   transform: scale(1.05);
   -o-transform: scale(1.05);
@@ -546,11 +542,11 @@ a:hover .obj-scaler img {
   color: #231F20;
   text-decoration: none;
 
-  transition: color 0.25s;
-  -o-transition: color 0.25s;
-  -ms-transition: color 0.25s;
-  -moz-transition: color 0.25s;
-  -webkit-transition: color 0.25s;
+  transition: color 0.35s;
+  -o-transition: color 0.35s;
+  -ms-transition: color 0.35s;
+  -moz-transition: color 0.35s;
+  -webkit-transition: color 0.35s;
 }
 
 .block-card.white { color: #fff; }
@@ -599,11 +595,13 @@ a:hover .obj-scaler img {
   -moz-transform-origin: bottom right;
   -webkit-transform-origin: bottom right;
 
-  transition: transform 0.25s;
-  -o-transition: -o-transform 0.25s;
-  -ms-transition: -ms-transform 0.25s;
-  -moz-transition: -moz-transform 0.25s;
-  -webkit-transition: -webkit-transform 0.25s;
+  transition: transform 0.35s;
+  -o-transition: -o-transform 0.35s;
+  -ms-transition: -ms-transform 0.35s;
+  -moz-transition: -moz-transform 0.35s;
+  -webkit-transition: -webkit-transform 0.35s;
+
+  will-change: transform;
 }
 
 .block-card:hover .design-el-2:before {
@@ -616,19 +614,19 @@ a:hover .obj-scaler img {
 .block-card:hover { color: #fff; }
 
 .block-card .button.circle:after {
-  transition: transform 0.25s, background-color 0.25s;
-  -o-transition: -o-transform 0.25s, background-color 0.25s;
-  -ms-transition: -ms-transform 0.25s, background-color 0.25s;
-  -moz-transition: -moz-transform 0.25s, background-color 0.25s;
-  -webkit-transition: -webkit-transform 0.25s, background-color 0.25s;
+  transition: transform 0.35s, background-color 0.35s;
+  -o-transition: -o-transform 0.35s, background-color 0.35s;
+  -ms-transition: -ms-transform 0.35s, background-color 0.35s;
+  -moz-transition: -moz-transform 0.35s, background-color 0.35s;
+  -webkit-transition: -webkit-transform 0.35s, background-color 0.35s;
 }
 
 .block-card .button.circle:after {
-  transition: transform 0.25s, opacity 0.25s, background-color 0.25s;
-  -o-transition: -o-transform 0.25s, opacity 0.25s, background-color 0.25s;
-  -ms-transition: -ms-transform 0.25s, opacity 0.25s, background-color 0.25s;
-  -moz-transition: -moz-transform 0.25s, opacity 0.25s, background-color 0.25s;
-  -webkit-transition: -webkit-transform 0.25s, opacity 0.25s, background-color 0.25s;
+  transition: transform 0.35s, opacity 0.35s, background-color 0.35s;
+  -o-transition: -o-transform 0.35s, opacity 0.35s, background-color 0.35s;
+  -ms-transition: -ms-transform 0.35s, opacity 0.35s, background-color 0.35s;
+  -moz-transition: -moz-transform 0.35s, opacity 0.35s, background-color 0.35s;
+  -webkit-transition: -webkit-transform 0.35s, opacity 0.35s, background-color 0.35s;
 }
 .block-card:hover .button.circle:after {
   background-color: #fff;
@@ -654,11 +652,6 @@ a:hover .obj-scaler img {
   z-index: 3;
 }
 
-.block .layout-block .row {
-  display: table-row;
-  height: 1px;
-}
-
 .block-card p { max-width: 315px; }
 
 .layout-block-2 .block-card {
@@ -671,19 +664,19 @@ a:hover .obj-scaler img {
 }
 
 .button svg rect {
-  transition: fill 0.25s;
-  -o-transition: fill 0.25s;
-  -ms-transition: fill 0.25s;
-  -moz-transition: fill 0.25s;
-  -webkit-transition: fill 0.25s;
+  transition: fill 0.35s;
+  -o-transition: fill 0.35s;
+  -ms-transition: fill 0.35s;
+  -moz-transition: fill 0.35s;
+  -webkit-transition: fill 0.35s;
 }
 .button.circle.from-opacity:after {
   opacity: 0.2;
-  transition: opacity 0.25s, transform 0.25s;
-  -o-transition: opacity 0.25s, -o-transform 0.25s;
-  -ms-transition: opacity 0.25s, -ms-transform 0.25s;
-  -moz-transition: opacity 0.25s, -moz-transform 0.25s;
-  -webkit-transition: opacity 0.25s, -webkit-transform 0.25s;
+  transition: opacity 0.35s, transform 0.35s;
+  -o-transition: opacity 0.35s, -o-transform 0.35s;
+  -ms-transition: opacity 0.35s, -ms-transform 0.35s;
+  -moz-transition: opacity 0.35s, -moz-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
 }
 .button.circle.from-opacity:hover:after, a:hover div.button.circle.from-opacity:after { opacity: 1; }
 .button.circle.white:hover svg rect, a:hover div.button.circle.white svg rect { fill: #59C13F; }
@@ -753,11 +746,11 @@ b { font-weight: bold; }
   background-size: contain;
   pointer-events: none;
 
-  transition: right 0.25s;
-  -o-transition: right 0.25s;
-  -ms-transition: right 0.25s;
-  -moz-transition: right 0.25s;
-  -webkit-transition: right 0.25s;
+  transition: right 0.35s;
+  -o-transition: right 0.35s;
+  -ms-transition: right 0.35s;
+  -moz-transition: right 0.35s;
+  -webkit-transition: right 0.35s;
 }
 .button.simple.green:hover .arrow rect {
   fill: #5CBB47;
@@ -797,11 +790,11 @@ b { font-weight: bold; }
 
 .button.circle.swiper-button-disabled { opacity: 0.5; }
 .button.circle.slider-next, .button.circle.slider-prev {
-  transition: opacity 0.25s;
-  -o-transition: opacity 0.25s;
-  -ms-transition: opacity 0.25s;
-  -moz-transition: opacity 0.25s;
-  -webkit-transition: opacity 0.25s;
+  transition: opacity 0.35s;
+  -o-transition: opacity 0.35s;
+  -ms-transition: opacity 0.35s;
+  -moz-transition: opacity 0.35s;
+  -webkit-transition: opacity 0.35s;
 }
 
 .block.no-padding { padding: 0; }
@@ -830,8 +823,7 @@ div + .list-icon, p + .list-icon { margin-top: 45px; }
 .list-icon li p + p { margin-top: 8px; }
 .block.no-padding > .layout-block { margin-bottom: -1px; }
 
-.layout-block-4 > .part,
-.layout-block-4 > .row > .part { width: 50%; }
+.layout-block-4 > .part { width: 50%; }
 
 form input, form textarea, form .textarea {
   font-family: "Roboto";
@@ -845,11 +837,11 @@ form input, form textarea, form .textarea {
   z-index: 2;
   border-bottom: 2px solid rgba(89,193,63,0.1);
 
-  transition: border-color 0.25s;
-  -o-transition: border-color 0.25s;
-  -ms-transition: border-color 0.25s;
-  -moz-transition: border-color 0.25s;
-  -webkit-transition: border-color 0.25s;
+  transition: border-color 0.35s;
+  -o-transition: border-color 0.35s;
+  -ms-transition: border-color 0.35s;
+  -moz-transition: border-color 0.35s;
+  -webkit-transition: border-color 0.35s;
 }
 form input:focus, form textarea:focus, form .textarea:focus { border-color: rgba(89,193,63,1); }
 form input.error, form textarea.error, form .textarea.error { border-color: rgb(255 24 120); }
@@ -874,11 +866,11 @@ form .input-placeholder .placeholder {
   -moz-transform-origin: left;
   -webkit-transform-origin: left;
 
-  transition: transform 0.25s, color 0.25s;
-  -o-transition: -o-transform 0.25s, color 0.25s;
-  -ms-transition: -ms-transform 0.25s, color 0.25s;
-  -moz-transition: -moz-transform 0.25s, color 0.25s;
-  -webkit-transition: -webkit-transform 0.25s, color 0.25s;
+  transition: transform 0.35s, color 0.35s;
+  -o-transition: -o-transform 0.35s, color 0.35s;
+  -ms-transition: -ms-transform 0.35s, color 0.35s;
+  -moz-transition: -moz-transform 0.35s, color 0.35s;
+  -webkit-transition: -webkit-transform 0.35s, color 0.35s;
 }
 form .input-placeholder.blank .placeholder {
   color: rgba(35,31,32,0.9);
@@ -956,6 +948,8 @@ form .input-placeholder.blank .placeholder {
   -ms-transition: -ms-transform 0.35s;
   -moz-transition: -moz-transform 0.35s;
   -webkit-transition: -webkit-transform 0.35s;
+
+  will-change: transform;
 }
 .button.animate:hover .h {
   transform: scale(1);
@@ -1020,11 +1014,11 @@ input[type="checkbox"] { display: none; }
   -ms-transform: scale(1.5) rotate(45deg);
   -moz-transform: scale(1.5) rotate(45deg);
   -webkit-transform: scale(1.5) rotate(45deg);
-  transition: transform 0.25s, opacity 0.25s;
-  -o-transition: -o-transform 0.25s, opacity 0.25s;
-  -ms-transition: -ms-transform 0.25s, opacity 0.25s;
-  -moz-transition: -moz-transform 0.25s, opacity 0.25s;
-  -webkit-transition: -webkit-transform 0.25s, opacity 0.25s;
+  transition: transform 0.35s, opacity 0.35s;
+  -o-transition: -o-transform 0.35s, opacity 0.35s;
+  -ms-transition: -ms-transform 0.35s, opacity 0.35s;
+  -moz-transition: -moz-transform 0.35s, opacity 0.35s;
+  -webkit-transition: -webkit-transform 0.35s, opacity 0.35s;
 }
 
 .input-checkbox input:checked + .checkbox:after {
@@ -1044,6 +1038,10 @@ footer {
   padding: 45px 30px;
   position: relative;
   z-index: 20;
+}
+.pin-footer {
+  position: relative;
+  z-index: 20;
   opacity: 0;
 }
 
@@ -1053,11 +1051,11 @@ button.disabled {
 }
 
 button[type="submit"] {
-  transition: opacity 0.35s;
-  -o-transition: opacity 0.35s;
-  -ms-transition: opacity 0.35s;
-  -moz-transition: opacity 0.35s;
-  -webkit-transition: opacity 0.35s;
+  transition: opacity 0.25s;
+  -o-transition: opacity 0.25s;
+  -ms-transition: opacity 0.25s;
+  -moz-transition: opacity 0.25s;
+  -webkit-transition: opacity 0.25s;
 }
 button[type="submit"].button.hover-circle {
   transition: color 0.35s, opacity 0.35s;
@@ -1072,3 +1070,5 @@ button[type="submit"].button.hover-circle {
   z-index: 10;
 }
 .el-pin { z-index: 9; }
+
+.layout-block-2 h3, .layout-block-2 .h3 { max-width: 530px; }
