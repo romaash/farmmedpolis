@@ -141,12 +141,22 @@ $(window).on("load", function(){
 
 $.each($(".slider-1"), function(){
   var parent = $(this).closest(".block-slider");
+  let el = $(this);
   new Swiper($(this)[0], {
+    speed: 500,
     slidesPerView: 3,
     spaceBetween: 18,
     navigation: {
       nextEl: $(".slider-next", parent)[0],
       prevEl: $(".slider-prev", parent)[0],
+    },
+    on: {
+      touchStart: function(){
+        el.addClass("dragging");
+      },
+      touchEnd: function(){
+        el.removeClass("dragging");
+      }
     }
   });
 });

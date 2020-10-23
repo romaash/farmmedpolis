@@ -363,8 +363,8 @@ h1, .h1 {
 }
 h2, .h2 {
   font-weight: 500;
-  font-size: 36px;
-  line-height: 1.22;
+  font-size: 46px;
+  line-height: 1.3;
 }
 h3, .h3 {
   font-weight: bold;
@@ -476,8 +476,8 @@ a:hover .obj-scaler img {
 .design-el-1 {
   position: absolute;
   top: -30px;
-  left: 130px;
-  right: -300px;
+  left: 180px;
+  right: -350px;
 }
 
 .block.white {
@@ -1072,3 +1072,25 @@ button[type="submit"].button.hover-circle {
 .el-pin { z-index: 9; }
 
 .layout-block-2 h3, .layout-block-2 .h3 { max-width: 530px; }
+
+.fix-enlarged {
+  margin-right: -125%;
+}
+.pin-type-1 {
+  position: relative;
+  z-index: 3;
+}
+
+.slider-1 .swiper-slide {
+  opacity: 0;
+
+  transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+}
+.slider-1.dragging .swiper-slide,
+.slider-1 .swiper-slide.swiper-slide-active,
+.slider-1 .swiper-slide.swiper-slide-active + .swiper-slide,
+.slider-1 .swiper-slide.swiper-slide-active + .swiper-slide + .swiper-slide { opacity: 1; }
