@@ -1,3 +1,5 @@
+var uAnims = {};
+
 $(".anim-underline").hover(function(e){  
   let x = e.offsetX;
   let w = $(this).width();
@@ -6,6 +8,7 @@ $(".anim-underline").hover(function(e){
   else { $(this).addClass("right"); }
 
   let el = $(this);
+  if (uAnims[el] != undefined) { clearTimeout(uAnims[el]); }
   setTimeout(function(){ el.addClass("animate"); }, 10);
 }, function(e){
   let x = e.offsetX;
@@ -15,10 +18,10 @@ $(".anim-underline").hover(function(e){
   else { $(this).addClass("right"); }
 
   let el = $(this);
-  setTimeout(function(){
+  uAnims[el] = setTimeout(function(){
     el.removeClass("animate");
     el.removeClass("right");
-  }, 250);
+  }, 350);
 });
 
 var hoverCircleAnim;
@@ -117,6 +120,31 @@ $.each($(".pin-type-2"), function(i){
   })
   t.to(el, {
     y: 50,
+    opacity: 0
+  });
+});
+
+$.each($(".pin-type-3"), function(i){
+  let el = $(this)[0];
+
+  let offset = $(this).offset();
+  let duration = $(this).height();
+
+
+  var t = gsap.timeline({
+    scrollTrigger: {
+      trigger: el,
+      start: "top "+offset.top+"px",
+      end: duration+"px "+offset.top+"px",
+      duration: 1,
+      scrub: true,
+      pin: true,
+      pinSpacing: false
+    }
+  })
+
+  t.to(el, {
+    y: 20,
     opacity: 0
   });
 });
@@ -228,3 +256,57 @@ if (cssPropertyValueSupported("-webkit-mask-box-image", "url('../img/others/mask
     cssPropertyValueSupported("mask-border", "url('../img/others/mask.png') 46 repeat")) {
   $("header").addClass("no-mask");
 }
+
+$.each($(".object-tabs"), function(){
+  var pointer = document.createElement("div");
+  $(pointer).addClass("pointer");
+  $(".el-tabs", this).prepend(pointer);
+  tabClicked($(".el-tabs ul li:first-child", this));
+});
+
+$(".object-tabs ul li").click(function(){
+  tabClicked($(this))
+});
+
+function tabClicked (elTab) {
+  var object = elTab.closest(".object-tabs");
+  $("li", elTab.closest("ul")).removeClass("active");
+  elTab.addClass("active");
+  var tab = elTab.attr("data-tab");
+  var pointer = $("> .pointer", elTab.closest(".el-tabs"));
+  var offset = elTab.position();
+  var size = {width: elTab.outerWidth(), height: elTab.outerHeight()};
+  pointer.css({
+    "left": offset.left+"px",
+    "top": offset.top+"px",
+    "width": size.width+"px",
+    "height": size.height+"px"
+  });
+  tabWindow(object, tab);
+}
+
+function tabWindow(object, tab) {
+  let next = false;
+  $(".wrap-windows .window", object).removeClass("next").removeClass("active");
+  $.each($(".wrap-windows .window", object), function(){
+    let t = $(this).attr("data-tab");
+    if (next) {
+      $(this).addClass("next");
+    } if (t == tab) {
+      next = true;
+      $(this).addClass("active");
+    }
+  });
+}
+
+$(".object-qa .q").click(function(){
+  if (!$(this).hasClass("active")) {
+    $(".q", $(this).closest(".object-qa")).removeClass("active");
+    $(".a", $(this).closest(".object-qa")).slideUp(350);
+    $(this).addClass("active");
+    $("+ .a", this).slideDown(350);
+  } else {
+    $(".q", $(this).closest(".object-qa")).removeClass("active");
+    $(".a", $(this).closest(".object-qa")).slideUp(350);
+  }
+})
