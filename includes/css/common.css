@@ -593,15 +593,15 @@ a:hover .obj-scaler img {
   position: relative;
   z-index: 3;
 }
-.design-el-2:before {
+.design-el-gc {
   content: '';
   position: absolute;
   width: 240px;
   height: 240px;
   background-color: #5FBA46;
-  right: -70px;
-  bottom: -70px;
-  z-index: 2;
+  right: 0px;
+  bottom: 0px;
+  z-index: 1;
   border-radius: 50%;
 
   transform-origin: bottom right;
@@ -609,6 +609,12 @@ a:hover .obj-scaler img {
   -ms-transform-origin: bottom right;
   -moz-transform-origin: bottom right;
   -webkit-transform-origin: bottom right;
+
+  transform: scale(0.56);
+  -o-transform: scale(0.56);
+  -ms-transform: scale(0.56);
+  -moz-transform: scale(0.56);
+  -webkit-transform: scale(0.56);
 
   transition: transform 0.35s;
   -o-transition: -o-transform 0.35s;
@@ -623,12 +629,12 @@ a:hover .obj-scaler img {
   will-change: -webkit-transform;
 }
 
-.block-card:hover .design-el-2:before {
-  transform: translateY(20%) scale(2);
-  -o-transform: translateY(20%) scale(2);
-  -ms-transform: translateY(20%) scale(2);
-  -moz-transform: translateY(20%) scale(2);
-  -webkit-transform: translateY(20%) scale(2);
+.block-card:hover .design-el-gc {
+  transform: none;
+  -o-transform: none;
+  -ms-transform: none;
+  -moz-transform: none;
+  -webkit-transform: none;
 }
 .block-card:hover { color: #fff; }
 
@@ -809,13 +815,14 @@ b { font-weight: bold; }
 .slider-1 .swiper-slide .date {
   position: absolute;
   bottom: 25px;
-  left: 40px;
+  left: 30px;
+  right: 30px;
 }
 .slider-1 .swiper-slide .content { padding: 25px 30px; }
 .slider-1 .image { overflow: hidden; }
 .slider-1.swiper-container { overflow: visible; }
 
-.block.dark { background-color: #F5F5F7; }
+.block.dim { background-color: #F5F5F7; }
 
 .button.circle.swiper-button-disabled { opacity: 0.5; }
 .button.circle.slider-next, .button.circle.slider-prev {

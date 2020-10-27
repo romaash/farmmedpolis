@@ -310,3 +310,27 @@ $(".object-qa .q").click(function(){
     $(".a", $(this).closest(".object-qa")).slideUp(350);
   }
 })
+
+function calcElGC () {
+  $.each($(".design-el-gc"), function(){
+    var parent = $(this).closest("a");
+    var parentSize = {width: parent.outerWidth(), height: parent.outerHeight()};
+    var size = Math.sqrt(parentSize.width*parentSize.width + parentSize.height*parentSize.height);
+    var shift = {x: parentSize.width/2-size/2, y: parentSize.height/2-size/2};
+    $(this).css({
+      width: size+"px", 
+      height: size+"px",
+      right: shift.x+"px",
+      bottom: shift.y+"px"
+    });
+  });
+}
+
+function calcAll () {
+  calcElGC();
+}
+
+calcAll();
+// $(window).resize(function(){
+//   calcAll();
+// });
