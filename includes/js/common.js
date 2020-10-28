@@ -1,6 +1,18 @@
 var uAnims = {};
+var settings = {
+  scrollbar: {
+    width: window.innerWidth - document.documentElement.clientWidth
+  },
+  header: {
+    paddingRight: parseInt($("header").css("padding-right"))
+  }
+};
 
-$(".anim-underline").hover(function(e){  
+$.each($(".anim-underline"), function(i){
+  $(this).attr("data-key", i);
+});
+
+$(".anim-underline").hover(function(e){
   let x = e.offsetX;
   let w = $(this).width();
 
@@ -8,7 +20,8 @@ $(".anim-underline").hover(function(e){
   else { $(this).addClass("right"); }
 
   let el = $(this);
-  if (uAnims[el] != undefined) { clearTimeout(uAnims[el]); }
+  var key = el.attr("data-key");
+  if (uAnims[key] != undefined) { clearTimeout(uAnims[key]); }
   setTimeout(function(){ el.addClass("animate"); }, 10);
 }, function(e){
   let x = e.offsetX;
@@ -18,15 +31,15 @@ $(".anim-underline").hover(function(e){
   else { $(this).addClass("right"); }
 
   let el = $(this);
-  uAnims[el] = setTimeout(function(){
+  uAnims[el.attr("data-key")] = setTimeout(function(){
     el.removeClass("animate");
     el.removeClass("right");
   }, 350);
 });
 
-var hoverCircleAnim;
+var cAnim = {};
 
-$(".hover-circle").hover(function(e){  
+$(".hover-circle").hover(function(e){
   let x = e.offsetX;
   let y = e.offsetY;
 
@@ -34,8 +47,9 @@ $(".hover-circle").hover(function(e){
 
   el.find(".h").css({top: y+"px", left: x+"px"})
 
+  var key = el.attr("data-key");
+  if (cAnim[key] != undefined) { clearTimeout(cAnim[key]); }
   setTimeout(function(){ el.addClass("animate"); }, 10);
-  clearTimeout(hoverCircleAnim);
 }, function(e){
   let x = e.offsetX;
   let y = e.offsetY;
@@ -44,10 +58,11 @@ $(".hover-circle").hover(function(e){
 
   el.find(".h").css({top: y+"px", left: x+"px"})
 
-  hoverCircleAnim = setTimeout(function(){ el.removeClass("animate"); }, 350);
+  cAnim[el.attr("data-key")] = setTimeout(function(){ el.removeClass("animate"); }, 350);
 });
 
-$.each($(".hover-circle"), function(){
+$.each($(".hover-circle"), function(i){
+  $(this).attr("data-key", i);
   let inside = $(this).html()
   $(this).html("<div class=\"c\">"+inside+"</div><div class=\"h\"></div>");
 })
@@ -207,41 +222,66 @@ $(".input-placeholder input, .input-placeholder textarea, .input-placeholder .te
 
 var iMasks = {};
 
-$.each($("input[type=\"phone\"]"), function(){
-  iMasks[$(this)] = IMask($(this)[0], { mask: '+{7}(000)000-00-00' });
+$.each($("input[type=\"phone\"]"), function(i){
+  $(this).attr("data-key", i);
+  iMasks[i] = IMask($(this)[0], { mask: '+{7}(000)000-00-00' });
 });
 
 $("form").submit(function(e){
   var error = false;
 
-  $.each($("input[data-req]"), function(){
+  $.each($("input[data-req]", this), function(){
     if ($(this).attr("type") == "text") {
       if ($.trim($(this).val()).length < 3) {
         $(this).addClass("error");
         error = true;
       }
     } else if ($(this).attr("type") == "phone") {
-      if (iMasks[$(this)].unmaskedValue.length != 11) {
+      if (iMasks[$(this).attr("data-key")].unmaskedValue.length != 11) {
         $(this).addClass("error");
         error = true;
       }
     } else if ($(this).attr("type") == "checkbox") {
-      if (!$(this).is(':checked')) { error = true; }
+      if (!$(this).is(':checked')) { 
+        $(this).addClass("error");
+        error = true; 
+      }
     }
   });
 
-  if (error) {
-    e.preventDefault();
+  if (!error) {
+    $(this).addClass("ok");
+  }
+
+  e.preventDefault();
+});
+
+$("form *[data-return-btn]").click(function(e){
+  var popup = $(this).closest(".popup");
+  e.preventDefault();
+  var form = $(this).closest("form");
+  form.trigger("reset");
+  form.removeClass("ok");
+  $(".input input", form).blur();
+  $("*[data-disabled]", form).prop("disabled", true);
+  if (popup.length > 0) {
+    var history = popup.attr("data-history").split(",");
+    $.each($(".group-inputs", popup), function(i){
+      var n = popup[1+i];
+      if (n == undefined || $("label", this).length < n) { n = 1; }
+      $("label:nth-child("+n+") input", this).prop("checked", true);
+    });
   }
 });
 
 $("input").focus(function(){ $(this).removeClass("error"); });
+$("input[type=\"checkbox\"]").change(function(){ $(this).removeClass("error"); });
 
 $("input[type=\"checkbox\"]").change(function(){
   if (this.checked) {
-    $("button[type=\"submit\"]", $(this).closest("form")).removeClass("disabled");
+    $("button[type=\"submit\"]", $(this).closest("form")).prop("disabled", false);
   } else {
-    $("button[type=\"submit\"]", $(this).closest("form")).addClass("disabled");
+    $("button[type=\"submit\"]", $(this).closest("form")).prop("disabled", true);
   }
 });
 
@@ -330,7 +370,92 @@ function calcAll () {
   calcElGC();
 }
 
-calcAll();
+$(document).ready(function(){
+  $(".popup").css({
+    "margin-right": -settings.scrollbar.width+"px"
+  });
+  calcAll();
+});
 // $(window).resize(function(){
 //   calcAll();
 // });
+
+var click = false;
+
+function removeScrollbar (el) {
+  el.css({
+    "overflow-y": "hidden",
+    "padding-right": settings.scrollbar.width+"px"
+  });
+  if (el.prop("tagName").toLowerCase() == "body") {
+    $(".main-bg").css({
+      "margin-right": settings.scrollbar.width+"px"
+    });
+    $("header, .popup .layout-close").css({
+      "padding-right": (settings.header.paddingRight+settings.scrollbar.width)+"px"
+    });
+    $(".popup").css({
+      "margin-right": 0+"px"
+    });
+  }
+}
+
+function addScrollbar (el) {
+  el.css({
+    "overflow-y": "scroll",
+    "padding-right": 0+"px"
+  });
+  if (el.prop("tagName").toLowerCase() == "body") {
+    $(".main-bg").css({
+      "margin-right": 0+"px"
+    });
+    $("header, .popup .layout-close").css({
+      "padding-right": (settings.header.paddingRight)+"px"
+    });
+    $(".popup").css({
+      "margin-right": -settings.scrollbar.width+"px"
+    });
+  }
+}
+
+function openPopup (popup) {
+  $(".popup[data-popup=\""+popup[0]+"\"]").attr("data-history", popup);
+  var popup = popup.split(",");
+  $(".popup[data-popup=\""+popup[0]+"\"] .group-inputs label input").prop("checked", false);
+  $.each($(".popup[data-popup=\""+popup[0]+"\"] .group-inputs"), function(i){
+    var n = popup[1+i];
+    if (n == undefined || $("label", this).length < n) { n = 1; }
+    $("label:nth-child("+n+") input", this).prop("checked", true);
+  });
+  $(".popup[data-popup=\""+popup[0]+"\"]").addClass("active");
+  removeScrollbar($("body"));
+}
+
+function closePopup () {
+  $(".popup").removeClass("active");
+  setTimeout(function(){
+    $(".popup form.ok *[data-return-btn]").click();
+  }, 150);
+  addScrollbar($("body"));
+}
+
+$("*[data-popup-btn]").click(function(e){
+  e.preventDefault();
+  openPopup($(this).attr("data-popup-btn"));
+});
+
+$(".popup .close, .popup .bg").click(function(e){
+  e.preventDefault();
+  $.each($("iframe", $(this).closest(".popup")), function(){
+    let el = $(this);
+    var src = el.attr("src");
+    setTimeout(function(){
+      el.attr("src", "");
+      setTimeout(function(){
+        el.attr("src", src);
+      }, 50);
+    }, 150)
+  })
+  closePopup();
+  addScrollbar($("body"));
+})
