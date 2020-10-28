@@ -61,12 +61,6 @@ $(".hover-circle").hover(function(e){
   cAnim[el.attr("data-key")] = setTimeout(function(){ el.removeClass("animate"); }, 350);
 });
 
-$.each($(".hover-circle"), function(i){
-  $(this).attr("data-key", i);
-  let inside = $(this).html()
-  $(this).html("<div class=\"c\">"+inside+"</div><div class=\"h\"></div>");
-})
-
 $(".header-search-wrap:not(.active) .header-search a").click(function(e){
   e.preventDefault();
   let parent = $(this).closest(".header-search-wrap");
@@ -375,6 +369,15 @@ $(document).ready(function(){
     "margin-right": -settings.scrollbar.width+"px"
   });
   calcAll();
+});
+
+$(window).on("load", function(){
+  $.each($(".hover-circle"), function(i){
+    $(this).attr("data-key", i);
+    var size = $(this).outerWidth();
+    let inside = $(this).html()
+    $(this).html("<div class=\"c\">"+inside+"</div><div class=\"h\" style=\"width: "+(size*2)+"px;height: "+(size*2)+"px;margin-left: "+(-size)+"px;margin-top: "+(-size)+"px;\"></div>");
+  });
 });
 // $(window).resize(function(){
 //   calcAll();

@@ -285,6 +285,7 @@ input, button, textarea, .textarea {
 .button {
   display: inline-block;
   vertical-align: middle;
+  text-decoration: none;
 }
 
 .button.circle {
@@ -352,6 +353,15 @@ input, button, textarea, .textarea {
   position: relative;
   z-index: 40;
   overflow: hidden;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  align-items: center;
+
+  min-height: 100vh;
+  min-height: calc(100vh - 130px);
 }
 
 .block, .block.no-padding > .layout-block > .part {
@@ -781,8 +791,6 @@ b { font-weight: bold; }
   top: 50%;
   margin-top: -9px;
   right: -25px;
-  background: url('../img/icons/13.svg') no-repeat center center;
-  background-size: contain;
   pointer-events: none;
 
   transition: right 0.35s;
@@ -791,9 +799,12 @@ b { font-weight: bold; }
   -moz-transition: right 0.35s;
   -webkit-transition: right 0.35s;
 }
-.button.simple.green:hover .arrow rect {
-  fill: #5CBB47;
+.button.text.arrow.a-left:after, .button.simple.a-left .arrow {
+  right: auto;
+  left: -25px;
 }
+.button.simple.green:hover .arrow rect { fill: #5CBB47; }
+.button.simple.white:hover .arrow rect { fill: #FFFFFF; }
 .button.text.arrow:hover:after { right: -28px; }
 .button.text.green { color: #5FBA46; }
 .button.t-b { padding: 10px 0; }
@@ -959,9 +970,19 @@ form .input-placeholder.blank .placeholder {
   color: #fff;
   background-color: #5CBB47;
 }
-.button.simple.green.hover-circle.arrow {
+.button.simple.hover-circle.arrow {
   padding: 11px 26px;
   padding-right: 41px;
+}
+.button.simple.hover-circle.arrow.a-left {
+  padding-right: 26px;
+  padding-left: 41px;
+}
+
+.button.simple.white {
+  background-color: #fff;
+  border-color: #fff;
+  color: #5CBB47;
 }
 
 .button {
@@ -984,11 +1005,7 @@ form .input-placeholder.blank .placeholder {
 .button.green.hover-circle:hover { color: #5CBB47; }
 .button .h {
   position: absolute;
-  width: 320px;
-  height: 320px;
   border-radius: 50%;
-  margin-top: -160px;
-  margin-left: -160px;
   background-color: #5CBB47;
 
   top: 50%;
@@ -1526,3 +1543,20 @@ form .done .wrap {
   height: 70vh;
   margin: 0 auto;
 }
+
+.block-404 .icon {
+  max-width: 720px;
+  margin: 0 auto;
+  pointer-events: none;
+}
+.block-404 {
+  text-align: center;
+  padding: 0;
+  padding-bottom: 50px;
+}
+.block-404 p {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.block-404 .buttons { margin-top: 40px; }
