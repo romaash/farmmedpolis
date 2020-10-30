@@ -87,10 +87,10 @@ $.each($(".pin-type-1"), function(i){
 
   if (duration > $(window).height()) {
     start = duration - $(window).height();
-    pin1Shift[i] = [start, start/duration];
-  } else { pin1Shift[i] = [0, 0]; }
+    pin1Shift[i] = start/duration;
+  } else { pin1Shift[i] = 0; }
 
-  gsap.to(el, {
+  var t = gsap.timeline({
     scrollTrigger: {
       trigger: el,
       start: start+" "+top+"px",
@@ -98,7 +98,10 @@ $.each($(".pin-type-1"), function(i){
       scrub: true,
       pin: true,
       pinSpacing: false
-    },
+    }
+  });
+
+  t.to(el, {
     y: 50,
     opacity: 0
   });
@@ -109,8 +112,19 @@ $.each($(".pin-type-2"), function(i){
 
   let offset = $(this).offset();
   let pin1 = $(".pin-type-1", $(this).closest(".block"));
-  let duration = pin1.height();
 
+  if (window.matchMedia("(max-width: 628px)").matches) {
+    var windowHeight = $(window).outerHeight();
+    console.log(windowHeight);
+    if (windowHeight < pin1.outerHeight() + 125 + $(this).outerHeight()*0.25) { windowHeight = pin1.outerHeight() + 125 + $(this).outerHeight()*0.25; }
+    console.log(pin1.outerHeight());
+
+    var shift = windowHeight - offset.top - $(this).outerHeight();
+    if (shift > 0) { shift = 0; }
+    $(this).closest(".block").css({"margin-bottom": (shift - $(this).outerHeight()*0.25)+"px"});
+  }
+
+  let duration = pin1.height();
 
   var t = gsap.timeline({
     scrollTrigger: {
@@ -122,11 +136,11 @@ $.each($(".pin-type-2"), function(i){
       pin: true,
       pinSpacing: false
     }
-  })
+  });
 
   t.to(el, {
-    duration: pin1Shift[i][1]
-  })
+    duration: pin1Shift[i]
+  });
   t.to(el, {
     y: 50,
     opacity: 0
@@ -181,11 +195,19 @@ $.each($(".slider-1"), function(){
   let el = $(this);
   new Swiper($(this)[0], {
     speed: 500,
-    slidesPerView: 3,
+    slidesPerView: 1,
     spaceBetween: 18,
     navigation: {
       nextEl: $(".slider-next", parent)[0],
       prevEl: $(".slider-prev", parent)[0],
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 3
+      },
+      580: {
+        slidesPerView: 2
+      }
     },
     on: {
       touchStart: function(){
@@ -461,4 +483,9 @@ $(".popup .close, .popup .bg").click(function(e){
   })
   closePopup();
   addScrollbar($("body"));
-})
+});
+
+$(".button-burger").click(function(e){
+  e.preventDefault();
+  $(".main-menu").toggleClass("active");
+});
