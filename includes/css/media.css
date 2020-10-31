@@ -427,7 +427,7 @@
 }
 
 @supports (-webkit-touch-callout: none) {
-  body { background: #16A937; }
+  body { background: #16A937 !important; }
   body:before {
     content: '';
     position: fixed;
@@ -438,5 +438,5 @@
     background: url("../img/bgs/1.jpg") no-repeat center top;
     z-index: 1;
   }
-  .button-burger { background: #16A937; }
+  .button-burger { background: #16A937 !important; }
 }
