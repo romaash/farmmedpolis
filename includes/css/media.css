@@ -1,3 +1,17 @@
+@supports (-webkit-touch-callout: none) {
+  body { background: #16A937; }
+  body:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 900px;
+    background: url("../img/bgs/1.jpg") no-repeat center top;
+    z-index: 1;
+  }
+}
+
 @media (max-width: 1500px) {
   header.no-mask > .wrap > .part-center:before { height: 80px; }
   .link-mw { width: 78px; }
