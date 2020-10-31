@@ -176,11 +176,13 @@ $(window).on("load", function(){
 
   var diff = document.documentElement.clientHeight - $(".pin-footer").outerHeight();
 
-  if (window.matchMedia("(max-width: 580px)").matches) { shift = 0; }
+  if (window.matchMedia("(max-width: 580px), (max-height: 512px)").matches) { shift = 0; }
   else if (window.matchMedia("(max-width: 1024px)").matches) { shift = 80; }
   else if (window.matchMedia("(max-width: 1500px)").matches) { shift = 80; }
 
   if (diff > shift) { shift = diff; }
+
+  shift += 15;
 
   $(".footer-shifter").css("height", $(".pin-footer").outerHeight());
   $(".pin-footer").css("top", shift);
