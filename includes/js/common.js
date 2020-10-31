@@ -116,7 +116,6 @@ $.each($(".pin-type-2"), function(i){
   if (window.matchMedia("(max-width: 628px)").matches) {
     var windowHeight = document.documentElement.clientHeight;
     if (windowHeight < pin1.outerHeight() + 125 + $(this).outerHeight()*0.25) { windowHeight = pin1.outerHeight() + 125 + $(this).outerHeight()*0.25; }
-    console.log(pin1.outerHeight());
 
     var shift = windowHeight - offset.top - $(this).outerHeight();
     if (shift > 0) { shift = 0; }
@@ -326,13 +325,6 @@ if (cssPropertyValueSupported("-webkit-mask-box-image", "url('../img/others/mask
   $("header").addClass("no-mask");
 }
 
-$.each($(".object-tabs"), function(){
-  var pointer = document.createElement("div");
-  $(pointer).addClass("pointer");
-  $(".el-tabs", this).prepend(pointer);
-  tabClicked($(".el-tabs ul li:first-child", this));
-});
-
 $(".object-tabs ul li").click(function(){
   tabClicked($(this))
 });
@@ -357,15 +349,21 @@ function tabClicked (elTab) {
 function tabWindow(object, tab) {
   let next = false;
   $(".wrap-windows .window", object).removeClass("next").removeClass("active");
+  var height = 0;
   $.each($(".wrap-windows .window", object), function(){
     let t = $(this).attr("data-tab");
     if (next) {
       $(this).addClass("next");
     } if (t == tab) {
       next = true;
+      height = $(this).outerHeight();
       $(this).addClass("active");
     }
   });
+  $(".wrap-windows:not(.space-all)", object).height(height);
+  setTimeout(function(){
+    ScrollTrigger.refresh()
+  }, 350);
 }
 
 $(".object-qa .q").click(function(){
@@ -407,10 +405,15 @@ $(document).ready(function(){
 });
 
 $(window).on("load", function(){
+  $.each($(".object-tabs"), function(){
+    var pointer = document.createElement("div");
+    $(pointer).addClass("pointer");
+    $(".el-tabs", this).prepend(pointer);
+    tabClicked($(".el-tabs ul li:first-child", this));
+  });
   $.each($(".hover-circle"), function(i){
     $(this).attr("data-key", i);
     var size = $(this).outerWidth();
-    console.log(i+" - "+size);
     let inside = $(this).html()
     $(this).html("<div class=\"c\">"+inside+"</div><div class=\"h\" style=\"width: "+(size*2)+"px;height: "+(size*2)+"px;margin-left: "+(-size)+"px;margin-top: "+(-size)+"px;\"></div>");
   });

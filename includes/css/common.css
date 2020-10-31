@@ -534,11 +534,11 @@ p {
 
 .layout-block-2 > .part { width: 50%; }
 .layout-block-3 > .part { width: 33.333%; }
+.layout-block-5 > .part { width: 25%; }
 
 .block-card {
   height: 100%;
   display: block;
-  background-color: #fff;
   position: relative;
   padding: 34px 40px;
   color: #231F20;
@@ -550,6 +550,14 @@ p {
   -moz-transition: color 0.35s;
   -webkit-transition: color 0.35s;
 }
+.block-cards.type-2 .block-card {
+  padding: 25px 30px;
+  padding-bottom: 140px;
+}
+.block-card:not(.transparent) { background-color: #fff; }
+.block-card.green { background-color: #5FBA46; }
+.block .block-cards:not(.layout-block-5) > .part:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) { padding-top: 18px; }
+.block .block-cards.layout-block-5 > .part:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)) { padding-top: 18px; }
 
 .block-card.white { color: #fff; }
 
@@ -573,7 +581,7 @@ p {
   position: absolute;
   right: 18px;
   bottom: 8px;
-  width: 214px;
+  width: 194px;
   pointer-events: none;
   z-index: 1;
 }
@@ -598,11 +606,11 @@ p {
   -moz-transform-origin: bottom right;
   -webkit-transform-origin: bottom right;
 
-  transform: scale(0.56);
-  -o-transform: scale(0.56);
-  -ms-transform: scale(0.56);
-  -moz-transform: scale(0.56);
-  -webkit-transform: scale(0.56);
+  transform: scale(0.53);
+  -o-transform: scale(0.53);
+  -ms-transform: scale(0.53);
+  -moz-transform: scale(0.53);
+  -webkit-transform: scale(0.53);
 
   transition: transform 0.35s;
   -o-transition: -o-transform 0.35s;
@@ -617,14 +625,14 @@ p {
   will-change: -webkit-transform;
 }
 
-.block-card:hover .design-el-gc {
+a.block-card:hover .design-el-gc {
   transform: none;
   -o-transform: none;
   -ms-transform: none;
   -moz-transform: none;
   -webkit-transform: none;
 }
-.block-card:hover { color: #fff; }
+a.block-card:hover { color: #fff; }
 
 .block-card .button.circle:after {
   transition: transform 0.35s, background-color 0.35s;
@@ -641,12 +649,14 @@ p {
   -moz-transition: -moz-transform 0.35s, opacity 0.35s, background-color 0.35s;
   -webkit-transition: -webkit-transform 0.35s, opacity 0.35s, background-color 0.35s;
 }
-.block-card:hover .button.circle:after {
+a.block-card:hover .button.circle:after {
   background-color: #fff;
   opacity: 1;
 }
 
 .block .layout-block + .layout-block { margin-top: 74px; }
+.block .layout-block + .layout-block-5, .block .layout-block + .block-cards.type-2 { margin-top: 40px; }
+.block .layout-block + .object-tabs { margin-top: 22px; }
 .block .layout-block + .layout-block.small-shift { margin-top: 40px; }
 .block .layout-block.small-shift + .layout-block.small-shift { margin-top: 50px; }
 .block form .layout-block.small-shift + .layout-block.small-shift { margin-top: 30px; }
@@ -1177,8 +1187,8 @@ button[type="submit"].button.hover-circle {
 .object-tabs {
   position: relative;
   cursor: default;
-  overflow: hidden;
 }
+.object-tabs:not(.no-overflow) { overflow: hidden; }
 
 .wrap-tabs {
   text-align: center;
@@ -1772,3 +1782,65 @@ footer .t-1 {
 }
 
 .layout-menu .logo-main { margin-bottom: 35px; }
+
+.wrap-windows:not(.space-all) {
+  position: relative;
+  margin-top: 35px;
+
+  will-change: height;
+
+  transition: height 0.35s;
+  -o-transition: height 0.35s;
+  -ms-transition: height 0.35s;
+  -moz-transition: height 0.35s;
+  -webkit-transition: height 0.35s;
+}
+
+.object-tabs + .layout-block { margin-top: 40px; }
+
+.card-icon {
+  width: 100%;
+  margin-left: -8px;
+  padding-bottom: 20px;
+}
+.card-icon img { width: 54px; }
+.layout-block-5 .block-card {
+  padding: 28px;
+  height: 100%;
+}
+.layout-block-5 .block-card .wrap {
+  display: flex;
+  flex-direction: content;
+  flex-wrap: wrap;
+  flex-flow: content wrap;
+  height: 100%;
+}
+.layout-block-5 .block-card .wrap .card-icon + * { margin-top: auto; }
+ul.list { margin-top: 10px; }
+ul.list li {
+  padding-left: 14px;
+  position: relative;
+}
+ul.list li:before {
+  content: '•';
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  color: rgba(255,255,255,0.5);
+}
+ul.list.green li:before { color: #5FBA46; }
+
+.flex-blocks {
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-blocks .part { flex-grow: 0; }
+.flex-blocks img {
+  width: auto;
+  height: auto;
+}
+
+.block .flex-blocks .part {
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
