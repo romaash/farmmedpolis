@@ -378,7 +378,7 @@
   header { position: static; }
   .main { padding-top: 0; }
   body { background-attachment: initial; }
-  body:before { position: absolute !important; }
+  .main-bg { position: absolute !important; }
   .button-burger {
     background: url(../img/bgs/1.jpg) no-repeat center top;
     background-attachment: fixed;
@@ -428,8 +428,7 @@
 
 @supports (-webkit-touch-callout: none) {
   body { background: #16A937 !important; }
-  body:before {
-    content: '';
+  .main-bg {
     position: fixed;
     top: 0;
     right: 0;
