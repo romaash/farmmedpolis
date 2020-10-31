@@ -1122,7 +1122,6 @@ input[type="checkbox"], input[type="radio"] { display: none; }
 
 .block .layout-block + .layout-submit { margin-top: 60px; }
 
-.footer-shifter { margin-top: -100vh; }
 footer {
   padding: 45px 30px;
   position: relative;

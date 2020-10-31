@@ -182,6 +182,8 @@ $(window).on("load", function(){
 
   if (diff > shift) { shift = diff; }
 
+  $(".footer-shifter").css("margin-top", -document.documentElement.clientHeight+"px");
+
   gsap.to(".pin-footer", {
     scrollTrigger: {
       trigger: ".pin-footer",
