@@ -375,6 +375,10 @@
 @media (max-width: 580px) {
   .skip-mobile .fix-enlarged { margin-right: 0; }
   header .part-center { display: none !important; }
+}
+
+@media (max-width: 580px), (max-height: 512px) {
+  header > .wrap > .part-center:before { display: none; }
   header { position: static; }
   .main { padding-top: 0; }
   body { background-attachment: initial; }
