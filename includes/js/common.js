@@ -182,15 +182,19 @@ $(window).on("load", function(){
 
   if (diff > shift) { shift = diff; }
 
-  $(".footer-shifter").css("margin-top", -document.documentElement.clientHeight+"px");
+  $(".footer-shifter").css("height", $(".pin-footer").outerHeight());
+  $(".pin-footer").css("top", shift);
 
   gsap.to(".pin-footer", {
     scrollTrigger: {
-      trigger: ".pin-footer",
-      start: "top "+shift,
-      end: "+=100%",
+      trigger: ".main",
+      start: "bottom bottom",
+      end: "bottom "+shift,
       scrub: true,
-      pin: true
+      onLeave: function(){ $("body").addClass("footer-on"); },
+      onEnter: function(){ $("body").addClass("footer-vis"); },
+      onLeaveBack: function(){ $("body").removeClass("footer-vis"); },
+      onEnterBack: function(){ $("body").removeClass("footer-on"); }
     },
     opacity: 1,
     ease: "power3.inOut"

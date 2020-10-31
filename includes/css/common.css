@@ -1127,11 +1127,20 @@ footer {
   position: relative;
   z-index: 20;
 }
+
 .pin-footer {
-  position: relative;
+  position: fixed;
   z-index: 20;
   opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: none;
 }
+
+body.footer-on .pin-footer { position: static; }
+body.footer-vis .pin-footer { display: block; }
+body.footer-on .footer-shifter { display: none; }
 
 button[disabled] {
   opacity: 0.5;
