@@ -114,8 +114,7 @@ $.each($(".pin-type-2"), function(i){
   let pin1 = $(".pin-type-1", $(this).closest(".block"));
 
   if (window.matchMedia("(max-width: 628px)").matches) {
-    var windowHeight = $(window).outerHeight();
-    console.log(windowHeight);
+    var windowHeight = document.documentElement.clientHeight;
     if (windowHeight < pin1.outerHeight() + 125 + $(this).outerHeight()*0.25) { windowHeight = pin1.outerHeight() + 125 + $(this).outerHeight()*0.25; }
     console.log(pin1.outerHeight());
 
@@ -173,15 +172,21 @@ $.each($(".pin-type-3"), function(i){
 });
 
 $(window).on("load", function(){
-  let shift = $("footer").outerHeight();
-  if (shift > $(window).height()-180) {
-    shift = $(window).height()-180;
-  }
+  var shift = 110;
+
+  var diff = document.documentElement.clientHeight - $(".pin-footer").outerHeight();
+
+  if (window.matchMedia("(max-width: 580px)").matches) { shift = 0; }
+  else if (window.matchMedia("(max-width: 1024px)").matches) { shift = 80; }
+  else if (window.matchMedia("(max-width: 1500px)").matches) { shift = 80; }
+
+  if (diff > shift) { shift = diff; }
+
   gsap.to(".pin-footer", {
     scrollTrigger: {
       trigger: ".pin-footer",
-      start: (shift) + " bottom",
-      end: (shift) + " top",
+      start: "top "+shift,
+      end: "+=100%",
       scrub: true,
       pin: true
     },

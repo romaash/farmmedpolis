@@ -394,7 +394,6 @@
   }
   .container > .layout-footer:first-child { margin-top: 30px; }
   header { padding: 0 25px; }
-  header > .wrap > .part-center:before { display: none; }
   .main { padding: 0; }
   .block-border { margin: 0; }
   .block, .block.no-padding > .layout-block > .part { padding: 40px 25px; }
