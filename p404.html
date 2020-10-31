@@ -7,37 +7,38 @@
   <link rel="stylesheet" type="text/css" href="includes/css/reset.css">
   <link rel="stylesheet" type="text/css" href="includes/css/swiper-bundle.min.css">
   <link rel="stylesheet" type="text/css" href="includes/css/common.css">
+  <link rel="stylesheet" type="text/css" href="includes/css/media.css">
 </head>
 <body>
-  <div class="main-bg"></div>
 
   <header>
     <div class="wrap layout-block layout-main">
       <div class="part part-left">
-        <a href="#" class="logo-main">
-          <img src="includes/img/logos/main.svg" alt="">
+        <a href="#" class="t-6 logo-main">
+          <img class="media-desk" src="includes/img/logos/main.svg" alt="">
+          <img class="media-tablet" src="includes/img/logos/main-a.svg" alt="">
         </a>
       </div>
       <div class="part part-center">
         <div class="wrap container">
           <div class="layout-block layout-header">
             <div class="part part-left">
-              <a href="#" class="anim-underline">Eng</a>
+              <a href="#" class="t-6 anim-underline">Eng</a>
             </div>
-            <div class="part part-center">
+            <div class="part part-center media-desk">
               <ul>
-                <li><a class="anim-underline" href="#">О компании</a></li>
-                <li><a class="anim-underline" href="#">Услуги</a></li>
-                <li><a class="anim-underline" href="#">Пресс-центр</a></li>
-                <li><a class="anim-underline" href="#">МедПарк</a></li>
-                <li><a class="anim-underline" href="#">Проекты</a></li>
-                <li><a class="anim-underline" href="#">Вакансии</a></li>
-                <li><a class="anim-underline" href="#">Контакты</a></li>
+                <li><a class="t-6 anim-underline" href="#">О компании</a></li>
+                <li><a class="t-6 anim-underline" href="#">Услуги</a></li>
+                <li><a class="t-6 anim-underline" href="#">Пресс-центр</a></li>
+                <li><a class="t-6 anim-underline" href="#">МедПарк</a></li>
+                <li><a class="t-6 anim-underline" href="#">Проекты</a></li>
+                <li><a class="t-6 anim-underline" href="#">Вакансии</a></li>
+                <li><a class="t-6 anim-underline" href="#">Контакты</a></li>
               </ul>
             </div>
             <div class="part part-right header-search-wrap">
               <form class="header-search">
-                <a href="#"><img src="includes/img/icons/1.svg"></a>
+                <a href="#" class="t-6"><img src="includes/img/icons/1.svg"></a>
                 <div class="input">
                   <input type="text" placeholder="Что ищем?" name="">
                   <button class="close"><img src="includes/img/icons/16.svg"></button>
@@ -48,10 +49,20 @@
         </div>
       </div>
       <div class="part part-right">
-        <a href="#" class="button circle" data-popup-btn="1"><img src="includes/img/icons/2.svg" alt=""></a>
+        <a href="#" class="button circle media-desk" data-popup-btn="1"><img src="includes/img/icons/2.svg" alt=""></a> <!-- data-popup-btn="key[, number radio input, number radio input, number radio input ...]" -->
+        <a href="#" class="button circle transparent media-tablet" data-popup-btn="1"><img src="includes/img/icons/2.w.svg" alt=""></a> <!-- data-popup-btn="key[, number radio input, number radio input, number radio input ...]" -->
       </div>
     </div>
   </header>
+
+  <div class="main-menu media-tablet">
+    
+  </div>
+  <a href="#" class="button-burger media-tablet">
+    <span></span>
+    <span></span>
+    <span></span>
+  </a>
   
   <div class="main">
     <div class="layout-block layout-main">
@@ -85,8 +96,8 @@
         </div>
         <div class="bg"></div>
         <div class="wrap block white no-padding rounded-top rounded-bottom">
-          <div class="layout-block flex layout-block-2">
-            <div class="part">
+          <div class="layout-block flex layout-block-2 skip-tablet">
+            <div class="part media-mob-no">
               <div class="background-obj"><img src="includes/img/uploads/11.jpg" alt=""></div>
             </div>
             <div class="part">

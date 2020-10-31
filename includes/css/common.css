@@ -22,21 +22,13 @@
 body {
   font-weight: normal;
   font-family: "Roboto";
-  background-color: #16A937;
+  background: url(../img/bgs/1.jpg) no-repeat center top #16A937;
+  background-attachment: fixed;
   color: #fff;
   line-height: 1.25;
   font-size: 16px;
   overflow-x: hidden;
   overflow-y: scroll;
-}
-.main-bg {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 900px;
-  background: url("../img/bgs/1.jpg") no-repeat center top;
-  z-index: 1;
 }
 
 .main, header { padding: 0 30px; }
@@ -1618,12 +1610,12 @@ footer .t-1 {
 .block + .layout-footer { margin-top: 45px; }
 
 .button-burger {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   position: fixed;
-  right: 30px;
-  top: 22px;
+  right: 20px;
+  top: 17px;
   z-index: 101;
 }
 .button-burger span {
@@ -1715,3 +1707,5 @@ footer .t-1 {
   height: 56px;
   background: url(../img/icons/3.w.svg) no-repeat center center;
 }
+
+.layout-footer a { color: #fff; }
