@@ -378,7 +378,7 @@
   header { position: static; }
   .main { padding-top: 0; }
   body { background-attachment: initial; }
-  body:before { position: absolute; }
+  body:before { position: absolute !important; }
   .button-burger {
     background: url(../img/bgs/1.jpg) no-repeat center top;
     background-attachment: fixed;
