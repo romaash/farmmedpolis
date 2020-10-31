@@ -410,9 +410,11 @@ $(window).on("load", function(){
   $.each($(".hover-circle"), function(i){
     $(this).attr("data-key", i);
     var size = $(this).outerWidth();
+    console.log(i+" - "+size);
     let inside = $(this).html()
     $(this).html("<div class=\"c\">"+inside+"</div><div class=\"h\" style=\"width: "+(size*2)+"px;height: "+(size*2)+"px;margin-left: "+(-size)+"px;margin-top: "+(-size)+"px;\"></div>");
   });
+  $(".pin-footer").css("display", "none");
 });
 // $(window).resize(function(){
 //   calcAll();
@@ -426,13 +428,19 @@ function removeScrollbar (el) {
     "padding-right": settings.scrollbar.width+"px"
   });
   if (el.prop("tagName").toLowerCase() == "body") {
-    $(".main-bg").css({
+    $(".main-bg, .button-burger").css({
       "margin-right": settings.scrollbar.width+"px"
     });
-    $("header, .popup .layout-close").css({
-      "padding-right": (settings.header.paddingRight+settings.scrollbar.width)+"px"
-    });
-    $(".popup").css({
+    if (window.matchMedia("(max-width: 580px), (max-height: 512px)").matches) {
+      $(".popup .layout-close").css({
+        "padding-right": (settings.header.paddingRight+settings.scrollbar.width)+"px"
+      });
+    } else {
+      $("header, .popup .layout-close").css({
+        "padding-right": (settings.header.paddingRight+settings.scrollbar.width)+"px"
+      });
+    }
+    $(".popup, .main-menu .wrap-menu").css({
       "margin-right": 0+"px"
     });
   }
@@ -444,13 +452,19 @@ function addScrollbar (el) {
     "padding-right": 0+"px"
   });
   if (el.prop("tagName").toLowerCase() == "body") {
-    $(".main-bg").css({
+    $(".main-bg, .button-burger").css({
       "margin-right": 0+"px"
     });
-    $("header, .popup .layout-close").css({
-      "padding-right": (settings.header.paddingRight)+"px"
-    });
-    $(".popup").css({
+    if (window.matchMedia("(max-width: 580px), (max-height: 512px)").matches) {
+      $(".popup .layout-close").css({
+        "padding-right": (settings.header.paddingRight)+"px"
+      });
+    } else {
+      $("header, .popup .layout-close").css({
+        "padding-right": (settings.header.paddingRight)+"px"
+      });
+    }
+    $(".popup, .main-menu .wrap-menu").css({
       "margin-right": -settings.scrollbar.width+"px"
     });
   }
@@ -500,5 +514,17 @@ $(".popup .close, .popup .bg").click(function(e){
 
 $(".button-burger").click(function(e){
   e.preventDefault();
-  $(".main-menu").toggleClass("active");
+  if ($(".main-menu").hasClass("active")) {
+    $(".main-menu").removeClass("active");
+    addScrollbar($("body"));
+  } else {
+    $(".main-menu").addClass("active");
+    removeScrollbar($("body"));
+  }
+});
+
+$(".main-menu .bg").click(function(e){
+  e.preventDefault();
+  $(".main-menu").removeClass("active");
+  addScrollbar($("body"));
 });

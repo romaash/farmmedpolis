@@ -125,10 +125,37 @@
 }
 
 @media (min-width: 1025px) {
+  .button.hover-circle:hover { color: #fff; }
+  .button.green.hover-circle:hover { color: #5CBB47; }
+  .button.simple.green:hover .arrow .fill { fill: #5CBB47; }
+  .button.simple.white:hover .arrow .fill { fill: #FFFFFF; }
+  .button.text.arrow:hover:after { right: -28px; }
+  .object-qa .q:hover:before {
+    transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    -webkit-transform: rotate(30deg);
+  }
+  .button.circle:not(.transparent):hover:after, .header-search a:hover, a:hover div.button.circle:after, .list-social li a:hover, .link-mw:hover, .button-video:hover .title:before {
+    transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+  }
+  a:hover .obj-scaler img {
+    transform: scale(1.05);
+    -o-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+  }
   .media-tablet { display: none !important; }
 }
 
 @media (max-width: 1024px) {
+  .button .h { display: none; }
   .media-tablet-no { display: none !important; }
   .object-map .wrap-windows { height: 50vh; }
   .media-tablet-rounded-top {
@@ -177,6 +204,7 @@
     display: none;
   }
   .layout-popup { padding: 0 30px; }
+  .popup .close { margin-right: -5px; }
 
   .block > .layout-block.layout-block-1:not(.skip-tablet),
   .block > .layout-block.layout-block-2:not(.skip-tablet) { display: block; }
@@ -387,9 +415,19 @@
     background: url(../img/bgs/1.jpg) no-repeat center top;
     background-attachment: fixed;
   }
+  header .layout-main > .part-left { padding-top: 16px; }
+}
+
+@media (min-width: 481px) {
+  .media-mob-small { display: none !important; }
 }
 
 @media (max-width: 481px) {
+  .layout-menu {
+    padding: 30px 30px;
+    padding-top: 24px;
+  }
+  .main-menu .wrap-menu { width: 100%; }
   .wrap-video { padding: 0 25px; }
   .layout-popup { padding: 0; }
   footer {
