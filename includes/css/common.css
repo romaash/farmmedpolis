@@ -11,7 +11,12 @@
 @font-face {
   src: url("../fonts/Roboto-Light.ttf");
   font-family: "Roboto";
-  font-weight: lighter;
+  font-weight: 300;
+}
+@font-face {
+  src: url("../fonts/Roboto-Thin.ttf");
+  font-family: "Roboto";
+  font-weight: 200;
 }
 @font-face {
   src: url("../fonts/Roboto-Regular.ttf");
@@ -354,6 +359,7 @@ input, button, textarea, .textarea {
 }
 
 .layout-block-1 .part-1 { width: 350px; }
+.layout-block-1 .part-3 { width: 500px; }
 
 .block .layout-block .part {
   padding: 0 9px;
@@ -417,7 +423,7 @@ p {
 }
 .t-1.anim-underline { line-height: 1.6; }
 .t-3 {
-  font-weight: lighter;
+  font-weight: 300;
   font-size: 12px;
   line-height: 1.68;
 }
@@ -655,6 +661,7 @@ a.block-card:hover .button.circle:after {
 }
 
 .block .layout-block + .layout-block { margin-top: 74px; }
+.block .layout-block + .layout-block.no-shift { margin-top: 20px; }
 .block .layout-block + .layout-block-5, .block .layout-block + .block-cards.type-2 { margin-top: 40px; }
 .block .layout-block + .object-tabs { margin-top: 22px; }
 .block .layout-block + .layout-block.small-shift { margin-top: 40px; }
@@ -712,6 +719,7 @@ a.block-card:hover .button.circle:after {
 }
 
 .layout-block.vertical-center .part { vertical-align: middle; }
+.flex.vertical-center { align-items: center; }
 .part > .p-1 { max-width: 780px; }
 
 .button.with-icon .part.icon {
@@ -1826,8 +1834,9 @@ ul.list li:before {
   border-radius: 50%;
   position: absolute;
   left: 0;
-  color: rgba(255,255,255,0.5);
+  color: #231F20;
 }
+.white .wrap > ul.list li:before { color: rgba(255,255,255,0.5); }
 ul.list.green li:before { color: #5FBA46; }
 
 .flex-blocks {
@@ -1839,8 +1848,65 @@ ul.list.green li:before { color: #5FBA46; }
   width: auto;
   height: auto;
 }
-
 .block .flex-blocks .part {
   padding-top: 9px;
   padding-bottom: 9px;
 }
+
+.table-percentages > .layout-block:not(:first-child) { border-top: 1px solid #D8D8D8; }
+.table-percentages > .layout-block + .layout-block {
+  margin-top: 0;
+  padding-top: 40px;
+}
+.table-percentages > .layout-block .part { padding: 0; }
+.table-percentages > .layout-block:not(:last-child) { margin-bottom: 40px; }
+
+.block-percent {
+  display: flex;
+  flex-flow: row wrap;
+}
+div > .block-percent:not(:first-child) { margin-top: 16px; }
+.block-percent .percent { padding-right: 10px !important; }
+.percent {
+  color: #59C13F;
+  font-weight: 300;
+  font-size: 50px;
+  line-height: 0.9;
+}
+
+.block-percent.large {
+  align-items: center;
+  padding: 32px 30px;
+  border: 2px solid #5CBB47;
+  margin-left: 50px;
+}
+.percent.large {
+  font-weight: 200;
+  font-size: 170px;
+}
+
+.block-percent .h5:not(:first-child) { margin-top: 20px; }
+
+.flex:not(.layout-block) { flex: 1; }
+
+li.h5 {
+  line-height: 1.2;
+  padding: 3px 0;
+}
+
+.layout-block.gray {
+  padding: 25px 40px;
+  background-color: #f4f4f4;
+}
+
+.block .layout-image > .image {
+  width: 190px;
+  padding-right: 24px;
+}
+.block .layout-image > .part:not(.image) { padding-top: 10px; }
+
+table td:not(:first-child) { padding-left: 20px; }
+table:not(:first-child) { margin-top: 30px; }
+
+.part.image.media-tablet { width: 90px; }
+.part.image img { border-radius: 50%; }
