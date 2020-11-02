@@ -97,7 +97,8 @@ $.each($(".pin-type-1"), function(i){
       end: "bottom "+top+"px",
       scrub: true,
       pin: true,
-      pinSpacing: false
+      pinSpacing: false,
+      markers: true
     }
   });
 
@@ -546,11 +547,41 @@ function initMap() {
       styles: [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}]
     });
 
-    if (data.from != undefined) {
-      var directionsService = new google.maps.DirectionsService();
-      var directionsRenderer = new google.maps.DirectionsRenderer();
+    if (data.route != undefined) {
+      var line = [];
+      for (var j=0; j < data.route.length; j++) {
+        line.push({lat: data.route[j][0], lng: data.route[j][1]});
+      }
 
-      directionsRenderer.setMap(map);
+      var arrow = {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 6,
+        strokeColor: "#59C13F",
+      };
+
+      const path = new google.maps.Polyline({
+        path: line,
+        geodesic: true,
+        strokeColor: "#59C13F",
+        strokeOpacity: 1.0,
+        strokeWeight: 8,
+        icons: [
+          {
+            icon: arrow,
+            offset: "100%",
+          },
+        ]
+      });
+      path.setMap(map);
+
+      let count = 0;
+      window.setInterval(() => {
+        count = (count + 1) % 400;
+        const icons = path.get("icons");
+        icons[0].offset = count / 4 + "%";
+        path.set("icons", icons);
+      }, 20);
+
     }
 
     var marker = new google.maps.Marker({
