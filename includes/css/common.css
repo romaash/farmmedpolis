@@ -1321,6 +1321,7 @@ p.t-1 + p.t-1 { margin-top: 12px; }
   padding-right: 52px;
   position: relative;
 }
+.object-qa .q .h5 { font-weight: 400; }
 .object-qa .q:before {
   content: '';
   position: absolute;
