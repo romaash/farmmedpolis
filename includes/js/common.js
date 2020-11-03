@@ -466,6 +466,9 @@ $(document).ready(function(){
 });
 
 $(window).on("load", function(){
+  $.each($(".anim-text"), function(){
+    $(".text", $(this)).css("margin-left", -($(".text", $(this)).outerWidth()+10)+"px");
+  })
   $.each($(".object-tabs"), function(){
     var pointer = document.createElement("div");
     $(pointer).addClass("pointer");

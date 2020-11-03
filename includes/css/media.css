@@ -135,6 +135,7 @@
     width: 32px;
     height: 32px;
   }
+  .button.anim-text img { width: 20px; }
   .layout-submit { display: block; }
   .layout-submit > .part {
     display: block;
