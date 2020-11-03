@@ -1,8 +1,6 @@
 var uAnims = {};
 var settings = {
   scrollbar: {
-    status: false,
-    scrollTop: window.scrollY,
     width: window.innerWidth - document.documentElement.clientWidth
   },
   header: {
@@ -481,15 +479,6 @@ $(window).on("load", function(){
     $(this).html("<div class=\"c\">"+inside+"</div><div class=\"h\" style=\"width: "+(size*2)+"px;height: "+(size*2)+"px;margin-left: "+(-size)+"px;margin-top: "+(-size)+"px;\"></div>");
   });
   $(".pin-footer").css("display", "none");
-  setTimeout(function(){
-    $("body").removeClass("loading");
-    if ($(".main-loader").length > 0) {
-      setTimeout(function(){
-        $(".main-loader").remove();
-      }, 1000);
-    }
-    settings.scrollbar.status = true;
-  }, 250);
 });
 // $(window).resize(function(){
 //   calcAll();
@@ -740,38 +729,4 @@ function initMap() {
 
     popup.setMap(map);
   });
-}
-
-if ($(".main-loader").length > 0) {
-  var size = Math.sqrt(document.documentElement.clientWidth*document.documentElement.clientWidth + document.documentElement.clientHeight*document.documentElement.clientHeight);
-  $(".main-loader .bg").css({
-    "width": (2*size)+"px",
-    "height": (2*size)+"px"
-  });
-  loading();
-}
-
-window.onscroll = function () {
-  if (!settings.scrollbar.status) {
-    window.scrollTo(0, settings.scrollbar.scrollTop);
-  }
-};
-
-function loading () {
-  var loadImgs = $("img[src]");
-  var loadProgress = 0;
-
-  for (var i=0; i<loadImgs.length; i++) {
-    var img = new Image();
-    img.src = loadImgs[i].src;
-    img.onload = function(){
-      loadUpdate();
-    }
-  }
-
-  function loadUpdate () {
-    loadProgress += 1;
-    var p = (loadProgress/loadImgs.length);
-    $(".main-loader .progress").css("width", ((1-p)*100)+"%");
-  }
 }
