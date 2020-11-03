@@ -1,8 +1,12 @@
 @media (max-width: 1500px) {
+  .main-loader .bg {
+    top: 45px;
+    left: 30px;
+  }
   .block .layout-image > .image { width: 140px; }
   header.no-mask > .wrap > .part-center:before { height: 80px; }
   .link-mw { width: 78px; }
-  .limitation-1 { max-width: 260px; }
+  .limitation-1 { max-width: 275px; }
 
   h1, .h1 { font-size: 36px; }
   h2, .h2 { font-size: 37px; }
@@ -81,7 +85,10 @@
     top: 20px;
     right: 20px;
   }
-  .block-border .h4 { margin-right: 70px; }
+  .block-border .h4 {
+    margin-right: 70px;
+    max-width: 175px;
+  }
   .slider-1 .swiper-slide .content { padding: 10px 15px; }
   .slider-1 .swiper-slide .date {
     left: 15px;
@@ -120,7 +127,10 @@
     width: 50px;
     margin-bottom: 20px;
   }
-  .block-border .h4 { margin-right: 0; }
+  .block-border .h4 {
+    margin-right: 0;
+    max-width: 160px;
+  }
   h1, .h1 { font-size: 30px; }
   .fix-enlarged { margin-right: -100%; }
   h2, .h2 { font-size: 32px; }
@@ -172,6 +182,10 @@
 }
 
 @media (max-width: 1024px) {
+  .main-loader .bg {
+    top: 32px;
+    left: 25px;
+  }
   .block-percent.large .percent.large { margin-top: 0; }
   .block-percent.large { margin-left: 0; }
   .flex-blocks { justify-content: space-around; }
@@ -216,7 +230,8 @@
   }
   .layout-main > .part-left, .layout-main > .part-right { padding-top: 22px; }
   .popup .layout-close .layout-main { margin-top: 22px; }
-  header .layout-main > .part-left {
+  header .layout-main > .part-left,
+  .main-loader .layout-main > .part-left {
     width: 130px;
     padding-top: 8px;
     position: relative;
@@ -288,6 +303,7 @@
 }
 
 @media (max-width: 767px) {
+  .block-border .h4 { max-width: 100%; }
   .layout-block-1 .part-3 {
     padding-top: 300px !important;
     width: 100%;
@@ -476,6 +492,7 @@
 }
 
 @media (max-width: 580px) {
+  .main-loader .bg { top: 40px; }
   .block .layout-image {
     display: block;
     width: 100%;
@@ -519,7 +536,8 @@
     background: url(../img/bgs/1.jpg) no-repeat center top;
     background-attachment: fixed;
   }
-  header .layout-main > .part-left { padding-top: 16px; }
+  header .layout-main > .part-left,
+  .main-loader .layout-main > .part-left { padding-top: 16px; }
 }
 
 @media (min-width: 481px) {
@@ -539,7 +557,8 @@
     padding-top: 15px;
   }
   .container > .layout-footer:first-child { margin-top: 30px; }
-  header { padding: 0 25px; }
+  header, .main-loader .wrap { padding: 0 25px; }
+  .main-loader .wrap { padding-top: 8px; }
   .main { padding: 0; }
   .block-border { margin: 0; }
   .block, .block.no-padding > .layout-block > .part { padding: 40px 25px; }

@@ -1,6 +1,8 @@
 var uAnims = {};
 var settings = {
   scrollbar: {
+    status: false,
+    scrollTop: window.scrollY,
     width: window.innerWidth - document.documentElement.clientWidth
   },
   header: {
@@ -479,6 +481,15 @@ $(window).on("load", function(){
     $(this).html("<div class=\"c\">"+inside+"</div><div class=\"h\" style=\"width: "+(size*2)+"px;height: "+(size*2)+"px;margin-left: "+(-size)+"px;margin-top: "+(-size)+"px;\"></div>");
   });
   $(".pin-footer").css("display", "none");
+  setTimeout(function(){
+    $("body").removeClass("loading");
+    if ($(".main-loader").length > 0) {
+      setTimeout(function(){
+        $(".main-loader").remove();
+      }, 1000);
+    }
+    settings.scrollbar.status = true;
+  }, 250);
 });
 // $(window).resize(function(){
 //   calcAll();
@@ -492,7 +503,7 @@ function removeScrollbar (el) {
     "padding-right": settings.scrollbar.width+"px"
   });
   if (el.prop("tagName").toLowerCase() == "body") {
-    $(".main-bg, .button-burger").css({
+    $(".main-bg, .button-burger, body:not(.footer-on) .pin-footer").css({
       "margin-right": settings.scrollbar.width+"px"
     });
     if (window.matchMedia("(max-width: 580px), (max-height: 512px)").matches) {
@@ -516,7 +527,7 @@ function addScrollbar (el) {
     "padding-right": 0+"px"
   });
   if (el.prop("tagName").toLowerCase() == "body") {
-    $(".main-bg, .button-burger").css({
+    $(".main-bg, .button-burger, body:not(.footer-on) .pin-footer").css({
       "margin-right": 0+"px"
     });
     if (window.matchMedia("(max-width: 580px), (max-height: 512px)").matches) {
@@ -544,15 +555,31 @@ function openPopup (popup) {
     $("label:nth-child("+n+") input", this).prop("checked", true);
   });
   $(".popup[data-popup=\""+popup[0]+"\"]").addClass("active");
-  removeScrollbar($("body"));
+
+  let scrollVis = false;
+  $.each($(".popup"), function(){
+    if ($(this).hasClass("active")) {
+      scrollVis = true;
+      return false;
+    }
+  });
+  if (scrollVis) { removeScrollbar($("body")); }
 }
 
-function closePopup () {
-  $(".popup").removeClass("active");
+function closePopup (popup) {
+  let p = popup;
+  p.removeClass("active");
   setTimeout(function(){
-    $(".popup form.ok *[data-return-btn]").click();
+    $("form.ok *[data-return-btn]", p).click();
   }, 150);
-  addScrollbar($("body"));
+  let scrollVis = true;
+  $.each($(".popup"), function(){
+    if ($(this).hasClass("active")) {
+      scrollVis = false;
+      return false;
+    }
+  });
+  if (scrollVis) { addScrollbar($("body")); }
 }
 
 $("*[data-popup-btn]").click(function(e){
@@ -572,8 +599,7 @@ $(".popup .close, .popup .bg").click(function(e){
       }, 50);
     }, 150)
   })
-  closePopup();
-  addScrollbar($("body"));
+  closePopup($(this).closest(".popup"));
 });
 
 $(".button-burger").click(function(e){
@@ -714,4 +740,38 @@ function initMap() {
 
     popup.setMap(map);
   });
+}
+
+if ($(".main-loader").length > 0) {
+  var size = Math.sqrt(document.documentElement.clientWidth*document.documentElement.clientWidth + document.documentElement.clientHeight*document.documentElement.clientHeight);
+  $(".main-loader .bg").css({
+    "width": (2*size)+"px",
+    "height": (2*size)+"px"
+  });
+  loading();
+}
+
+window.onscroll = function () {
+  if (!settings.scrollbar.status) {
+    window.scrollTo(0, settings.scrollbar.scrollTop);
+  }
+};
+
+function loading () {
+  var loadImgs = $("img[src]");
+  var loadProgress = 0;
+
+  for (var i=0; i<loadImgs.length; i++) {
+    var img = new Image();
+    img.src = loadImgs[i].src;
+    img.onload = function(){
+      loadUpdate();
+    }
+  }
+
+  function loadUpdate () {
+    loadProgress += 1;
+    var p = (loadProgress/loadImgs.length);
+    $(".main-loader .progress").css("width", ((1-p)*100)+"%");
+  }
 }
