@@ -98,7 +98,7 @@ $(window).on("load", function(){
       var windowHeight = document.documentElement.clientHeight;
       var diff = windowHeight-blockTop - blockHeight;
       if (diff > 0) { diff = 0; }
-      var shift = blockHeight*0.1 - diff;
+      var shift = blockHeight*0.025 - diff;
       var offsetTop = ($("+ .block", block).offset().top - shift - top);
       pin1Shift[i] = -shift;
       $("+ .block", block).css("margin-top", -shift+"px");
