@@ -76,102 +76,162 @@ $(".header-search .close").click(function(e){
   parent.removeClass("active");
 });
 
-var pin1Shift = [];
-
-$.each($(".pin-type-1"), function(i){
-  let el = $(this)[0];
-
-  let top = $(this).offset().top;
-  let duration = $(this).outerHeight()+top+40;
-  let start = "top";
-
-  if (duration > $(window).height()) {
-    start = duration - $(window).height();
-    pin1Shift[i] = start/duration;
-  } else { pin1Shift[i] = 0; }
-
-  var t = gsap.timeline({
-    scrollTrigger: {
-      trigger: el,
-      start: start+" "+top+"px",
-      end: "bottom "+top+"px",
-      scrub: true,
-      pin: true,
-      pinSpacing: false,
-      markers: true
-    }
-  });
-
-  t.to(el, {
-    y: 50,
-    opacity: 0
-  });
-});
-
-$.each($(".pin-type-2"), function(i){
-  let el = $(this)[0];
-
-  let offset = $(this).offset();
-  let pin1 = $(".pin-type-1", $(this).closest(".block"));
-
-  if (window.matchMedia("(max-width: 628px)").matches) {
-    var windowHeight = document.documentElement.clientHeight;
-    if (windowHeight < pin1.outerHeight() + 125 + $(this).outerHeight()*0.25) { windowHeight = pin1.outerHeight() + 125 + $(this).outerHeight()*0.25; }
-
-    var shift = windowHeight - offset.top - $(this).outerHeight();
-    if (shift > 0) { shift = 0; }
-    $(this).closest(".block").css({"margin-bottom": (shift - $(this).outerHeight()*0.25)+"px"});
-  }
-
-  let duration = pin1.height();
-
-  var t = gsap.timeline({
-    scrollTrigger: {
-      trigger: el,
-      start: "top "+offset.top+"px",
-      end: duration+"px "+offset.top+"px",
-      duration: 1,
-      scrub: true,
-      pin: true,
-      pinSpacing: false
-    }
-  });
-
-  t.to(el, {
-    duration: pin1Shift[i]
-  });
-  t.to(el, {
-    y: 50,
-    opacity: 0
-  });
-});
-
-$.each($(".pin-type-3"), function(i){
-  let el = $(this)[0];
-
-  let offset = $(this).offset();
-  let duration = $(this).height();
-
-
-  var t = gsap.timeline({
-    scrollTrigger: {
-      trigger: el,
-      start: "top "+offset.top+"px",
-      end: duration+"px "+offset.top+"px",
-      duration: 1,
-      scrub: true,
-      pin: true,
-      pinSpacing: false
-    }
-  })
-
-  t.to(el, {
-    y: 20,
-    opacity: 0
-  });
-});
-
 $(window).on("load", function(){
+  var pin1Shift = [];
+
+  $.each($(".pin-type-1"), function(i){
+    let el = $(this)[0];
+
+    let top = $(this).offset().top;
+    let duration = $(this).outerHeight()+top+40;
+    let start = "top";
+
+    if (duration > $(window).height()) {
+      start = duration - $(window).height();
+      pin1Shift[i] = start/duration;
+    } else { pin1Shift[i] = 0; }
+
+    if (window.matchMedia("(max-width: 628px)").matches) {
+      var block = $(this).closest(".block");
+      var blockHeight = block.outerHeight();
+      var blockTop = block.offset().top;
+      var windowHeight = document.documentElement.clientHeight;
+      var diff = windowHeight-blockTop - blockHeight;
+      if (diff > 0) { diff = 0; }
+      var shift = blockHeight*0.1 - diff;
+      var offsetTop = ($("+ .block", block).offset().top - shift - top);
+      pin1Shift[i] = -shift;
+      $("+ .block", block).css("margin-top", -shift+"px");
+      var dur = (offsetTop - $(this).outerHeight() - 32);
+      offsetTop -= $(this).outerHeight()*0.82;
+      var t = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: "top "+(top-1)+"px",
+          end: "+="+(offsetTop),
+          scrub: true,
+          pin: true,
+          pinSpacing: false
+        }
+      });
+      $("body").addClass("forced-header");
+      var t2 = gsap.timeline({
+        scrollTrigger: {
+          trigger: block,
+          start: "top top",
+          end: "bottom top",
+          onEnterBack: function(){ $("body").addClass("forced-header"); },
+          onLeave: function(){ $("body").removeClass("forced-header"); }
+        }
+      });
+      t.to(el, {
+        duration: (dur)/(offsetTop)
+      });
+      t.to(el, {
+        duration: 1-(dur)/(offsetTop),
+        ease: "none",
+        transformOrigin: "top",
+        scale: 0.7,
+        opacity: 0
+      });
+    } else {
+      var t = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: start+" "+top+"px",
+          end: "bottom "+top+"px",
+          scrub: true,
+          pin: true,
+          pinSpacing: false
+        }
+      });
+
+      t.to(el, {
+        y: 50,
+        opacity: 0
+      });
+    }
+  });
+
+  $.each($(".pin-type-2"), function(i){
+    let el = $(this)[0];
+
+    let offset = $(this).offset();
+    let pin1 = $(".pin-type-1", $(this).closest(".block"));
+
+    let duration = pin1.height();
+
+    if (window.matchMedia("(max-width: 628px)").matches) {
+      duration = $(this).outerHeight()+pin1Shift[i] + 40;
+      var t = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: "top "+(offset.top-1)+"px",
+          end: (duration+pin1.outerHeight()*0.22)+"px "+(offset.top)+"px",
+          duration: 1,
+          scrub: true,
+          pin: true,
+          pinSpacing: false
+        }
+      });
+      t.to(el, {
+        ease: "none",
+        duration: duration/(duration+pin1.outerHeight()*0.22),
+        y: -30*(duration/(duration+pin1.outerHeight()*0.22))
+      });
+      t.to(el, {
+        ease: "none",
+        y: -30,
+        opacity: 0
+      });
+    } else {
+      var t = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: "top "+offset.top+"px",
+          end: duration+"px "+offset.top+"px",
+          duration: 1,
+          scrub: true,
+          pin: true,
+          pinSpacing: false
+        }
+      });
+      t.to(el, {
+        duration: pin1Shift[i]
+      });
+      t.to(el, {
+        y: 50,
+        opacity: 0
+      });
+    }
+  });
+
+  $.each($(".pin-type-3"), function(i){
+    let el = $(this)[0];
+
+    let offset = $(this).offset();
+    let duration = $(this).height();
+
+
+    var t = gsap.timeline({
+      scrollTrigger: {
+        trigger: el,
+        start: "top "+offset.top+"px",
+        end: duration+"px "+offset.top+"px",
+        duration: 1,
+        scrub: true,
+        pin: true,
+        pinSpacing: false
+      }
+    })
+
+    t.to(el, {
+      y: 20,
+      opacity: 0
+    });
+  });
+
+
   var shift = 110;
 
   var diff = document.documentElement.clientHeight - $(".pin-footer").outerHeight();
@@ -589,5 +649,69 @@ function initMap() {
       icon: "includes/img/icons/pin.svg",
       map: map
     });
+
+    class Popup extends google.maps.OverlayView {
+      constructor(position, c) {
+        super();
+        this.position = position;
+        this.content = document.createElement("div");
+        this.content.innerHTML = c;
+        this.content.classList.add("popup-bubble");
+        const bubbleAnchor = document.createElement("div");
+        bubbleAnchor.classList.add("popup-bubble-anchor");
+        bubbleAnchor.appendChild(this.content);
+        this.containerDiv = document.createElement("div");
+        this.containerDiv.classList.add("popup-container");
+        this.containerDiv.appendChild(bubbleAnchor);
+        Popup.preventMapHitsAndGesturesFrom(this.containerDiv);
+        this.opened = false;
+        this.toggle();
+      }
+      toggle() {
+        if (this.opened) {
+          this.content.classList.remove("active");
+        } else {
+          this.content.classList.add("active");
+        }
+        this.opened = !this.opened;
+      }
+      onAdd() {
+        this.getPanes().floatPane.appendChild(this.containerDiv);
+      }
+      onRemove() {
+        if (this.containerDiv.parentElement) {
+          this.containerDiv.parentElement.removeChild(this.containerDiv);
+        }
+      }
+      draw() {
+        const divPosition = this.getProjection().fromLatLngToDivPixel(
+          this.position
+        );
+        const display =
+          Math.abs(divPosition.x) < 4000 && Math.abs(divPosition.y) < 4000
+            ? "block"
+            : "none";
+
+        if (display === "block") {
+          this.containerDiv.style.left = divPosition.x + "px";
+          this.containerDiv.style.top = divPosition.y + "px";
+        }
+
+        if (this.containerDiv.style.display !== display) {
+          this.containerDiv.style.display = display;
+        }
+      }
+    }
+
+    let popup = new Popup(
+      new google.maps.LatLng(data.point[0], data.point[1]),
+      data.content
+    );
+
+    marker.addListener("click", function(){
+      popup.toggle();
+    });
+
+    popup.setMap(map);
   });
 }
