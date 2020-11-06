@@ -572,7 +572,7 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-  .main .container > .rounded-bottom:last-child {
+  footer .container > .rounded-top:first-child .rounded-top, .main .container > .rounded-bottom:last-child {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
