@@ -304,6 +304,15 @@
 }
 
 @media (max-width: 767px) {
+  header .button.circle {
+    width: 46px;
+    margin-top: -2px;
+    height: 46px;
+  }
+  .button-burger span {
+    width: 20px;
+    margin-left: -10px;
+  }
   .block-border .h4 { max-width: 100%; }
   .layout-block-1 .part-3 {
     padding-top: 300px !important;
@@ -403,7 +412,7 @@
   .skip-mobile .fix-enlarged { margin-right: -70%; }
   .button-video .title:before, .button-video .title:after { display: none; }
   .button-video .title { padding-left: 72px; }
-  .layout-block-1 .part-1 { width: 320px; }
+  .layout-block-1 .part-1 { width: 300px !important; }
   .design-el-1 {
     left: 0;
     top: 30px;
@@ -428,7 +437,6 @@
     margin-top: 0 !important;
     padding: 35px 40px;
   }
-  .block-border .h4 { padding-right: 90px; }
   .block-border.vertical-center .h4 { padding-right: 65px; }
   .vertical-center .design-el-3 {
     top: 32px;
@@ -619,4 +627,15 @@
     text-align: center;
     margin-top: 20px;
   }
+  .block-border.layout-block .part { padding: 20px; }
+  .design-el-3 {
+    top: 20px;
+    right: 20px;
+  }
+  .p-1.mob-small { 
+    font-size: 16px;
+    line-height: 1.62;
+  }
+  .popup .p-2 { font-size: 14px; }
+  .popup h3, .popup .h3 { font-size: 24px; }
 }

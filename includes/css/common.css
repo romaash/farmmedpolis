@@ -174,13 +174,13 @@ header a {
   letter-spacing: 1px;
   text-transform: uppercase;
   text-decoration: none;
+  font-weight: 500 !important;
   display: inline-block;
   padding: 8px 0;
   color: #fff !important;
   position: relative;
 }
 body.mpp header a {
-  font-weight: 700;
   color: #231F20 !important;
 }
 header li.active .anim-underline:before {
