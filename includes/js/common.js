@@ -662,3 +662,5 @@ $(".bg-opacity").each(function(){
     opacity: 1
   });
 })
+
+$(".main-bg, .main-bg-opacity").css("height", window.outerHeight);

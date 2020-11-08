@@ -221,10 +221,6 @@ body.mpp header .anim-underline:before { background-color: #231F20; }
 .anim-underline.right:before {
   left: 100%;
 }
-.anim-underline.animate:hover:before {
-  width: 100%;
-  visibility: visible;
-}
 .anim-underline.animate:before {
   transition: width 0.35s, left 0.35s, visibility 0.35s;
   -o-transition: width 0.35s, left 0.35s, visibility 0.35s;
@@ -232,7 +228,6 @@ body.mpp header .anim-underline:before { background-color: #231F20; }
   -moz-transition: width 0.35s, left 0.35s, visibility 0.35s;
   -webkit-transition: width 0.35s, left 0.35s, visibility 0.35s;
 }
-.anim-underline.animate.right:hover:before { left: 0%; }
 
 .header-search {
   position: relative;
@@ -682,15 +677,6 @@ p {
   will-change: -webkit-transform;
 }
 
-a.block-card:hover .design-el-gc {
-  transform: none;
-  -o-transform: none;
-  -ms-transform: none;
-  -moz-transform: none;
-  -webkit-transform: none;
-}
-a.block-card:hover { color: #fff; }
-
 .block-card .button.circle:after {
   transition: transform 0.35s, background-color 0.35s;
   -o-transition: -o-transform 0.35s, background-color 0.35s;
@@ -705,10 +691,6 @@ a.block-card:hover { color: #fff; }
   -ms-transition: -ms-transform 0.35s, opacity 0.35s, background-color 0.35s;
   -moz-transition: -moz-transform 0.35s, opacity 0.35s, background-color 0.35s;
   -webkit-transition: -webkit-transform 0.35s, opacity 0.35s, background-color 0.35s;
-}
-a.block-card:hover .button.circle:after {
-  background-color: #fff;
-  opacity: 1;
 }
 
 .block .layout-block + .layout-block { margin-top: 74px; }
@@ -761,8 +743,6 @@ a.block-card:hover .button.circle:after {
   -moz-transition: opacity 0.35s, -moz-transform 0.35s;
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
 }
-.button.circle.from-opacity:hover:after, a:hover div.button.circle.from-opacity:after { opacity: 1; }
-.button.circle.white:hover svg .fill, a:hover div.button.circle.white svg .fill { fill: #59C13F; }
 
 .block.gradient {
   background-image: url('../img/bgs/2.png');
@@ -1085,13 +1065,6 @@ form .input-placeholder.blank .placeholder {
   will-change: -ms-transform;
   will-change: -moz-transform;
   will-change: -webkit-transform;
-}
-.button.animate:hover .h {
-  transform: scale(1);
-  -o-transform: scale(1);
-  -ms-transform: scale(1);
-  -moz-transform: scale(1);
-  -webkit-transform: scale(1);
 }
 
 p a {
@@ -1666,7 +1639,7 @@ footer .t-1 {
 .layout-footer.layout-block-2 > .part:last-child { padding-left: 66px; }
 .block + .layout-footer { margin-top: 45px; }
 
-.button-burger {
+.button-burger, body .button.button-comment {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -1674,6 +1647,10 @@ footer .t-1 {
   right: 20px;
   top: 17px;
   z-index: 110;
+}
+body .button.button-comment {
+  right: 80px;
+  z-index: 90;
 }
 .button-burger span {
   position: absolute;
@@ -2066,10 +2043,6 @@ table:not(:first-child) { margin-top: 30px; }
   -moz-transition: margin-left 0.35s, margin-right 0.35s;
   -webkit-transition: margin-left 0.35s, margin-right 0.35s;
 }
-.button.anim-text:hover .text {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
 .button.anim-text.green .text, span.green { color: #5CBB47; }
 span.green { font-weight: 500; }
 .button.anim-text.green.light {
@@ -2081,7 +2054,6 @@ span.green { font-weight: 500; }
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
   background: url(../img/bgs/3.2.jpg) no-repeat top center #E8E3EA;
   background-size: cover;
   opacity: 0;
@@ -2100,8 +2072,7 @@ body .main-bg {
 }
 body.mpp { background: #E8E3EA; }
 body.mpp .main-bg {
-  bottom: 0;
-  height: auto;
+  height: 100vh;
   background: url("../img/bgs/3.jpg") no-repeat top center;
   background-size: cover;
 }
@@ -2138,3 +2109,5 @@ hr {
 }
 
 body.mpp .layout-footer, body.mpp .layout-footer a { color: #231F20; }
+
+.no-break { white-space: nowrap; }
