@@ -531,7 +531,7 @@ function removeScrollbar (el) {
     "padding-right": settings.scrollbar.width+"px"
   });
   if (el.prop("tagName").toLowerCase() == "body") {
-    $(".main-bg, .button-burger, body:not(.footer-on) .pin-footer, .fix-scrollbar").css({
+    $(".main-bg, .button-burger, .button-comment, body:not(.footer-on) .pin-footer, .fix-scrollbar").css({
       "margin-right": settings.scrollbar.width+"px"
     });
     if (window.matchMedia("(max-width: 580px), (max-height: 512px)").matches) {
@@ -555,7 +555,7 @@ function addScrollbar (el) {
     "padding-right": 0+"px"
   });
   if (el.prop("tagName").toLowerCase() == "body") {
-    $(".main-bg, .button-burger, body:not(.footer-on) .pin-footer, .fix-scrollbar").css({
+    $(".main-bg, .button-burger, .button-comment, body:not(.footer-on) .pin-footer, .fix-scrollbar").css({
       "margin-right": 0+"px"
     });
     if (window.matchMedia("(max-width: 580px), (max-height: 512px)").matches) {

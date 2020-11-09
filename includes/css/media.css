@@ -1,7 +1,7 @@
 @media (max-width: 1550px) {
   .block-border.vertical-center > .part { min-height: 130px; }
   .block .layout-image > .image { width: 140px; }
-  header.no-mask > .wrap > .part-center:before { height: 80px; }
+  header.no-mask > .wrap > .part-center:before, body:not(.body-light) header.no-mask > .wrap > .part-center::before, body.body-light header.no-mask > .wrap > .part-center > .bg, body.body-light header.no-mask > .wrap > .part-center > .bg-opacity { height: 80px; }
   .link-mw { width: 78px; }
   .limitation-1 { max-width: 275px; }
 

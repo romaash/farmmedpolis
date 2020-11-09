@@ -73,25 +73,29 @@ body:not(.body-light) header > .wrap > .part-center:before, body.body-light head
   -webkit-mask-border: url('../img/others/mask.png') 46 repeat;
   mask-border: url('../img/others/mask.png') 46 repeat;
 }
-header.no-mask > .wrap > .part-center:before, header.no-mask > .wrap > .part-center > .bg { height: 110px; }
+header.no-mask > .wrap > .part-center:before, body:not(.body-light) header.no-mask > .wrap > .part-center::before, body.body-light header.no-mask > .wrap > .part-center > .bg, body.body-light header.no-mask > .wrap > .part-center > .bg-opacity { height: 110px; }
 
 body.body-light header > .wrap > .part-center > .bg, body.body-light header > .wrap > .part-center > .bg-opacity {
   background: transparent;
 }
-body.body-light header > .wrap > .part-center > .bg div, body.body-light header > .wrap > .part-center > .bg-opacity div {
+body.body-light header > .wrap > .part-center > .bg, body.body-light header > .wrap > .part-center > .bg-opacity {
   content: '';
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   background: url('../img/bgs/3.jpg') no-repeat top center;
-  background-size: cover;
+  background-size: 100vw;
 }
-body.body-light header > .wrap > .part-center > .bg-opacity { opacity: 0; }
-body.body-light header > .wrap > .part-center > .bg-opacity div {
+body.body-light header > .wrap > .part-center > .bg-opacity {
+  opacity: 0;
   background: url('../img/bgs/3.2.jpg') no-repeat top center;
-  background-size: cover;
+  background-size: 100vw;
+}
+
+@media (orientation: portrait) {
+  body.body-light header > .wrap > .part-center > .bg, body.body-light header > .wrap > .part-center > .bg-opacity { background-size: auto 100vh; }
 }
 
 .container {
@@ -372,10 +376,6 @@ input, button, textarea, .textarea {
   will-change: -ms-transform;
   will-change: -moz-transform;
   will-change: -webkit-transform;
-}
-.obj-scaler img {
-  position: absolute !important;
-  z-index: 1 !important;
 }
 .header-search-wrap.active .header-search a { pointer-events: none; }
 
@@ -1990,6 +1990,7 @@ table:not(:first-child) { margin-top: 30px; }
 
   visibility: hidden;
   opacity: 0;
+  pointer-events: none;
 
   transition: transform 0.35s, opacity 0.35s, visibility 0.35s;
   -o-transition: -o-transform 0.35s, opacity 0.35s, visibility 0.35s;
@@ -1997,6 +1998,7 @@ table:not(:first-child) { margin-top: 30px; }
   -moz-transition: -moz-transform 0.35s, opacity 0.35s, visibility 0.35s;
   -webkit-transition: -webkit-transform 0.35s, opacity 0.35s, visibility 0.35s;
 }
+.active .popup-bubble { pointer-events: all; }
 .popup-bubble.active {
   visibility: visible;
   opacity: 1;
