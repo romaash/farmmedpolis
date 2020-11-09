@@ -373,6 +373,10 @@ input, button, textarea, .textarea {
   will-change: -moz-transform;
   will-change: -webkit-transform;
 }
+.obj-scaler img {
+  position: absolute !important;
+  z-index: 1 !important;
+}
 .header-search-wrap.active .header-search a { pointer-events: none; }
 
 .main {
@@ -2109,8 +2113,6 @@ hr {
   align-self: stretch;
   height: auto;
 }
-.slider-2 { background: #000; }
-.slider-2 img { opacity: 0.4; }
 
 body.body-light .layout-footer, body.body-light .layout-footer a { color: #231F20; }
 
