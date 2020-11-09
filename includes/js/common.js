@@ -667,4 +667,7 @@ $(".bg-opacity").each(function(){
   });
 })
 
-$(".main-bg, .main-bg-opacity").css("height", $(window).outerHeight());
+if ($(window).width()/$(window).height() <= 1680/1122) {
+  $(".main-bg, .main-bg-opacity").css("height", ($(window).outerHeight() + 150));
+  $(".bg, .main-bg, .main-bg-opacity").css("background-size", "auto "+($(window).outerHeight() + 150)+"px");
+}

@@ -94,10 +94,6 @@ body.body-light header > .wrap > .part-center > .bg-opacity {
   background-size: 100vw;
 }
 
-@media (orientation: portrait) {
-  body.body-light header > .wrap > .part-center > .bg, body.body-light header > .wrap > .part-center > .bg-opacity { background-size: auto 100vh; }
-}
-
 .container {
   max-width: 1320px;
   margin: 0 auto;
@@ -2057,7 +2053,7 @@ span.green { font-weight: 500; }
   left: 0;
   right: 0;
   background: url(../img/bgs/3.2.jpg) no-repeat top center #E8E3EA;
-  background-size: cover;
+  background-size: 100vw;
   opacity: 0;
   z-index: 5;
 }
@@ -2076,7 +2072,7 @@ body.body-light { background: #E8E3EA; }
 body.body-light .main-bg {
   height: 100vh;
   background: url("../img/bgs/3.jpg") no-repeat top center;
-  background-size: cover;
+  background-size: 100vw;
 }
 
 body.body-light .header-search input {
