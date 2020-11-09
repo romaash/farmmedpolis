@@ -55,11 +55,14 @@ function initMap() {
       });
       path.setMap(map);
 
+      let speed = 1;
+      if (data.speed != undefined) { speed = data.speed; }
+
       let count = 0;
       window.setInterval(function(){
-        count = (count + 1) % 400;
+        count = (count + 1) % (400/speed);
         const icons = path.get("icons");
-        icons[0].offset = count / 4 + "%";
+        icons[0].offset = count / (4/speed) + "%";
         path.set("icons", icons);
       }, 20);
 
