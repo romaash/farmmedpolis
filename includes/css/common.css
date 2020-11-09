@@ -370,12 +370,6 @@ input, button, textarea, .textarea {
   -ms-transition: -ms-transform 0.35s;
   -moz-transition: -moz-transform 0.35s;
   -webkit-transition: -webkit-transform 0.35s;
-
-  will-change: transform;
-  will-change: -o-transform;
-  will-change: -ms-transform;
-  will-change: -moz-transform;
-  will-change: -webkit-transform;
 }
 .header-search-wrap.active .header-search a { pointer-events: none; }
 
