@@ -667,7 +667,7 @@ $(".bg-opacity").each(function(){
   });
 })
 
+$("body.body-light .main-bg, body.body-light .main-bg-opacity").css("height", ($(window).outerHeight() + 150));
 if ($(window).width()/$(window).height() <= 1680/1122) {
-  $("body.body-light .main-bg, body.body-light .main-bg-opacity").css("height", ($(window).outerHeight() + 150));
   $("body.body-light .bg, body.body-light .main-bg, body.body-light .main-bg-opacity").css("background-size", "auto "+($(window).outerHeight() + 150)+"px");
 }

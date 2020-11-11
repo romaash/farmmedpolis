@@ -13,13 +13,16 @@
 
   <div class="main-bg fix-scrollbar"></div>
   <div class="main-bg-opacity bg-opacity fix-scrollbar"></div>
+  <div class="main-bg-overlay bg-opacity fix-scrollbar"></div>
 
   <header>
     <div class="wrap layout-block layout-main">
       <div class="part part-left">
         <a href="#" class="t-6 logo-main">
-          <img class="media-desk" src="includes/img/logos/main.g.svg" alt="">
-          <img class="media-tablet " src="includes/img/logos/main.g-a.svg" alt="">
+          <img class="media-desk theme-dark" src="includes/img/logos/main.svg" alt="">
+          <img class="media-desk theme-light" src="includes/img/logos/main.g.svg" alt="">
+          <img class="media-tablet theme-dark" src="includes/img/logos/main-a.svg" alt="">
+          <img class="media-tablet theme-light" src="includes/img/logos/main.g-a.svg" alt="">
         </a>
       </div>
       <div class="part part-center">
@@ -43,10 +46,10 @@
             </div>
             <div class="part part-right header-search-wrap">
               <form class="header-search">
-                <a href="#" class="t-6"><img src="includes/img/icons/1.g.svg"></a>
+                <a href="#" class="t-6"><img class="theme-light" src="includes/img/icons/1.g.svg"><img class="theme-dark" src="includes/img/icons/1.svg"></a>
                 <div class="input">
                   <input type="text" placeholder="Что ищем?" name="">
-                  <button class="close"><img src="includes/img/icons/16.d.svg"></button>
+                  <button class="close"><img class="theme-light" src="includes/img/icons/16.d.svg"><img class="theme-dark" src="includes/img/icons/16.svg"></button>
                 </div>
               </form>
             </div>
@@ -54,8 +57,10 @@
         </div>
       </div>
       <div class="part part-right media-mob-medium-no">
-        <a href="#" class="button circle green media-desk" data-popup-btn="1"><img src="includes/img/icons/2.w.svg" alt=""></a> <!-- data-popup-btn="key[, number radio input, number radio input, number radio input ...]" -->
-        <a href="#" class="button circle transparent media-tablet" data-popup-btn="1"><img src="includes/img/icons/2.svg" alt=""></a> <!-- data-popup-btn="key[, number radio input, number radio input, number radio input ...]" -->
+        <a href="#" class="button circle green media-desk theme-light" data-popup-btn="1"><img src="includes/img/icons/2.w.svg" alt=""></a> <!-- data-popup-btn="key[, number radio input, number radio input, number radio input ...]" -->
+        <a href="#" class="button circle media-desk theme-dark" data-popup-btn="1"><img src="includes/img/icons/2.svg" alt=""></a> <!-- data-popup-btn="key[, number radio input, number radio input, number radio input ...]" -->
+        <a href="#" class="button circle transparent media-tablet theme-light" data-popup-btn="1"><img src="includes/img/icons/2.svg" alt=""></a> <!-- data-popup-btn="key[, number radio input, number radio input, number radio input ...]" -->
+        <a href="#" class="button circle transparent media-tablet theme-dark" data-popup-btn="1"><img src="includes/img/icons/2.w.svg" alt=""></a> <!-- data-popup-btn="key[, number radio input, number radio input, number radio input ...]" -->
       </div>
     </div>
   </header>
@@ -202,6 +207,19 @@
                       </a>
                     </div>
                   </div>
+                  <div class="buttons">
+                    <a href="#" class="button with-icon green">
+                      <div class="layout-block vertical-center">
+                        <div class="part icon">
+                          <div class="button circle green"><img src="includes/img/icons/5.svg" alt=""></div>
+                        </div>
+                        <div class="part">
+                          <div class="p-2"><b>Презентации о компании</b></div>
+                          <div class="t-4">PDF, 5 мб</div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
                 </div>
                 <div class="window" data-tab="1">
                   <div class="wrap layout-block layout-block-3 flex block-cards">
@@ -262,23 +280,19 @@
                       </a>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="wrap layout-block">
-              <div class="part">
-                <div class="buttons">
-                  <a href="#" class="button with-icon green">
-                    <div class="layout-block vertical-center">
-                      <div class="part icon">
-                        <div class="button circle green"><img src="includes/img/icons/5.svg" alt=""></div>
+                  <div class="buttons">
+                    <a href="#" class="button with-icon green">
+                      <div class="layout-block vertical-center">
+                        <div class="part icon">
+                          <div class="button circle green"><img src="includes/img/icons/5.svg" alt=""></div>
+                        </div>
+                        <div class="part">
+                          <div class="p-2"><b>Презентации о компании</b></div>
+                          <div class="t-4">PDF, 5 мб</div>
+                        </div>
                       </div>
-                      <div class="part">
-                        <div class="p-2"><b>Презентации о компании</b></div>
-                        <div class="t-4">PDF, 5 мб</div>
-                      </div>
-                    </div>
-                  </a>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -655,10 +669,10 @@
                   </div>
                   <div class="part text-center part-social">
                     <ul class="list-social">
-                      <li><a href="#"><img src="includes/img/icons/social/1.d.svg" alt=""></a></li>
-                      <li><a href="#"><img src="includes/img/icons/social/2.d.svg" alt=""></a></li>
-                      <li><a href="#"><img src="includes/img/icons/social/3.d.svg" alt=""></a></li>
-                      <li><a href="#"><img src="includes/img/icons/social/4.d.svg" alt=""></a></li>
+                      <li><a href="#"><img class="theme-light" src="includes/img/icons/social/1.d.svg" alt=""><img class="theme-dark" src="includes/img/icons/social/1.svg" alt=""></a></li>
+                      <li><a href="#"><img class="theme-light" src="includes/img/icons/social/2.d.svg" alt=""><img class="theme-dark" src="includes/img/icons/social/2.svg" alt=""></a></li>
+                      <li><a href="#"><img class="theme-light" src="includes/img/icons/social/3.d.svg" alt=""><img class="theme-dark" src="includes/img/icons/social/3.svg" alt=""></a></li>
+                      <li><a href="#"><img class="theme-light" src="includes/img/icons/social/4.d.svg" alt=""><img class="theme-dark" src="includes/img/icons/social/4.svg" alt=""></a></li>
                     </ul>
                   </div>
                 </div>
@@ -693,7 +707,7 @@
                     <p class="t-1">2020 © ФармМедПолис</p>
                   </div>
                   <div class="part text-right">
-                    <div class="t-1">Создание сайта <a href="#" class="link-mw"><img src="includes/img/icons/mw.d.svg" alt=""></a></div>
+                    <div class="t-1">Создание сайта <a href="#" class="link-mw"><img class="theme-light" src="includes/img/icons/mw.d.svg" alt=""><img class="theme-dark" src="includes/img/icons/mw.svg" alt=""></a></div>
                   </div>
                 </div>
               </div>

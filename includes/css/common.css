@@ -2109,3 +2109,19 @@ hr {
 body.body-light .layout-footer, body.body-light .layout-footer a { color: #231F20; }
 
 .no-break { white-space: nowrap; }
+
+.layout-block + .buttons {
+  padding: 0 9px;
+  margin-top: 30px;
+}
+
+body:not(.body-light) .theme-light { display: none !important; }
+body.body-light .theme-dark { display: none !important; }
+
+.slider-contols:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  clear: both;
+}
