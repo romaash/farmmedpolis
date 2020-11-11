@@ -58,7 +58,7 @@ body.forced-header .main {
   position: static;
 }
 /**/
-body:not(.body-light) header > .wrap > .part-center:before, body.body-light header > .wrap > .part-center > .bg, body.body-light header > .wrap > .part-center > .bg-opacity {
+body:not(.body-light) header > .wrap > .part-center:before, body.body-light header > .wrap > .part-center > .bg, header > .wrap > .part-center > .bg-opacity {
   content: '';
   position: absolute;
   top: 0;
@@ -73,7 +73,7 @@ body:not(.body-light) header > .wrap > .part-center:before, body.body-light head
   -webkit-mask-border: url('../img/others/mask.png') 46 repeat;
   mask-border: url('../img/others/mask.png') 46 repeat;
 }
-header.no-mask > .wrap > .part-center:before, body:not(.body-light) header.no-mask > .wrap > .part-center::before, body.body-light header.no-mask > .wrap > .part-center > .bg, body.body-light header.no-mask > .wrap > .part-center > .bg-opacity { height: 110px; }
+header.no-mask > .wrap > .part-center:before, body:not(.body-light) header.no-mask > .wrap > .part-center::before, body.body-light header.no-mask > .wrap > .part-center > .bg, header.no-mask > .wrap > .part-center > .bg-opacity { height: 110px; }
 
 body.body-light header > .wrap > .part-center > .bg, body.body-light header > .wrap > .part-center > .bg-opacity {
   background: transparent;
@@ -85,8 +85,15 @@ body.body-light header > .wrap > .part-center > .bg, body.body-light header > .w
   right: 0;
   top: 0;
   bottom: 0;
+}
+body.body-light header > .wrap > .part-center > .bg, body.body-light header > .wrap > .part-center > .bg-opacity {
   background: url('../img/bgs/3.jpg') no-repeat top center;
   background-size: 100vw;
+}
+header > .wrap > .part-center > .bg-overlay {
+  background: rgba(0,0,0,0.2);
+  opacity: 0;
+  z-index: 2;
 }
 body.body-light header > .wrap > .part-center > .bg-opacity {
   opacity: 0;
@@ -2047,7 +2054,7 @@ span.green { font-weight: 500; }
   background-color: rgba(89,193,63,0.1);
 }
 
-.main-bg-opacity {
+.main-bg-opacity, .main-bg-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -2056,6 +2063,10 @@ span.green { font-weight: 500; }
   background-size: 100vw;
   opacity: 0;
   z-index: 5;
+}
+.main-bg-overlay {
+  background: rgba(0,0,0,0.2);
+  z-index: 6;
 }
 
 body { background: #16A937; }

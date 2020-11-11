@@ -71,7 +71,7 @@
   }
   .rounded-top-right { border-top-right-radius: 25px; }
   .rounded-bottom-left { border-bottom-left-radius: 25px; }
-  body:not(.body-light) header > .wrap > .part-center:before, body.body-light header > .wrap > .part-center > .bg, body.body-light header > .wrap > .part-center > .bg-opacity {
+  body:not(.body-light) header > .wrap > .part-center:before, body.body-light header > .wrap > .part-center > .bg, header > .wrap > .part-center > .bg-opacity {
     height: 100px;
     -webkit-mask-box-image: url('../img/others/mask-a-1.png') 46 repeat;
     -webkit-mask-border: url('../img/others/mask-a-1.png') 46 repeat;
@@ -260,7 +260,7 @@
     height: 40px;
     padding: 10px;
   }
-  body:not(.body-light) header > .wrap > .part-center:before, body.body-light header > .wrap > .part-center > .bg, body.body-light header > .wrap > .part-center > .bg-opacity {
+  body:not(.body-light) header > .wrap > .part-center:before, body.body-light header > .wrap > .part-center > .bg, header > .wrap > .part-center > .bg-opacity {
     right: -131px;
     left: -131px;
     height: 105px;
@@ -599,7 +599,7 @@
 .media-mob-medium { display: none !important; }
 
 @media (max-width: 580px), (max-height: 512px) {
-  body:not(.body-light) header > .wrap > .part-center:before, body.body-light header > .wrap > .part-center > .bg, body.body-light header > .wrap > .part-center > .bg-opacity { display: none; }
+  body:not(.body-light) header > .wrap > .part-center:before, body.body-light header > .wrap > .part-center > .bg, header > .wrap > .part-center > .bg-opacity { display: none; }
   header { position: relative; }
   .main { padding-top: 0; }
   .button-burger {
