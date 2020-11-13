@@ -90,15 +90,15 @@ body.body-light header > .wrap > .part-center > .bg, body.body-light header > .w
   background: url('../img/bgs/3.jpg') no-repeat top center;
   background-size: 100vw;
 }
-header > .wrap > .part-center > .bg-overlay {
-  background: rgba(0,0,0,0.2);
-  opacity: 0;
-  z-index: 2;
-}
 body.body-light header > .wrap > .part-center > .bg-opacity {
   opacity: 0;
   background: url('../img/bgs/3.2.jpg') no-repeat top center;
   background-size: 100vw;
+}
+header > .wrap > .part-center > .bg-overlay, body.body-light header > .wrap > .part-center > .bg-overlay {
+  background: rgba(0,0,0,0.2);
+  opacity: 0;
+  z-index: 2;
 }
 
 .container {
