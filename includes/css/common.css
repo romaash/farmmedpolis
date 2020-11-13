@@ -2136,3 +2136,9 @@ body.body-light .theme-dark { display: none !important; }
   height: 0;
   clear: both;
 }
+
+.map + .buttons {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+}

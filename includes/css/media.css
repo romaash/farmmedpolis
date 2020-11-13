@@ -1,4 +1,8 @@
 @media (max-width: 1550px) {
+  .map + .buttons {
+    left: 40px;
+    bottom: 40px;
+  }
   .block-border.vertical-center > .part { min-height: 130px; }
   .block .layout-image > .image { width: 140px; }
   header.no-mask > .wrap > .part-center:before, body:not(.body-light) header.no-mask > .wrap > .part-center::before, body.body-light header.no-mask > .wrap > .part-center > .bg, body.body-light header.no-mask > .wrap > .part-center > .bg-opacity { height: 80px; }
@@ -219,6 +223,10 @@
 }
 
 @media (max-width: 1024px) {
+  .map + .buttons {
+    left: 30px;
+    bottom: 30px;
+  }
   .el-tabs ul li div {
     padding: 11px 20px;
     padding-top: 11.5px;
@@ -344,6 +352,10 @@
 }
 
 @media (max-width: 767px) {
+  .map + .buttons {
+    left: 20px;
+    bottom: 20px;
+  }
   .layout-block + .buttons { padding: 0; }
   header .layout-main > .part-right { padding-right: 52px; }
   .block-border.vertical-center > .part { min-height: 160px; }

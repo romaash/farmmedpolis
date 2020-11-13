@@ -93,6 +93,15 @@ $(document).ready(function(){
 
     if (window.matchMedia("(max-width: 580px), (max-height: 512px)").matches) {
       $("body:not(.forced-header-no)").addClass("forced-header");
+      var t2 = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".trigger-opacity",
+          start: "top top",
+          end: "bottom top",
+          onEnterBack: function(){ $("body").addClass("forced-header"); },
+          onLeave: function(){ $("body").removeClass("forced-header"); }
+        }
+      });
     }
 
     $.each($(".pin-type-1"), function(i){
@@ -130,18 +139,6 @@ $(document).ready(function(){
             pinSpacing: false
           }
         });
-
-        if (window.matchMedia("(max-width: 580px), (max-height: 512px)").matches) {
-          var t2 = gsap.timeline({
-            scrollTrigger: {
-              trigger: block,
-              start: "top top",
-              end: "bottom top",
-              onEnterBack: function(){ $("body").addClass("forced-header"); },
-              onLeave: function(){ $("body").removeClass("forced-header"); }
-            }
-          });
-        }
         
         t.to(el, {
           duration: (dur)/(offsetTop)
