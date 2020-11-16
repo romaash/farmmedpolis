@@ -1,5 +1,7 @@
 "use strict";
 
+var iMasks = {};
+
 $(document).ready(function(){
 
   var uAnims = {};
@@ -385,8 +387,6 @@ $(document).ready(function(){
       $(this).closest(".input-placeholder").addClass("blank");
     }
   });
-
-  var iMasks = {};
 
   $.each($("input[type=\"phone\"]"), function(i){
     $(this).attr("data-key", i);

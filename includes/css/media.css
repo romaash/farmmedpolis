@@ -432,7 +432,7 @@
     margin-left: -9px;
     margin-right: -9px;
   }
-  .object-tabs .text-right { text-align: center; }
+  .object-tabs .text-right { text-align: left; }
   .block > .layout-block.layout-block-1:not(.skip-mobile) > .part + .part,
   .wrap.layout-block-2:not(.skip-mobile) > .part + .part,
   .block > .layout-block.layout-block-2:not(.skip-mobile) > .part + .part { margin-top: 30px; }
