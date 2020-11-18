@@ -874,6 +874,10 @@ b { font-weight: bold; }
 .slider-1 .swiper-slide .content { padding: 25px 30px; }
 .slider-1 .image { overflow: hidden; }
 .slider-1.swiper-container, .slider-2.swiper-container { overflow: visible; }
+.slider-1 .image img {
+  height: 198px;
+  object-fit: cover;
+}
 
 .block.dim { background-color: #F5F5F7; }
 
@@ -920,6 +924,9 @@ div + .list-icon, p + .list-icon { margin-top: 45px; }
 
 .list-icon li p + p { margin-top: 8px; }
 .block.no-padding > .layout-block { margin-bottom: -1px; }
+.list-icon.type-2 li p + p { margin-top: 2px; }
+.list-icon.type-2 li div + p { margin-top: 6px; }
+.list-icon.type-2 li:not(:first-child) { margin-top: 34px; }
 
 .layout-block-4 > .part { width: 50%; }
 
@@ -1334,7 +1341,7 @@ button[type="submit"].button.hover-circle {
 
 .map {
   width: 100%;
-  height: 100%;
+  height: 110%;
 }
 .map img {
   width: 100%;
@@ -1973,17 +1980,18 @@ table:not(:first-child) { margin-top: 30px; }
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(-50%, -105%);
+  /*transform: translate(-50%, -105%);
   -o-transform: translate(-50%, -105%);
   -ms-transform: translate(-50%, -105%);
   -moz-transform: translate(-50%, -105%);
-  -webkit-transform: translate(-50%, -105%);
+  -webkit-transform: translate(-50%, -105%);*/
   background-color: #fff;
   background: #FFFFFF;
   box-shadow: 0px 10px 35px rgba(35, 31, 32, 0.05);
   border-radius: 15px;
   padding: 24px 28px;
-  margin-top: -60px;
+  margin-top: -30px;
+  margin-left: -14px;
 
   visibility: hidden;
   opacity: 0;
@@ -1999,11 +2007,11 @@ table:not(:first-child) { margin-top: 30px; }
 .popup-bubble.active {
   visibility: visible;
   opacity: 1;
-  transform: translate(-50%, -100%);
+  /*transform: translate(-50%, -100%);
   -o-transform: translate(-50%, -100%);
   -ms-transform: translate(-50%, -100%);
   -moz-transform: translate(-50%, -100%);
-  -webkit-transform: translate(-50%, -100%);
+  -webkit-transform: translate(-50%, -100%);*/
 }
 .popup-bubble .t-1 { line-height: 1.6; }
 .popup-bubble .t-1 + .t-1 { margin-top: 8px; }
@@ -2142,3 +2150,5 @@ body.body-light .theme-dark { display: none !important; }
   bottom: 50px;
   left: 50px;
 }
+
+p.dark { opacity: 0.5; }

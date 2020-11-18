@@ -514,6 +514,14 @@ $(document).ready(function(){
       $(".q", $(this).closest(".object-qa")).removeClass("active");
       $(".a", $(this).closest(".object-qa")).slideUp(350);
     }
+    var c = 0;
+    var a = setInterval(function(){
+      for (var i=0; i<window.yMaps.length; i++) {
+        window.yMaps[i].container.fitToViewport();
+      }
+      c += 1;
+      if (c > 19) { clearInterval(a); }
+    }, 19);
   })
 
   function calcElGC () {

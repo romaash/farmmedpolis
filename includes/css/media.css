@@ -1,4 +1,5 @@
 @media (max-width: 1550px) {
+  .slider-1 .image img { height: 160px; }
   .map + .buttons {
     left: 40px;
     bottom: 40px;
@@ -352,6 +353,7 @@
 }
 
 @media (max-width: 767px) {
+  .slider-1 .image img { height: 180px; }
   .map + .buttons {
     left: 20px;
     bottom: 20px;
@@ -640,6 +642,7 @@
 }
 
 @media (max-width: 481px) {
+  .block form .layout-block.small-shift + .layout-block.small-shift { margin-top: 10px; }
   .popup .close { margin-right: 0; }
   .media-mob-small-no { display: none !important; }
   .layout-menu {
