@@ -58,7 +58,7 @@ body.forced-header .main {
   position: static;
 }
 /**/
-body:not(.body-light) header > .wrap > .part-center:before, body.body-light header > .wrap > .part-center > .bg, header > .wrap > .part-center > .bg-opacity {
+body:not(.body-light) header > .wrap > .part-center:before, header > .wrap > .part-center > .bg.mpp, header > .wrap > .part-center > .bg-opacity {
   content: '';
   position: absolute;
   top: 0;
@@ -73,12 +73,12 @@ body:not(.body-light) header > .wrap > .part-center:before, body.body-light head
   -webkit-mask-border: url('../img/others/mask.png') 46 repeat;
   mask-border: url('../img/others/mask.png') 46 repeat;
 }
-header.no-mask > .wrap > .part-center:before, body:not(.body-light) header.no-mask > .wrap > .part-center::before, body.body-light header.no-mask > .wrap > .part-center > .bg, header.no-mask > .wrap > .part-center > .bg-opacity { height: 110px; }
+header.no-mask > .wrap > .part-center:before, body:not(.body-light) header.no-mask > .wrap > .part-center::before, header.no-mask > .wrap > .part-center > .bg.mpp, header.no-mask > .wrap > .part-center > .bg-opacity { height: 110px; }
 
-body.body-light header > .wrap > .part-center > .bg, body.body-light header > .wrap > .part-center > .bg-opacity {
+header > .wrap > .part-center > .bg.mpp, header > .wrap > .part-center > .bg-opacity.mpp {
   background: transparent;
 }
-body.body-light header > .wrap > .part-center > .bg, body.body-light header > .wrap > .part-center > .bg-opacity {
+header > .wrap > .part-center > .bg.mpp, header > .wrap > .part-center > .bg-opacity.mpp {
   content: '';
   position: absolute;
   left: 0;
@@ -86,13 +86,12 @@ body.body-light header > .wrap > .part-center > .bg, body.body-light header > .w
   top: 0;
   bottom: 0;
 }
-body.body-light header > .wrap > .part-center > .bg, body.body-light header > .wrap > .part-center > .bg-opacity {
-  background: url('../img/bgs/3.jpg') no-repeat top center;
+header > .wrap > .part-center > .bg.mpp, header > .wrap > .part-center > .bg-opacity.mpp {
+  background: url('../img/bgs/3.2.jpg') no-repeat top center;
   background-size: 100vw;
 }
-body.body-light header > .wrap > .part-center > .bg-opacity {
-  opacity: 0;
-  background: url('../img/bgs/3.2.jpg') no-repeat top center;
+.mpp-object .bg, header > .wrap > .part-center > .bg-opacity.mpp {
+  background: url('../img/bgs/3.jpg') no-repeat top center;
   background-size: 100vw;
 }
 header > .wrap > .part-center > .bg-overlay, body.body-light header > .wrap > .part-center > .bg-overlay {
@@ -2062,23 +2061,24 @@ span.green { font-weight: 500; }
   background-color: rgba(89,193,63,0.1);
 }
 
-.main-bg-opacity, .main-bg-overlay {
+.main-bg-opacity, .main-bg-overlay, .mpp-object {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: url(../img/bgs/3.2.jpg) no-repeat top center #E8E3EA;
+  background: url(../img/bgs/3.jpg) no-repeat top center #E8E3EA;
   background-size: 100vw;
-  opacity: 0;
   z-index: 5;
 }
+.bg-opacity { opacity: 0; }
+.bg-opacity.reverse { opacity: 1; }
 .main-bg-overlay {
   background: rgba(0,0,0,0.2);
   z-index: 6;
 }
 
 body { background: #16A937; }
-body .main-bg {
+body .main-bg, .mpp-object {
   position: fixed;
   top: 0;
   right: 0;
@@ -2088,10 +2088,33 @@ body .main-bg {
   z-index: 1;
 }
 body.body-light { background: #E8E3EA; }
-body.body-light .main-bg {
+.main-bg.mpp {
   height: 100vh;
-  background: url("../img/bgs/3.jpg") no-repeat top center;
+  background: url("../img/bgs/3.2.jpg") no-repeat top center;
   background-size: 100vw;
+}
+.mpp-object {
+  height: 100vh;
+  background: #fff;
+  overflow: hidden;
+}
+.mpp-object.active { z-index: 11; }
+.mpp-object .bg {
+  height: 100%;
+  width: 100%;
+}
+
+.mpp-scaler {
+  transform-origin: top center;
+  -o-transform-origin: top center;
+  -ms-transform-origin: top center;
+  -moz-transform-origin: top center;
+  -webkit-transform-origin: top center;
+  transform: scale(1.1);
+  -o-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
 }
 
 body.body-light .header-search input {
@@ -2152,3 +2175,31 @@ body.body-light .theme-dark { display: none !important; }
 }
 
 p.dark { opacity: 0.5; }
+.logo-main {
+  position: relative;
+  z-index: 2;
+}
+
+.mpp-object-pin { height: 200vh; }
+.mpp-object .dot {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #13a300;
+  z-index: 2;
+  cursor: pointer;
+}
+.mpp-object .dots {
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.35s, opacity 0.35s;
+  -o-transition: visibility 0.35s, opacity 0.35s;
+  -ms-transition: visibility 0.35s, opacity 0.35s;
+  -moz-transition: visibility 0.35s, opacity 0.35s;
+  -webkit-transition: visibility 0.35s, opacity 0.35s;
+}
+.mpp-object.active .dots {
+  opacity: 1;
+  visibility: visible;
+}
+header.on-back { z-index: 30; }
