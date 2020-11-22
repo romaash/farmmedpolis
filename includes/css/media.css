@@ -164,6 +164,13 @@
 }
 
 @media (min-width: 1025px) {
+  .mpp-object .dot:not(.active):hover .button svg {
+    transform: rotate(15deg);
+    -o-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+    -moz-transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+  }
   a.block-card:hover .design-el-gc {
     transform: none;
     -o-transform: none;
@@ -224,6 +231,20 @@
 }
 
 @media (max-width: 1024px) {
+  .mpp-object .dot .button { margin-top: -20px; }
+  .mpp-object .dot .title {
+    min-height: 50px;
+    padding-left: 55px;
+    white-space: normal;
+    max-width: 220px;
+  }
+  .block-info .list-icon li .icon { width: 18px; }
+  .block-info .list-icon li { padding-left: 24px; }
+  .blocks-info, .block-info { width: 440px; }
+  .block-info .content {
+    padding: 30px 35px;
+    padding-right: 40px;
+  }
   .map + .buttons {
     left: 30px;
     bottom: 30px;
@@ -343,6 +364,13 @@
 }
 
 @media (max-width: 852px) {
+  .blocks-info, .block-info { width: 340px; }
+  .blocks-info .close {
+    top: 20px;
+    right: 20px;
+  }
+  .slider-3 .slider-prev { left: 20px; }
+  .slider-3 .slider-next { right: 20px; }
   .block-card br:not(.static) { display: none; }
   .layout-block-5 > .part { width: 50%; }
   .block .block-cards.layout-block-5 > .part:nth-child(3) { padding-top: 18px; }
@@ -621,6 +649,13 @@
 .media-mob-medium { display: none !important; }
 
 @media (max-width: 580px), (max-height: 512px) {
+  .blocks-info .close {
+    top: 15px;
+    right: 15px;
+  }
+  .slider-3 .slider-prev { left: 15px; }
+  .slider-3 .slider-next { right: 15px; }
+  .blocks-info, .block-info { width: 280px; }
   body:not(.body-light) header > .wrap > .part-center:before, header > .wrap > .part-center > .bg.mpp, header > .wrap > .part-center > .bg-opacity { display: none !important; }
   header { position: relative; }
   .main { padding-top: 0; }
@@ -637,11 +672,23 @@
   .media-mob-medium-no { display: none !important; }
 }
 
+@media (max-height: 512px) {
+  .mpp-object .dot .title { max-width: 180px; }
+}
+
 @media (min-width: 481px) {
   .media-mob-small { display: none !important; }
 }
 
 @media (max-width: 481px) {
+  .blocks-info, .block-info { width: 100vw; }
+  .blocks-info { z-index: 115; }
+  .blocks-info .close {
+    top: 28px;
+    right: 25px;
+  }
+  .slider-3 .slider-prev { left: 25px; }
+  .slider-3 .slider-next { right: 25px; }
   .block form .layout-block.small-shift + .layout-block.small-shift { margin-top: 10px; }
   .popup .close { margin-right: 0; }
   .media-mob-small-no { display: none !important; }
