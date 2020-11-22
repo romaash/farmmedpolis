@@ -379,6 +379,7 @@ $(document).ready(function(){
                   gsap.to(".mpp-object", {scrollLeft: (($(window).outerHeight() + $(window).outerHeight()*0.12295082)*(1.37704918)-($(window).width()+90))*0.2, duration: 0.2, ease: Power1.easeInOut});
                 }
                 $(".mpp-object").removeClass("active");
+                $(".mpp-object .dot").removeClass("active");
                 active = false;
               }
             }
@@ -838,8 +839,10 @@ $(document).ready(function(){
     });
   });
 
-  $("body.body-light .main-bg, body.body-light .main-bg-opacity, .main-bg-overlay, .mpp-object").css("height", ($(window).outerHeight() + $(window).outerHeight()*0.12295082));
+  $(".mpp-object .bg").css("height", $(window).width()*1220/1680);
+  $("body.body-light .main-bg, body.body-light .main-bg-opacity, .main-bg-overlay").css("height", ($(window).outerHeight() + $(window).outerHeight()*0.12295082));
   if ($(window).width()/$(window).height() <= 1680/1122) {
+    $(".mpp-object .bg").css("height", ($(window).outerHeight() + $(window).outerHeight()*0.12295082));
     $("body.body-light .bg, body.body-light .main-bg, body.body-light .main-bg-opacity, .mpp-object .bg").css({"background-size": "auto "+($(window).outerHeight() + $(window).outerHeight()*0.12295082)+"px"});
     if (window.matchMedia("(max-width: 1024px)").matches) {
       $("header .bg, body.body-light .main-bg, body.body-light .main-bg-opacity").css({"background-position-x": "20%"});
@@ -861,9 +864,17 @@ $(document).ready(function(){
     }
   } else if (window.matchMedia("(max-width: 1024px)").matches) {
     $(".mpp-object").css("overflow-y", "auto");
-    $(".mpp-object .bg").css({
-      height: $(window).width()*1122/1680
-    });
+    $(".mpp-object .wrap").css("height", $(window).width()*1122/1680);
   }
 
+
+  $(".mpp-object .dot").click(function(e){
+    e.preventDefault();
+    if ($(this).hasClass("active")) {
+      $(this).removeClass("active");
+    } else {
+      $(".mpp-object .dot").removeClass("active");
+      $(this).addClass("active");
+    }
+  })
 });

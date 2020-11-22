@@ -2099,9 +2099,11 @@ body.body-light { background: #E8E3EA; }
   overflow: hidden;
 }
 .mpp-object.active { z-index: 11; }
+.mpp-object .wrap { overflow: hidden; }
 .mpp-object .bg {
   height: 100%;
   width: 100%;
+  position: relative;
 }
 
 .mpp-scaler {
@@ -2183,11 +2185,78 @@ p.dark { opacity: 0.5; }
 .mpp-object-pin { height: 200vh; }
 .mpp-object .dot {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  background: #13a300;
+  margin-left: -25px;
+  margin-top: -25px;
   z-index: 2;
   cursor: pointer;
+}
+.mpp-object .dot:hover .plus svg {
+  transform: rotate(15deg);
+  -o-transform: rotate(15deg);
+  -ms-transform: rotate(15deg);
+  -moz-transform: rotate(15deg);
+  -webkit-transform: rotate(15deg);
+}
+.mpp-object .dot .plus {
+  content: '';
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -25px;
+  border-radius: 50%;
+  line-height: 50px;
+  text-align: center;
+  background-color: #fff; 
+
+  transition: background-color 0.35s;
+  -o-transition: background-color 0.35s;
+  -ms-transition: background-color 0.35s;
+  -moz-transition: background-color 0.35s;
+  -webkit-transition: background-color 0.35s;
+}
+.mpp-object .dot.active .plus { background-color: #59c13f; }
+.mpp-object .dot .plus svg {
+  line-height: 1;
+  width: 50%;
+  vertical-align: middle;
+  display: inline-block;
+  height: auto;
+  transition: transform 0.35s;
+  -o-transition: -o-transform 0.35s;
+  -ms-transition: -ms-transform 0.35s;
+  -moz-transition: -moz-transform 0.35s;
+  -webkit-transition: -webkit-transform 0.35s;
+}
+.mpp-object .dot .plus svg .fill {
+  transition: fill 0.35s;
+  -o-transition: fill 0.35s;
+  -ms-transition: fill 0.35s;
+  -moz-transition: fill 0.35s;
+  -webkit-transition: fill 0.35s;
+}
+.mpp-object .dot.active .plus svg {
+  transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.mpp-object .dot.active .plus svg .fill { fill: #fff; }
+.mpp-object .dot .title {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 60px;
+  min-height: 60px;
+  margin-left: -5px;
+  padding: 10px 20px;
+  line-height: 1.42;
+  padding-left: 65px;
+  white-space: nowrap;
+  color: #231F20;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
 }
 .mpp-object .dots {
   opacity: 0;
