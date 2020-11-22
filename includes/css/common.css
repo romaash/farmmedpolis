@@ -2099,7 +2099,6 @@ body.body-light { background: #E8E3EA; }
   overflow: hidden;
 }
 .mpp-object.active { z-index: 11; }
-.mpp-object .wrap { overflow: hidden; }
 .mpp-object .bg {
   height: 100%;
   width: 100%;

@@ -864,7 +864,7 @@ $(document).ready(function(){
     }
   } else if (window.matchMedia("(max-width: 1024px)").matches) {
     $(".mpp-object").css("overflow-y", "auto");
-    $(".mpp-object .wrap").css("height", $(window).width()*1122/1680);
+    $(".mpp-object .wrap").css({"height": $(window).width()*1122/1680, "overflow": "hidden"});
   }
 
 
