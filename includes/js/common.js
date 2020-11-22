@@ -376,7 +376,7 @@ $(document).ready(function(){
             } else {
               if (active) {
                 if ($(window).width()/$(window).height() <= 1680/1122) {
-                  gsap.to(".mpp-object", {scrollLeft: (($(window).outerHeight() + $(window).outerHeight()*0.14)*(1.37704918)-($(window).width()+90))*0.2, duration: 0.2, ease: Power1.easeInOut});
+                  gsap.to(".mpp-object", {scrollLeft: (($(window).outerHeight() + $(window).outerHeight()*0.2)*(1.37704918)-($(window).width()+90))*0.2, duration: 0.2, ease: Power1.easeInOut});
                 }
                 $(".mpp-object").removeClass("active");
                 $(".mpp-object .dot").removeClass("active");
@@ -840,10 +840,10 @@ $(document).ready(function(){
   });
 
   $(".mpp-object .bg").css("height", $(window).width()*1220/1680);
-  $("body.body-light .main-bg, body.body-light .main-bg-opacity, .main-bg-overlay").css("height", ($(window).outerHeight() + $(window).outerHeight()*0.14));
+  $("body.body-light .main-bg, body.body-light .main-bg-opacity, .main-bg-overlay").css("height", ($(window).outerHeight() + $(window).outerHeight()*0.2));
   if ($(window).width()/$(window).height() <= 1680/1122) {
-    $(".mpp-object .bg").css("height", ($(window).outerHeight() + $(window).outerHeight()*0.14));
-    $("body.body-light .bg, body.body-light .main-bg, body.body-light .main-bg-opacity, .mpp-object .bg").css({"background-size": "auto "+($(window).outerHeight() + $(window).outerHeight()*0.14)+"px"});
+    $(".mpp-object .bg").css("height", ($(window).outerHeight() + $(window).outerHeight()*0.2));
+    $("body.body-light .bg, body.body-light .main-bg, body.body-light .main-bg-opacity, .mpp-object .bg").css({"background-size": "auto "+($(window).outerHeight() + $(window).outerHeight()*0.2)+"px"});
     if (window.matchMedia("(max-width: 1024px)").matches) {
       $("header .bg, body.body-light .main-bg, body.body-light .main-bg-opacity").css({"background-position-x": "20%"});
     } else {
@@ -852,7 +852,7 @@ $(document).ready(function(){
     $(".mpp-object").css("overflow-x", "auto");
     var mppBg = $(".mpp-object .bg");
     if (mppBg.length > 0) {
-      var width = (($(window).outerHeight() + $(window).outerHeight()*0.14)*(1.37704918));
+      var width = (($(window).outerHeight() + $(window).outerHeight()*0.2)*(1.37704918));
       mppBg.css({
         "width": width+"px"
       });
