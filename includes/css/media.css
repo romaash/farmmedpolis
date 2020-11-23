@@ -306,7 +306,7 @@
     width: 130px;
     padding-top: 8px;
     position: relative;
-    z-index: 3;
+    z-index: 5;
   }
   .header-search-wrap .header-search a {
     width: 20px;

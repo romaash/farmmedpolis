@@ -270,17 +270,7 @@ $(document).ready(function(){
           start: "bottom "+start,
           end: "bottom "+end,
           duration: 1,
-          scrub: true,
-          onLeave: function(){
-            if ($(".mpp-scaler").length > 0) {
-              $("header").addClass("on-back");
-            }
-          },
-          onEnterBack: function(){
-            if ($(".mpp-scaler").length > 0) {
-              $("header").removeClass("on-back");
-            }
-          }
+          scrub: true
         };
 
       var t = gsap.timeline({
@@ -288,40 +278,25 @@ $(document).ready(function(){
       })
 
       if ($(".mpp-scaler").length > 0) {
-        var duration2 = ($(".trigger-opacity").offset().top-offset.top);
-        var tH = gsap.timeline({
+        $.each($(".mpp-scaler"), function(){
+          gsap.to(this, {
+            scrollTrigger: st,
+            scale: 1
+          });
+        });
+
+        var t2 = gsap.timeline({
           scrollTrigger: {
-            trigger: el,
-            start: "bottom "+start,
-            end: duration2+" "+($("header").outerHeight()),
+            trigger: ".mpp-object-pin",
+            start: "top "+end,
+            end: "bottom bottom",
+            scrub: 0.35,
             duration: 1,
-            scrub: true,
-            onLeave: function(){
-              $("header").removeClass("on-back");
-            },
-            onEnterBack: function(){
-              $("header").addClass("on-back");
-            }
+            onEnter: function() { mppEnter(); },
+            onLeave: function() { mppLeave(); },
+            onEnterBack: function() { mppEnter(); },
+            onLeaveBack: function() { mppLeave(); }
           }
-        });
-
-        var durations = [
-          (duration+offset.top-end)/duration2,
-          ($(window).outerHeight()-offset.top)/duration2
-        ]
-
-        tH.to("header", {
-          opacity: 0,
-          display: "none",
-          duration: durations[0]
-        });
-        tH.to("header", {
-          duration: 1-(durations[0]+durations[1])
-        });
-        tH.to("header", {
-          opacity: 1,
-          display: "block",
-          duration: durations[1]
         });
       }
 
@@ -330,61 +305,19 @@ $(document).ready(function(){
       });
     });
 
-    if ($(".mpp-scaler").length > 0) {
-      let el = $(".pin-type-4");
-      let start = "bottom";
-      if (el.length > 0) {
-        let offset = el.offset();
-        let duration = el.height();
-        start = "bottom";
-
-        if ($(window).height() >= offset.top + duration) {
-          start = (offset.top + duration - 1)
-        }
+    function mppLeave () {
+      if ($(window).width()/$(window).height() <= 1680/1122) {
+        gsap.to(".mpp-object", {scrollLeft: (($(window).outerHeight() + $(window).outerHeight()*0.25)*(1.37704918)-($(window).width()+90))*0.2, duration: 0.35, ease: Power1.easeInOut});
       }
+      closeMpp();
+    }
 
-      $.each($(".mpp-scaler"), function(){
-        gsap.to(this, {
-          scrollTrigger: {
-            trigger: el[0],
-            start: "bottom "+start,
-            end: "bottom top",
-            scrub: 0
-          },
-          scale: 1
-        });
-      });
-
-      var active = false;
-
-      var t = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".mpp-object-pin",
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.35,
-          duration: 1,
-          onUpdate: function(e){
-            if (e.progress >= 0.1 && e.progress <= 0.9 && status != 1) {
-              if (!active) {
-                if ($(window).width()/$(window).height() <= 1680/1122) {
-                  gsap.to(".mpp-object", {scrollLeft: 0, duration: 0.35, ease: Power1.easeInOut});
-                }
-                $(".mpp-object").addClass("active");
-                active = true;
-              }
-            } else {
-              if (active) {
-                if ($(window).width()/$(window).height() <= 1680/1122) {
-                  gsap.to(".mpp-object", {scrollLeft: (($(window).outerHeight() + $(window).outerHeight()*0.25)*(1.37704918)-($(window).width()+90))*0.2, duration: 0.35, ease: Power1.easeInOut});
-                }
-                closeMpp();
-                active = false;
-              }
-            }
-          }
-        }
-      });
+    function mppEnter () {
+      if ($(window).width()/$(window).height() <= 1680/1122) {
+        gsap.to(".mpp-object", {scrollLeft: 0, duration: 0.35, ease: Power1.easeInOut});
+      }
+      $(".mpp-object").addClass("active");
+      $("header").addClass("on-back");
     }
 
 
@@ -877,6 +810,9 @@ $(document).ready(function(){
   }
 
   function closeMpp() {
+    setTimeout(function(){
+      $("header").removeClass("on-back");
+    }, 350);
     $(".mpp-object").removeClass("active");
     $(".blocks-info").removeClass("active");
     $(".mpp-object .dot").removeClass("active");
@@ -924,12 +860,13 @@ $(document).ready(function(){
           gsap.to(".mpp-object .wrap", {x: blocksInfoWidth, duration: 0.35});
           gsap.to(".mpp-object", {scrollLeft: $(this).position().left-30-(($(window).outerWidth()-blocksInfoWidth)-$(this).outerWidth())/2, duration: 0.35});
         } else {
-          if (parseFloat($(this).attr("data-x")) < (blocksInfoWidth+60)) {
-            var x = (blocksInfoWidth+60)-parseFloat($(this).attr("data-x"));
-            gsap.to(".mpp-object .wrap", {x: x, duration: 0.35});
-          } else {
-            gsap.to(".mpp-object .wrap", {x: 0, duration: 0.35});
-          }
+          // if (parseFloat($(this).attr("data-x")) < (blocksInfoWidth+60)) {
+          //   var x = (blocksInfoWidth+60)-parseFloat($(this).attr("data-x"));
+          //   gsap.to(".mpp-object .wrap", {x: x, duration: 0.35});
+          // } else {
+          //   gsap.to(".mpp-object .wrap", {x: 0, duration: 0.35});
+          // }
+          gsap.to(".mpp-object .wrap", {x: (blocksInfoWidth-60-$(window).width()*0.06), duration: 0.35});
         }
       } else {
         removeScrollbar($("body"));

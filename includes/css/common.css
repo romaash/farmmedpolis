@@ -54,6 +54,7 @@ body.forced-header header {
   z-index: 10;
   display: block !important;
 }
+body.forced-header header.on-back { z-index: 15; }
 body.forced-header .main {
   position: static;
 }
@@ -2189,10 +2190,10 @@ body.body-light .theme-dark { display: none !important; }
 p.dark { opacity: 0.5; }
 .logo-main {
   position: relative;
-  z-index: 2;
+  z-index: 5;
 }
 
-.mpp-object-pin { height: 200vh; }
+.mpp-object-pin { height: 160vh; }
 .mpp-object .dot {
   position: absolute;
   margin-left: -25px;
@@ -2270,7 +2271,9 @@ p.dark { opacity: 0.5; }
   opacity: 1;
   visibility: visible;
 }
-header.on-back { z-index: 30; }
+
+.bg.reverse { z-index: 3 !important; }
+header.on-back .bg { display: none !important; }
 
 .block-info {
   height: 100%;
@@ -2314,7 +2317,7 @@ header.on-back { z-index: 30; }
   left: 0;
   top: 0;
   bottom: 0;
-  z-index: 15;
+  z-index: 105;
   background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 75%, rgba(255,255,255,0) 100%);
   background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 75%,rgba(255,255,255,0) 100%);
   background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 75%,rgba(255,255,255,0) 100%);
