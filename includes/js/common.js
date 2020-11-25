@@ -314,7 +314,7 @@ $(document).ready(function(){
 
     function mppEnter () {
       if ($(window).width()/$(window).height() <= 1680/1122) {
-        gsap.to(".mpp-object", {scrollLeft: 0, duration: 0.35, ease: Power1.easeInOut});
+        // gsap.to(".mpp-object", {scrollLeft: 0, duration: 0.35, ease: Power1.easeInOut});
       }
       $(".mpp-object").addClass("active");
       $("header").addClass("on-back");
