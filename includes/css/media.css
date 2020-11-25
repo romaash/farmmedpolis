@@ -384,10 +384,11 @@
   .layout-block.cell-adaptive > .row { display: block; }
   .layout-block.cell-adaptive > .row > .part {
     margin-bottom: 10px;
+    display: block;
     max-width: 100% !important;
   }
   .dot .title { font-size: 10px; }
-  .mpp-object .dot .title { max-width: 180px; }
+  .mpp-object .dot .title { max-width: 160px; }
   .slider-1 .image img { height: 180px; }
   .map + .buttons {
     left: 20px;

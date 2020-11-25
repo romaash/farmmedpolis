@@ -112,14 +112,11 @@ header > .wrap > .part-center > .bg-overlay, body.body-light header > .wrap > .p
   table-layout: fixed;
 }
 
-.layout-block.cell-adaptive > .row {
-  display: flex;
-  flex-flow: row wrap;
-}
+.layout-block.cell-adaptive > .row { display: table-row; }
 .layout-block.cell-adaptive > .row:not(:first-child) { margin-top: 10px; }
-.layout-block.cell-adaptive > .row:first-child > .part, .layout-block.cell-adaptive > .row:not(:first-child) > .part:last-child {
-  flex-grow: 1;
-  max-width: 50%;
+.layout-block.cell-adaptive > .row > .part {
+  display: table-cell;
+  padding-bottom: 10px;
 }
 
 .layout-block > .part {
