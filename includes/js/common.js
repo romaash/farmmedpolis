@@ -87,7 +87,7 @@ $(document).ready(function(){
     animTextInit();
     objectTabsInit();
     hoverCircleInit();
-    $(".pin-footer").css("display", "none");
+    $(".pin-footer, .object-qa .a").css("display", "none");
   });
 
   function pinsInit () {
@@ -550,7 +550,7 @@ $(document).ready(function(){
     });
     $(".wrap-windows:not(.space-all)", object).height(height);
     setTimeout(function(){
-      ScrollTrigger.refresh()
+      ScrollTrigger.refresh();
     }, 350);
   }
 
@@ -565,15 +565,23 @@ $(document).ready(function(){
       $(".a", $(this).closest(".object-qa")).slideUp(350);
     }
 
+    if ($("footer .part-center .container .block").length > 0) {
+      setTimeout(function(){
+        ScrollTrigger.refresh();
+      }, 350);
+    }
+
     /* Yandex map adaptive height*/
     var c = 0;
-    var a = setInterval(function(){
-      for (var i=0; i<window.yMaps.length; i++) {
-        window.yMaps[i].container.fitToViewport();
-      }
-      c += 1;
-      if (c > 19) { clearInterval(a); }
-    }, 19);
+    if (window.yMaps != undefined) {
+      var a = setInterval(function(){
+        for (var i=0; i<window.yMaps.length; i++) {
+          window.yMaps[i].container.fitToViewport();
+        }
+        c += 1;
+        if (c > 19) { clearInterval(a); }
+      }, 19);
+    }
   })
 
   function calcElGC () {

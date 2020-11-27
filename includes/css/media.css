@@ -189,7 +189,6 @@
   .button.green.hover-circle:hover { color: #5CBB47; }
   .button.simple.green:hover .arrow .fill { fill: #5CBB47; }
   .button.simple.white:hover .arrow .fill { fill: #FFFFFF; }
-  .button.text.arrow:hover:after { right: -28px; }
   .object-qa .q:not(.active):hover:before {
     transform: rotate(30deg);
     -o-transform: rotate(30deg);
@@ -381,6 +380,9 @@
 }
 
 @media (max-width: 767px) {
+  .layout-block-1.flex .part-1 { min-height: 0; }
+  .layout-block-1.flex .part-1 .buttons { margin-top: 20px; }
+  .layout-block-1.flex .part-1 { width: 100% !important; }
   .layout-block.cell-adaptive > .row { display: block; }
   .layout-block.cell-adaptive > .row > .part {
     margin-bottom: 10px;
@@ -634,6 +636,23 @@
 }
 
 @media (max-width: 580px) {
+  .layout-table, .layout-table > .row, .layout-table > .row > .part {
+    display: block;
+  }
+  .layout-table > .row.grey > .part {
+    background-color: transparent;
+    border-radius: 0;
+  }
+  .layout-table > .row {
+    padding: 0 5px;
+    padding-top: 5px;
+  }
+  .layout-table > .row.grey {
+    background-color: #F4F4F4;
+    border-radius: 15px;
+  }
+  .layout-table > .row > .part:first-child { padding-bottom: 0; }
+  .layout-table > .row > .part:last-child { padding-top: 0; }
   .block .layout-image {
     display: block;
     width: 100%;
