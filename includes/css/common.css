@@ -111,6 +111,7 @@ header > .wrap > .part-center > .bg-overlay, body.body-light header > .wrap > .p
   width: 100%;
   table-layout: fixed;
 }
+.layout-block.responsive { table-layout: auto; }
 
 .layout-block.cell-adaptive > .row { display: table-row; }
 .layout-block.cell-adaptive > .row:not(:first-child) { margin-top: 10px; }
@@ -412,6 +413,7 @@ input, button, textarea, .textarea {
   padding: 0 9px;
   height: inherit;
 }
+.block .layout-block.distance-vertical .part { padding: 9px; }
 
 
 h1, .h1 {
@@ -462,6 +464,11 @@ p {
   font-size: 16px;
   line-height: 1.62;
 }
+.p-3 {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.72;
+}
 .p-2 { font-weight: normal; }
 .t-1 {
   font-weight: 500;
@@ -492,7 +499,7 @@ p {
   margin-bottom: 25px;
 }
 
-.rounded, .slider-1 .swiper-slide {
+.rounded {
   border-radius: 20px;
   overflow: hidden;
   -webkit-mask-image: -webkit-radial-gradient(white, black);
@@ -867,25 +874,29 @@ b { font-weight: bold; }
   margin-right: 9px;
 }
 
-.slider-1 .swiper-slide {
+.block-news {
   background-color: #fff;
   text-decoration: none;
   color: #231F20;
   padding-bottom: 50px;
+  display: block;
   align-self: stretch;
   height: auto;
+  position: relative;
 }
-.slider-1 .swiper-slide .p-2 { margin-top: 4px; }
-.slider-1 .swiper-slide .date {
+.flex > .part > .block-news { height: 100%; }
+.block-news.grey { background-color: #ECECEC; }
+.block-news .p-2 { margin-top: 4px; }
+.block-news .date {
   position: absolute;
   bottom: 25px;
   left: 30px;
   right: 30px;
 }
-.slider-1 .swiper-slide .content { padding: 25px 30px; }
-.slider-1 .image { overflow: hidden; }
+.block-news .content { padding: 25px 30px; }
+.block-news .image { overflow: hidden; }
 .slider-1.swiper-container, .slider-2.swiper-container { overflow: visible; }
-.slider-1 .image img {
+.block-news .image img {
   height: 198px;
   object-fit: cover;
 }
@@ -1655,6 +1666,7 @@ footer .t-1 {
   margin-top: 3px;
   display: inline-block;
 }
+.text-left { text-align: left; }
 .text-right { text-align: right; }
 .text-center { text-align: center; }
 
@@ -1962,7 +1974,10 @@ div > .block-percent:not(:first-child) { margin-top: 16px; }
 
 .block-percent *:not(.h5) + .h5 { margin-top: 20px; }
 
-.flex:not(.layout-block) { flex: 1; }
+.flex:not(.layout-block) {
+  max-width: 100%;
+  flex: 1;
+}
 
 li.h5 {
   line-height: 1.2;
@@ -2435,3 +2450,15 @@ header.on-back .bg { display: none !important; }
   min-height: 300px;
 }
 .layout-block-1.flex .part-1 .buttons { margin-top: auto; }
+
+.button.text .p-3 {
+  line-height: 28px;
+  position: relative;
+  z-index: 2;
+}
+.button.circle.green.text:not(.light) { color: #fff; }
+nav .button.circle { margin: 0 4px; }
+nav .active { pointer-events: none; }
+.layout-block:not(.flex) > .flex { width: 100%; }
+nav { cursor: default; }
+nav > div.button { cursor: default; }

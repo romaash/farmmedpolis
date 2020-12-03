@@ -95,11 +95,16 @@ $(document).ready(function(){
 
     if (window.matchMedia("(max-width: 580px), (max-height: 512px)").matches) {
       $("body:not(.forced-header-no)").addClass("forced-header");
+      var start = "bottom";
+      var offset = $(".trigger-opacity").offset().top;
+      if (document.documentElement.clientHeight > offset) {
+        start = offset-1;
+      } 
       var t2 = gsap.timeline({
         scrollTrigger: {
           trigger: ".trigger-opacity",
-          start: "top top",
-          end: "bottom top",
+          start: "top "+start,
+          end: "top top",
           onEnterBack: function(){ $("body").addClass("forced-header"); },
           onLeave: function(){ $("body").removeClass("forced-header"); }
         }
@@ -515,7 +520,8 @@ $(document).ready(function(){
     $("header").addClass("no-mask");
   }
 
-  $(".object-tabs ul li").click(function(){
+  $(".object-tabs ul li").click(function(e){
+    e.preventDefault();
     tabClicked($(this))
   });
 
