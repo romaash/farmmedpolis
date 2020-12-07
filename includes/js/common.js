@@ -907,4 +907,70 @@ $(document).ready(function(){
       addScrollbar($("body"));
     }
   });
+
+  $(".input-select .input").click(function(e){
+    e.preventDefault();
+    $(this).closest(".input-select").toggleClass("active");
+  });
+
+  $.each($(".input-select"), function(){
+    var a = JSON.parse($(this).attr("data-default"));
+    a.default = true;
+    var a_val = JSON.stringify([a]);
+    $(this).attr("data-selected", a_val);
+    $(".input .value", this).text(a.text);
+  });
+
+  $(".input-select a[data-option]").click(function(e){
+    e.preventDefault();
+    var data = JSON.parse($(this).attr("data-option"));
+    select($(this).closest(".input-select"), data);
+  });
+
+  function select (select, option) {
+    var result = JSON.parse(select.attr("data-selected"));
+    var add = true;
+    var def = -1;
+    for (var i=0; i<result.length; i++) {
+      if (result[i].default) { def = i; }
+      if (result[i].value == option.value) {
+        result.splice(i, 1);
+        add = false;
+        break;
+      }
+    }
+    if (add) {
+      result.push(option);
+      if (def >= 0) { result.splice(def, 1); }
+      if (select[0].hasAttribute("data-count")) {
+        var count = parseInt(select.attr("data-count"));
+        var l = result.length - count;
+        if (l > 0) { result.splice(0, l); }
+      }
+    } else if (result.length < 1) {
+      var a = JSON.parse(select.attr("data-default"));
+      a.default = true;
+      result.push(a);
+    }
+    select.attr("data-selected", JSON.stringify(result));
+
+    $("a[data-option]", select).removeClass("active");
+    $.each($("a[data-option]", select), function(){
+      var b = JSON.parse($(this).attr("data-option"));
+      for (var i=0; i<result.length; i++) {
+        if (result[i].value == b.value) {
+          $(this).addClass("active");
+          break;
+        }
+      }
+    });
+
+    var text = "";
+    for (var i=0; i<result.length; i++) {
+      if (i != 0) { text += ", "; }
+      text += result[i].text;
+    }
+
+    $(".input .value", select).text(text);
+  }
 });
