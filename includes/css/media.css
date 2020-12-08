@@ -231,6 +231,7 @@
 }
 
 @media (max-width: 1024px) {
+  .input-select .box-calendar { width: 100%; }
   .button.text .p-3 { line-height: 21px; }
   .wrap-scroll {
     overflow-x: auto;
@@ -395,6 +396,9 @@
 }
 
 @media (max-width: 767px) {
+  .box-calendar .layout-block-3.flex:not(.skip-tablet):not(.block-border) > .part { width: 33.332%; }
+  .input-select .input .value, .input-select, .input-select .input { width: 100%; }
+  .layout-block.flex:not(.skip-mobile) > .part { width: 100%; }
   .button.text .p-3 { line-height: 28px; }
   .layout-block-1.flex .part-1 { min-height: 0; }
   .layout-block-1.flex .part-1 .buttons { margin-top: 20px; }
@@ -625,17 +629,17 @@
   .layout-block-5 > .part { width: 100%; }
   .block .block-cards.layout-block-5 > .part:nth-child(2) { padding-top: 18px; }
   .block > .layout-block.layout-block-1,
-  .block .layout-block.layout-block-3,
+  .block .layout-block.layout-block-3:not(.skip-mobile),
   .block > .layout-block.layout-block-2 { display: block; }
   .block > .layout-block.layout-block-1 > .part,
-  .block .layout-block.layout-block-3 > .part,
+  .block .layout-block.layout-block-3:not(.skip-mobile) > .part,
   .block > .layout-block.layout-block-2 > .part {
     display: block;
     width: 100%;
   }
   .block > .layout-block.layout-block-1 > .part + .part,
   .block > .layout-block.layout-block-2 > .part + .part { margin-top: 30px; }
-  .block .layout-block.layout-block-3 > .part + .part, .block:not(.no-padding) > .layout-block-2 > .part + .part { margin-top: 20px; }
+  .block .layout-block.layout-block-3:not(.skip-mobile) > .part + .part, .block:not(.no-padding) > .layout-block-2 > .part + .part { margin-top: 20px; }
   .block > .layout-block.layout-block-1 > .part-1 { width: 320px; }
   .design-el-1 {
     position: static;
@@ -780,6 +784,12 @@
 }
 
 @media (max-width: 376px) {
+  .input-select .box.box-calendar {
+    padding: 15px 6px;
+    right: -15px;
+    left: -15px;
+    width: auto;
+  }
   .layout-image table, .layout-image table tr, .layout-image table td, .layout-image table tbody {
     display: block;
     padding: 0;

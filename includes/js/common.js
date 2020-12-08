@@ -914,63 +914,135 @@ $(document).ready(function(){
   });
 
   $.each($(".input-select"), function(){
-    var a = JSON.parse($(this).attr("data-default"));
+    if (!$(this)[0].hasAttribute("data-selected")) {
+      var a = JSON.parse($(this).attr("data-default"));
+      a.default = true;
+      var a_val = JSON.stringify([a]);
+      $(this).attr("data-selected", a_val);
+      $(".input .value", this).text(a.text);
+    } else {
+      var text = draw_select_input(JSON.parse($(this).attr("data-selected")));
+      $(".input .value", this).text(text);
+    }
+  });
+
+  calendar_init();
+});
+
+function calendar_init () {
+  var year = new Date().getFullYear();
+  $.each($(".box-calendar"), function(){
+    $(this).attr("data-year", year);
+    calendar_control($(this));
+  })
+}
+
+var months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+
+function calendar_control (select, c = 0) {
+  select = $(select).closest(".box-calendar");
+  var year = parseInt(select.attr("data-year"))+c;
+  select.attr("data-year", year);
+  var html =  '<div class="header">'+
+                '<div class="layout-block skip-mobile vertical-center flex">'+
+                  '<div class="part">'+
+                    '<a href="#" class="button circle green light small" onclick="calendar_control(this, -1); return false;"><img class="obj-reverse" src="includes/img/icons/9.svg" alt=""></a>'+
+                  '</div>'+
+                  '<div class="part text-center flex">'+
+                    '<div class="h6">'+year+'</div>'+
+                  '</div>'+
+                  '<div class="part">'+
+                    '<a href="#" class="button circle green light small" onclick="calendar_control(this, 1); return false;"><img src="includes/img/icons/9.svg" alt=""></a>'+
+                  '</div>'+
+                '</div>'+
+              '</div>'+
+              '<div class="wrap">'+
+                '<div class="block-border rounded">'+
+                  '<div class="layout-block layout-block-3 skip-mobile flex distance-vertical">';
+  for (var i=0; i<months.length; i++) {
+    var key = year + "-" + (i+1);
+    var active = "";
+    if (select_contain(select.closest(".input-select"), key)) {
+      active = " active";
+    }
+    console.log(months[i]);
+    html +=  '<div class="part">'+
+                '<a href="#" data-option=\'{"value": "'+key+'", "text": "'+months[i]+'", "year": "'+year+'"}\' onclick="select_select(this); return false;" class="button text small d-block h-green'+active+'"><div class="t-1">'+months[i]+'</div></a>'+
+              '</div>';
+  }
+  html += '</div>'+
+            '</div>'+
+          '</div>';
+  select.html(html);
+}
+
+function select_select (el) {
+  var data = JSON.parse($(el).attr("data-option"));
+  select($(el).closest(".input-select"), data);
+}
+
+function select_contain(select, key) {
+  var data = JSON.parse(select.attr("data-selected"))
+  for (var i=0; i<data.length; i++) {
+    if (data[i].value == key) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function draw_select_input (result) {
+  var active_year = new Date().getFullYear();
+  var text = "";
+  for (var i=0; i<result.length; i++) {
+    if (i != 0) { text += ", "; }
+    text += result[i].text;
+    if (result[i].year != undefined && result[i].year != active_year) {
+      text += " "+result[i].year;
+    }
+  }
+  return text;
+}
+
+function select (select, option) {
+  var result = JSON.parse(select.attr("data-selected"));
+  var add = true;
+  var def = -1;
+  for (var i=0; i<result.length; i++) {
+    if (result[i].default) { def = i; }
+    if (result[i].value == option.value) {
+      result.splice(i, 1);
+      add = false;
+      break;
+    }
+  }
+  if (add) {
+    result.push(option);
+    if (def >= 0) { result.splice(def, 1); }
+    if (select[0].hasAttribute("data-count")) {
+      var count = parseInt(select.attr("data-count"));
+      var l = result.length - count;
+      if (l > 0) { result.splice(0, l); }
+    }
+  } else if (result.length < 1) {
+    var a = JSON.parse(select.attr("data-default"));
     a.default = true;
-    var a_val = JSON.stringify([a]);
-    $(this).attr("data-selected", a_val);
-    $(".input .value", this).text(a.text);
-  });
+    result.push(a);
+  }
+  select.attr("data-selected", JSON.stringify(result));
 
-  $(".input-select a[data-option]").click(function(e){
-    e.preventDefault();
-    var data = JSON.parse($(this).attr("data-option"));
-    select($(this).closest(".input-select"), data);
-  });
-
-  function select (select, option) {
-    var result = JSON.parse(select.attr("data-selected"));
-    var add = true;
-    var def = -1;
+  $("a[data-option]", select).removeClass("active");
+  $.each($("a[data-option]", select), function(){
+    var b = JSON.parse($(this).attr("data-option"));
     for (var i=0; i<result.length; i++) {
-      if (result[i].default) { def = i; }
-      if (result[i].value == option.value) {
-        result.splice(i, 1);
-        add = false;
+      if (result[i].value == b.value) {
+        $(this).addClass("active");
         break;
       }
     }
-    if (add) {
-      result.push(option);
-      if (def >= 0) { result.splice(def, 1); }
-      if (select[0].hasAttribute("data-count")) {
-        var count = parseInt(select.attr("data-count"));
-        var l = result.length - count;
-        if (l > 0) { result.splice(0, l); }
-      }
-    } else if (result.length < 1) {
-      var a = JSON.parse(select.attr("data-default"));
-      a.default = true;
-      result.push(a);
-    }
-    select.attr("data-selected", JSON.stringify(result));
+  });
 
-    $("a[data-option]", select).removeClass("active");
-    $.each($("a[data-option]", select), function(){
-      var b = JSON.parse($(this).attr("data-option"));
-      for (var i=0; i<result.length; i++) {
-        if (result[i].value == b.value) {
-          $(this).addClass("active");
-          break;
-        }
-      }
-    });
+  var text = draw_select_input(result);
 
-    var text = "";
-    for (var i=0; i<result.length; i++) {
-      if (i != 0) { text += ", "; }
-      text += result[i].text;
-    }
-
-    $(".input .value", select).text(text);
-  }
-});
+  $(".input .value", select).text(text);
+}
