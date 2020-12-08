@@ -1,5 +1,5 @@
 @media (max-width: 1550px) {
-  .button.text .p-3 { line-height: 19px; }
+  .button.text .p-3 { line-height: 16px; }
   .slider-1 .image img { height: 160px; }
   .map + .buttons {
     left: 40px;
@@ -94,10 +94,18 @@
   }
   .block-border.vertical-center > .part { padding-right: 90px; }
   .slider-1 .swiper-slide .content { padding: 10px 15px; }
-  .slider-1 .swiper-slide .date {
+  .slider-1 .swiper-slide .date, .block-news .date {
     left: 15px;
     bottom: 10px;
   }
+  .slider-1 .swiper-slide .tag-views, .block-news .tag-views {
+    right: 15px;
+    bottom: 10px;
+  }
+  .block-news { margin-top: 0; }
+  .block-news .date { left: 20px; }
+  .block-news .tag-views { right: 20px; }
+  .block-news .content { padding: 10px 20px; }
   .slider-1 .swiper-slide { padding-bottom: 40px; }
   .slider-contols .button + .button.slider-prev { margin-left: 30px; }
   .popup .layout-close .layout-main { margin-top: 16px; }
@@ -108,6 +116,7 @@
 }
 
 @media (max-width: 1200px) {
+  .layout-block.page-text > .part:not(:nth-child(2)), .layout-block.page-image > .part:not(:nth-child(2)) { width: 80px; }
   .block .layout-image {
     display: block;
     width: 100%;
@@ -165,6 +174,14 @@
 }
 
 @media (min-width: 1025px) {
+  .input-select:not(.active) .input:hover:after {
+    transform: rotate(-20deg);
+    -o-transform: rotate(-20deg);
+    -ms-transform: rotate(-20deg);
+    -moz-transform: rotate(-20deg);
+    -webkit-transform: rotate(-20deg);
+  }
+  .h-green:hover { color: #59C13F; }
   .mpp-object .dot:not(.active):hover .button svg {
     transform: rotate(15deg);
     -o-transform: rotate(15deg);
@@ -231,8 +248,12 @@
 }
 
 @media (max-width: 1024px) {
+  .slider-gallery .slider-main .swiper-slide { height: 360px; }
+  .slider-gallery .slider-thumbs .swiper-slide { height: 50px;   }
+  .layout-block.page-text > .part:not(:nth-child(2)), .layout-block.page-image > .part:not(:nth-child(2)) { width: 60px; }
+  .block .layout-block.page-image { min-height: 270px; }
   .input-select .box-calendar { width: 100%; }
-  .button.text .p-3 { line-height: 21px; }
+  .button.text .p-3 { line-height: 18px; }
   .wrap-scroll {
     overflow-x: auto;
     margin-left: -30px;
@@ -396,10 +417,31 @@
 }
 
 @media (max-width: 767px) {
+  .page-image > .flex {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .slider-gallery .slider-main .swiper-slide { height: 270px; }
+  .block .layout-block.page-image {
+    min-height: 180px;
+    margin-left: -20px;
+    width: auto;
+    margin-right: -20px;
+  }
+  .list-social.title-first {
+    display: block;
+    width: 100%;
+  }
+  .list-social.title-first li:first-child {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .shift-mobile > .part { text-align: center; }
+  .shift-mobile > .part:not(:first-child) { margin-top: 20px; }
   .box-calendar .layout-block-3.flex:not(.skip-tablet):not(.block-border) > .part { width: 33.332%; }
   .input-select .input .value, .input-select, .input-select .input { width: 100%; }
   .layout-block.flex:not(.skip-mobile) > .part { width: 100%; }
-  .button.text .p-3 { line-height: 28px; }
+  .button.text .p-3 { line-height: 25px; }
   .layout-block-1.flex .part-1 { min-height: 0; }
   .layout-block-1.flex .part-1 .buttons { margin-top: 20px; }
   .layout-block-1.flex .part-1 { width: 100% !important; }
@@ -657,6 +699,12 @@
 }
 
 @media (max-width: 580px) {
+  .slider-gallery .slider-main, .slider-gallery .slider-thumbs {
+    overflow: visible;
+    -webkit-mask-image: none;
+  }
+  .slider-gallery .slider-next { right: 15px; }
+  .slider-gallery .slider-prev { left: 15px; }
   .layout-table, .layout-table > .row, .layout-table > .row > .part {
     display: block;
   }
@@ -784,12 +832,14 @@
 }
 
 @media (max-width: 376px) {
+  .slider-gallery .slider-main .swiper-slide { height: 220px; }
   .input-select .box.box-calendar {
-    padding: 15px 6px;
+    padding: 6px;
     right: -15px;
     left: -15px;
     width: auto;
   }
+  .box-calendar .wrap { margin-top: 6px; }
   .layout-image table, .layout-image table tr, .layout-image table td, .layout-image table tbody {
     display: block;
     padding: 0;

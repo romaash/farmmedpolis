@@ -622,7 +622,8 @@ $(document).ready(function(){
 
   function animTextInit () {
     $.each($(".anim-text"), function(){
-      $(".text", $(this)).css("margin-left", -($(".text", $(this)).outerWidth()+10)+"px");
+      $(".text:first-child", $(this)).css("margin-left", -($(".text", $(this)).outerWidth()+10)+"px");
+      $("img + .text", $(this)).css("margin-right", -($(".text", $(this)).outerWidth()+10)+"px");
     });
   }
 
@@ -924,6 +925,26 @@ $(document).ready(function(){
       var text = draw_select_input(JSON.parse($(this).attr("data-selected")));
       $(".input .value", this).text(text);
     }
+  });
+
+  $.each($(".slider-gallery"), function(){
+    var galleryThumbs = new Swiper($(".slider-thumbs", this)[0], {
+      spaceBetween: 10,
+      slidesPerView: 'auto',
+      freeMode: true,
+      watchSlidesVisibility: true,
+      watchSlidesProgress: true,
+    });
+    new Swiper($(".slider-main", this)[0], {
+      spaceBetween: 10,
+      navigation: {
+        nextEl: '.slider-next',
+        prevEl: '.slider-prev'
+      },
+      thumbs: {
+        swiper: galleryThumbs
+      }
+    });
   });
 
   calendar_init();
