@@ -936,6 +936,7 @@ b { font-weight: bold; }
 .part.dark { color: #fff; }
 
 .limitation-1 { max-width: 320px; }
+.limitation-2 { max-width: 360px; }
 
 .list-icon li {
   position: relative;

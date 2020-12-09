@@ -10,6 +10,7 @@
   header.no-mask > .wrap > .part-center:before, body:not(.body-light) header.no-mask > .wrap > .part-center::before, header.no-mask > .wrap > .part-center > .bg.mpp, header.no-mask > .wrap > .part-center > .bg-opacity.mpp { height: 80px; }
   .link-mw { width: 78px; }
   .limitation-1 { max-width: 275px; }
+  .limitation-2 { max-width: 320px; }
 
   h1, .h1 { font-size: 36px; }
   h2, .h2 { font-size: 37px; }
