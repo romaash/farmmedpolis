@@ -947,6 +947,10 @@ $(document).ready(function(){
     });
   });
 
+  if (window.matchMedia("(max-width: 628px)").matches) {
+    $(".wrap-scroll").scrollLeft(40);
+  }
+
   calendar_init();
 });
 
@@ -992,8 +996,13 @@ function calendar_control (select, c = 0) {
   }
   html += '</div>'+
             '</div>'+
-          '</div>';
+          '</div>'+
+          '<div class="wrap buttons"><div class="layout-block"><div class="part text-right"><a href="#" onclick="calendar_close(this);" class="button simple text green">Применить</a><a href="#" onclick="select_reset(this);return false;" class="button simple text">Отменить</a></div></div></div>';
   select.html(html);
+}
+
+function calendar_close (el) {
+  $(el).closest(".input-select").removeClass("active");
 }
 
 function select_select (el) {
@@ -1065,4 +1074,14 @@ function select (select, option) {
   var text = draw_select_input(result);
 
   $(".input .value", select).text(text);
+}
+
+function select_reset (el) {
+  var select = $(el).closest(".input-select");
+  var def = JSON.parse(select.attr("data-default"));
+  def.default = true;
+  var res = [def];
+  select.attr("data-selected", JSON.stringify(res));
+  $(".input .value", select).text(def.text);
+  calendar_control(el);
 }

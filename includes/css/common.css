@@ -2749,3 +2749,9 @@ header > .layout-main > .part-right { z-index: 4; }
 body.body-light footer .list-social .fill-icon { fill: #231F20; }
 .link-mw .fill-icon, body.body-blue .link-mw .fill-icon { fill: #fff; }
 body.body-light .link-mw .fill-icon { fill: #231F20; }
+.box-calendar .buttons {
+  margin-top: 10px;
+  margin-right: -10px;
+  margin-bottom: -10px;
+}
+.box-calendar .buttons a { margin: 4px 0; }

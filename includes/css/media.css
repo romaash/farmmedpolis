@@ -461,6 +461,7 @@
   }
   .list-social.title-first li:first-child {
     display: block;
+    width: 100%;
     margin-bottom: 10px;
   }
   .shift-mobile > .part { text-align: center; }
@@ -886,6 +887,7 @@
 }
 
 @media (max-width: 358px) {
+  .slider-next, .slider-prev { display: none; }
   .block-border.vertical-center > .part { min-height: 140px; }
   .part.image.media-tablet { margin-top: 20px; }
   footer .layout-block-2.media-mob, .layout-block-2.media-mob .part {
