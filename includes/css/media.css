@@ -1,4 +1,5 @@
 @media (max-width: 1550px) {
+  .block .part.shop-item-desc { padding: 0 9px; }
   .layout-block-icon > .part:first-child { width: 68px; }
   .shop-item { padding: 15px 0; }
   .button.text .p-3 { line-height: 16px; }
@@ -73,6 +74,10 @@
   .rounded-top {
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
+  }
+  .inside.rounded-top {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
   }
   .rounded-bottom {
     border-bottom-left-radius: 25px;
@@ -186,6 +191,15 @@
 }
 
 @media (min-width: 1025px) {
+  .shop-items .shop-item .remove:hover {
+    transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+  }
+  .image-viewer .image-thumbs .image:not(.active):hover { border-color: rgba(89,193,63,0.4); }
+  body.body-blue .image-viewer .image-thumbs .image:not(.active):hover { border-color: rgba(76, 120, 157, 0.4); }
   .hover-anim > .part {
     filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale");
     filter: gray;
@@ -278,6 +292,19 @@
 }
 
 @media (max-width: 1024px) {
+  .popup .slider-gallery .slider-next, .popup  .slider-gallery .slider-prev { margin-top: -55px; }
+  .popup .slider-gallery .slider-next { right: -40px; }
+  .popup .slider-gallery .slider-prev { left: -40px; }
+  .popup .slider-gallery { margin-bottom: -20px; }
+  .popup .slider-gallery .slider-main .swiper-slide {
+    height: 75vh;
+    height: calc(100vh - 140px);
+  }
+  .main-cart .image {
+    width: 50px;
+    height: 50px;
+  }
+  .main-cart .image img { height: 50px; }
   .quote-block { padding-right: 0; }
   .number > .t-5 { line-height: 16px; }
   .layout-block-icon > .part:first-child { width: 60px; }
@@ -438,7 +465,7 @@
 
 @media (max-width: 976px) {
   .layout-popup .content > .wrap > .layout-block > .part { flex-grow: 1; }
-  .layout-popup .content > .wrap > .layout-block > .part:first-child { width: 30%; }
+  .layout-popup .content > .wrap > .layout-block > .part:not(.full-width):first-child { width: 30%; }
 }
 
 @media (max-width: 852px) {
@@ -468,6 +495,30 @@
 }
 
 @media (max-width: 767px) {
+  .shop-items { padding-top: 15px; }
+  .border-right { 
+    border-right: none;
+    border-bottom: 1px solid rgba(89, 193, 63, 0.15); 
+  }
+  body.body-blue .border-right { 
+    border-right: none;
+    border-bottom: 1px solid rgba(76, 120, 157, 0.15); 
+  }
+  .part.flex-2 { flex: 1; }
+  .image-viewer { display: block; }
+  .image-viewer .image-thumbs {
+    white-space: nowrap;
+    width: 100%;
+  }
+  .image-viewer .image-thumbs .image {
+    margin-top: 0;
+    width: 70px;
+    display: inline-block;
+  }
+  .image-viewer .image-thumbs .image:not(:first-child) {
+    margin-top: 0;
+    margin-left: 10px;
+  }
   .buttons + .button-video {
     margin-top: 50px;
     margin-bottom: -10px;
@@ -583,7 +634,7 @@
   .wrap-video { max-height: 55vw; }
   .slider-contols { text-align: left; }
   .slider-contols a { margin-top: -30px; }
-  /*.slider-next, .slider-prev { display: none; }*/
+  .slider-next, .slider-prev { display: none; }
   .slider-contols {
     text-align: right;
     margin-top: 30px;
@@ -851,7 +902,10 @@
   .slider-3 .slider-next { right: 15px; }
   .blocks-info, .block-info { width: 280px; }
   body:not(.body-light) header > .wrap > .part-center:before, header > .wrap > .part-center > .bg.mpp, header > .wrap > .part-center > .bg-opacity { display: none !important; }
-  header { position: relative; }
+  body:not(.forced-header) header {
+    position: relative;
+    overflow: hidden;
+  }
   .main { padding-top: 0; }
   .button-burger {
     background: url(../img/bgs/1.jpg) no-repeat center top;
@@ -876,6 +930,8 @@
 }
 
 @media (max-width: 481px) {
+  .main-cart { padding: 0; }
+  .slider-6 .shop-item > .part.flex .buttons { margin-bottom: -5px; }
   .shop-item > .part.flex .buttons {
     display: block;
     margin-top: 15px;

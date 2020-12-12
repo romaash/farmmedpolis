@@ -443,6 +443,25 @@ $(document).ready(function(){
     });
   });
 
+  $.each($(".slider-6"), function(){
+    var parent = $(this).closest(".block-slider");
+    let el = $(this);
+    new Swiper($(this)[0], {
+      speed: 500,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: $(".slider-next", parent)[0],
+        prevEl: $(".slider-prev", parent)[0],
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2
+        }
+      }
+    });
+  });
+
 
   $(".input-placeholder input, .input-placeholder textarea, .input-placeholder .textarea").focus(function(){
     $(this).closest(".input-placeholder").removeClass("blank");
@@ -942,6 +961,7 @@ $(document).ready(function(){
   });
 
   $.each($(".slider-gallery"), function(){
+    var parent = $(this);
     var galleryThumbs = new Swiper($(".slider-thumbs", this)[0], {
       spaceBetween: 10,
       slidesPerView: 'auto',
@@ -952,8 +972,8 @@ $(document).ready(function(){
     new Swiper($(".slider-main", this)[0], {
       spaceBetween: 10,
       navigation: {
-        nextEl: '.slider-next',
-        prevEl: '.slider-prev'
+        nextEl: $('.slider-next', parent)[0],
+        prevEl: $('.slider-prev', parent)[0]
       },
       thumbs: {
         swiper: galleryThumbs
@@ -986,6 +1006,24 @@ $(document).ready(function(){
   if (window.matchMedia("(max-width: 628px)").matches) {
     $(".wrap-scroll").scrollLeft(40);
   }
+
+  $.each($(".image-viewer"), function(){
+    $(".image-thumbs .image:first-child", this).addClass("active");
+    var src = $(".image-thumbs .image:first-child", this).attr("data-image");
+    $(".image-main img", this).attr("src", src);
+  });
+
+  $(".image-viewer .image-thumbs .image").click(function(e){
+    e.preventDefault();
+    var parent = $(this).closest(".image-viewer");
+    $(".image", parent).removeClass("active");
+    var src = $(this).attr("data-image");
+    $(this).addClass("active");
+    $(".image-main img", parent).attr("src", src);
+    setTimeout(function(){
+      ScrollTrigger.refresh();
+    }, 2);
+  })
 
   calendar_init();
 });
@@ -1121,3 +1159,18 @@ function select_reset (el) {
   $(".input .value", select).text(def.text);
   calendar_control(el);
 }
+
+
+
+
+
+
+
+
+
+$("body").click(function(){
+  $("body").toggleClass("view-cart");
+  setTimeout(function(){
+    ScrollTrigger.refresh();
+  }, 350);
+});
