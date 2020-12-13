@@ -1102,19 +1102,21 @@ $(document).ready(function(){
   calendar_init();
 
   var lazyLength = $("img[lazy-src]").length;
-  $.each($("img[lazy-src]"), function(){
-    let img = new Image();
-    let el = $(this);
-    img.src = el.attr("lazy-src");
-    el.removeAttr("lazy-src");
-    img.onload = function(){
-      el.attr("src", this.src);
-      lazyLength -= 1;
-      if (lazyLength < 1) {
-        onLazyLoaded();
+  $(window).on("load", function(){
+    $.each($("img[lazy-src]"), function(){
+      let img = new Image();
+      let el = $(this);
+      img.src = el.attr("lazy-src");
+      el.removeAttr("lazy-src");
+      img.onload = function(){
+        el.attr("src", this.src);
+        lazyLength -= 1;
+        if (lazyLength < 1) {
+          onLazyLoaded();
+        }
       }
-    }
-  })
+    })
+  });
 
   function onLazyLoaded () {
     ScrollTrigger.refresh();
