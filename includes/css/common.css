@@ -91,8 +91,16 @@ header > .wrap > .part-center > .bg.mpp, header > .wrap > .part-center > .bg-opa
   background: url('../img/bgs/3.2.jpg') no-repeat top center;
   background-size: 100vw;
 }
+header > .wrap > .part-center > .bg.mpp.lazy-src, header > .wrap > .part-center > .bg-opacity.mpp.lazy-src {
+  background: url('../img/bgs/3.2.jpg') no-repeat top center;
+  background-size: 100vw;
+}
 .mpp-object .bg, header > .wrap > .part-center > .bg-opacity.mpp {
   background: url('../img/bgs/3.jpg') no-repeat top center;
+  background-size: 100vw;
+}
+.mpp-object .bg.lazy-src, header > .wrap > .part-center > .bg-opacity.mpp.lazy-src {
+  background: url('../img/bgs/low/3.jpg') no-repeat top center;
   background-size: 100vw;
 }
 header > .wrap > .part-center > .bg-overlay, body.body-light header > .wrap > .part-center > .bg-overlay {
@@ -2305,6 +2313,10 @@ body.body-light { background: #E8E3EA; }
 .main-bg.mpp {
   height: 100vh;
   background: url("../img/bgs/3.2.jpg") no-repeat top center;
+  background-size: 100vw;
+}
+.main-bg.mpp.lazy-src {
+  background: url("../img/bgs/low/3.2.jpg") no-repeat top center;
   background-size: 100vw;
 }
 .mpp-object {
