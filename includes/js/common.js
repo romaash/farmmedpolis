@@ -1104,6 +1104,12 @@ $(document).ready(function(){
   var lazyLength = $("img[lazy-src]").length;
   $(window).on("load", function(){
     $.each($("img[lazy-src]"), function(){
+      if (window.matchMedia("(max-width: 767px)").matches) {
+        if ($(this).closest(".media-mob-no").length > 0) {
+          return;
+        }
+      }
+      
       let img = new Image();
       let el = $(this);
       img.src = el.attr("lazy-src");
