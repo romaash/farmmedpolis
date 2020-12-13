@@ -1106,10 +1106,11 @@ $(document).ready(function(){
     $.each($("img[lazy-src]"), function(){
       if (window.matchMedia("(max-width: 767px)").matches) {
         if ($(this).closest(".media-mob-no").length > 0) {
+          lazyLength -= 1;
           return;
         }
       }
-      
+
       let img = new Image();
       let el = $(this);
       img.src = el.attr("lazy-src");
@@ -1125,6 +1126,7 @@ $(document).ready(function(){
   });
 
   function onLazyLoaded () {
+    console.log("A");
     ScrollTrigger.refresh();
   }
 });
