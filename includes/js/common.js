@@ -903,6 +903,10 @@ $(document).ready(function(){
     var reverse = $(this).hasClass("reverse");
     var isHidden = false;
 
+    if (reverse && $(this).offset().top - offset > 0) {
+      $(this).css("display", "none");
+    }
+
     gsap.to(this, {
       scrollTrigger: {
         trigger: ".trigger-opacity",
@@ -1103,7 +1107,17 @@ $(document).ready(function(){
 
   var lazyLength = $("img[lazy-src]").length;
   $(window).on("load", function(){
-    $(".lazy-src").removeClass("lazy-src");
+    $.each($(".lazy-src"), function(){
+      let img = new Image();
+      let src = $(this).css("background-image");
+      let el = $(this);
+      src = src.split("\"")[1];
+      src = src.split("\"")[0];
+      img.src = src;
+      img.onload = function(){
+        el.removeClass("lazy-src");
+      }
+    })
 
     $.each($("img[lazy-src]"), function(){
       if (window.matchMedia("(max-width: 767px)").matches) {
