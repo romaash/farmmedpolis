@@ -1082,7 +1082,7 @@ $(document).ready(function(){
   });
 
   if (window.matchMedia("(max-width: 628px)").matches) {
-    $(".wrap-scroll").scrollLeft(40);
+    $(".wrap-scroll.autoscroll").scrollLeft(40);
   }
 
   $.each($(".image-viewer"), function(){
