@@ -10,9 +10,16 @@ $(document).ready(function(){
       width: window.innerWidth - document.documentElement.clientWidth
     },
     header: {
-      paddingRight: parseInt($("header").css("padding-right"))
+      paddingRight: parseInt($("header").css("padding-right")),
+      height: 140
     }
   };
+
+  if (window.matchMedia("(max-width: 1024px)").matches) {
+    settings.header.height = 80;
+  } else if (window.matchMedia("(max-width: 1550px)").matches) {
+    settings.header.height = 125;
+  }
 
   $.each($(".anim-underline"), function(i){
     $(this).attr("data-key", i);
@@ -1144,6 +1151,38 @@ $(document).ready(function(){
   function onLazyLoaded () {
     ScrollTrigger.refresh();
   }
+
+  if ($(".menu-page").length > 0) {
+    var wrap = $(".menu-page > .part > ul").outerWidth()-40;
+    var width = 0;
+    $.each($(".menu-page > .part > ul > li:not(.more)"), function(){
+      width += $("> a", this).outerWidth() + 20;
+      if (width > wrap) {
+        $(".menu-page > .part > ul > li.more").css("display", "block");
+        $(".menu-page > .part > ul > li.more > ul").append("<li>"+$(this).html()+"</li>");
+        $(this).remove();
+      }
+    });
+  }
+
+  $("a[data-scroll]").click(function(e){
+    e.preventDefault();
+    scrollTo($(this).attr("data-scroll"));
+  })
+
+  var hash = window.location.hash;
+  var data = hash.split("#scto-");
+  if (data.length > 1) {
+    var point = data[1];
+    scrollTo(point);
+    window.location.hash = "";
+  }
+
+  function scrollTo (point) {
+    $("html, body").stop().animate({
+      scrollTop: $("*[data-scroll-point=\""+point+"\"]").offset().top - settings.header.height
+    }, 500)
+  }
 });
 
 function calendar_init () {
@@ -1156,7 +1195,8 @@ function calendar_init () {
 
 var months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
 
-function calendar_control (select, c = 0) {
+function calendar_control (select, c) {
+  if (c == undefined) { c = 0; }
   select = $(select).closest(".box-calendar");
   var year = parseInt(select.attr("data-year"))+c;
   select.attr("data-year", year);

@@ -74,7 +74,9 @@ body:not(.body-light) header > .wrap > .part-center:before, header > .wrap > .pa
   -webkit-mask-border: url('../img/others/mask.png') 46 repeat;
   mask-border: url('../img/others/mask.png') 46 repeat;
 }
+body.with-menu-page:not(.body-light) header > .wrap > .part-center:before, body.with-menu-page header > .wrap > .part-center > .bg.mpp, body.with-menu-page header > .wrap > .part-center > .bg-opacity { height: 180px; }
 header.no-mask > .wrap > .part-center:before, body:not(.body-light) header.no-mask > .wrap > .part-center::before, header.no-mask > .wrap > .part-center > .bg.mpp, header.no-mask > .wrap > .part-center > .bg-opacity { height: 110px; }
+body.with-menu-page header.no-mask > .wrap > .part-center:before, body.with-menu-page:not(.body-light) header.no-mask > .wrap > .part-center::before, body.with-menu-page header.no-mask > .wrap > .part-center > .bg.mpp, body.with-menu-page header.no-mask > .wrap > .part-center > .bg-opacity { height: 140px; }
 
 header > .wrap > .part-center > .bg.mpp, header > .wrap > .part-center > .bg-opacity.mpp {
   background: transparent;
@@ -182,7 +184,7 @@ header > .wrap > .part-center > .bg-overlay, body.body-light header > .wrap > .p
 }
 
 header ul {
-  max-width: 840px;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -192,7 +194,7 @@ header ul li {
   flex-grow: 1;
 }
 
-header a {
+header a, header .a {
   line-height: 1.92;
   text-align: right;
   letter-spacing: 1px;
@@ -857,7 +859,7 @@ b { font-weight: bold; }
 .block.dark .block-border.layout-block > .part:not(:nth-child(3n+1)) { border-left: 1px solid rgba(196,196,196,0.15); }
 .block.dark .block-border.layout-block:not(.type-2) > .part:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) { border-top: 1px solid rgba(196,196,196,0.15); }
 .block.dark .block-border { border-color: rgba(196,196,196,0.15); }
-.block-border.layout-block:not(.type-2) > .part { padding: 46px 50px; }
+.block-border.layout-block:not(.type-2):not(.layout-flex) > .part { padding: 46px 50px; }
 .block-border.layout-block.type-2 > .part {
   display: flex;
   flex-direction: column;
@@ -2934,7 +2936,7 @@ p.image.small-shift + p, p.image.small-shift + div { margin-top: 30px; }
   -webkit-box-shadow: 0px 14px 24px rgba(0, 0, 0, 0.05);
 }
 
-.wrap-scroll:not(:first-child) { margin-top: 20px; }
+.wrap-scroll:not(:first-child), .scroll-indicators:not(:first-child) .wrap-scroll:first-child { margin-top: 20px; }
 .layout-block-icon {
   display: table;
   width: 100%;
@@ -3336,3 +3338,120 @@ img[data-src] { background-color: rgba(0,0,0,0.05); }
   position: relative;
   z-index: 15;
 }
+.block-border.shift-right .h4 { padding-right: 40px; }
+.scroll-indicators {
+  position: relative;
+  margin-left: -30px;
+  margin-right: -30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.scroll-indicators:before, .scroll-indicators:after {
+  content: '';
+  display: none;
+  width: 20px;
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(231,231,231);
+  background: -moz-linear-gradient(-90deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);
+  background: -webkit-linear-gradient(-90deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(-90deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e7e7e7",endColorstr="#e7e7e7",GradientType=1);
+}
+.scroll-indicators:before {
+  left: 0;
+  right: auto;
+  background: rgb(231,231,231);
+  background: -moz-linear-gradient(90deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);
+  background: -webkit-linear-gradient(90deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(90deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e7e7e7",endColorstr="#e7e7e7",GradientType=1);
+}
+.map * { touch-action: auto; }
+
+.menu-page ul li a, .menu-page ul li .a {
+  font-weight: 400 !important;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.menu-page {
+  padding-top: 10px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+.menu-page > .part > ul {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.menu-page ul li {
+  padding: 10px 0;
+  text-align: center;
+}
+.menu-page .anim-underline:before { height: 1px; }
+.header-search > a {
+  width: 24px;
+  height: 40px;
+  padding: 8px 0;
+}
+.header-search button {
+  width: 20px;
+  height: 34.6px;
+  right: 0;
+  padding: 6px;
+}
+.menu-page > .part > ul > li { position: relative; }
+.menu-page > .part > ul > li > a { white-space: nowrap; }
+.menu-page a {
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: background-color 0.35s;
+  -o-transition: background-color 0.35s;
+  -ms-transition: background-color 0.35s;
+  -moz-transition: background-color 0.35s;
+  -webkit-transition: background-color 0.35s;
+}
+.menu-page > .part > ul > li > ul {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background-color: #16A937;
+  display: block;
+  white-space: nowrap;
+  padding: 10px 6px;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  -o-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  -webkit-transform: translateY(-10px);
+  transition: transform 0.35s, visibility 0.35s, opacity 0.35s;
+  -o-transition: -o-transform 0.35s, visibility 0.35s, opacity 0.35s;
+  -ms-transition: -ms-transform 0.35s, visibility 0.35s, opacity 0.35s;
+  -moz-transition: -moz-transform 0.35s, visibility 0.35s, opacity 0.35s;
+  -webkit-transition: -webkit-transform 0.35s, visibility 0.35s, opacity 0.35s;
+}
+body.body-blue .menu-page > .part > ul > li > ul { background-color: #466a88; }
+body.body-blue-2 .menu-page > .part > ul > li > ul { background-color: #2f447d; }
+.menu-page > .part > ul > li:hover > ul {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  -o-transform: none;
+  -ms-transform: none;
+  -moz-transform: none;
+  -webkit-transform: none;
+}
+.menu-page > .part > ul > li > ul li {
+  display: block;
+  text-align: left;
+  padding: 0 6px;
+}
+a:not([href]) { cursor: default; }
+.menu-page ul.rounded { border-radius: 12px; }
+.menu-page > .part > ul > li.more { display: none; }

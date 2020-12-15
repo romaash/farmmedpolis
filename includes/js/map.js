@@ -97,6 +97,10 @@ function initMap() {
       myMap.geoObjects.add(myPolyline);
     }
 
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      myMap.behaviors.disable('drag');
+    }
+
     window.yMaps[i+""] = myMap;
   });
 }
