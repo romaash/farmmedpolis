@@ -136,17 +136,26 @@ $(document).ready(function(){
         var blockTop = block.offset().top;
         var windowHeight = document.documentElement.clientHeight;
         var diff = windowHeight-blockTop - blockHeight;
-        if (diff > 0) { diff = 0; }
+        var dif = $(window).outerHeight() - blockHeight - 30;
+        
+        if (dif > 0) { dif = 0; }
+        else { dif -= 150; }
+        if ($(".pin-type-2", block).length > 0 && $(".pin-type-2", block).is(":visible")) { dif = 0; }        
+        if (dif < 0 || diff > 0) { diff = 0; }
+
         var shift = blockHeight*0.025 - diff;
         var offsetTop = ($("+ .block", block).offset().top - shift - top);
+        
         pin1Shift[i] = -shift;
+
         $("+ .block", block).css("margin-top", -shift+"px");
         var dur = (offsetTop - $(this).outerHeight() - 32);
         offsetTop -= $(this).outerHeight()*0.82;
+
         var t = gsap.timeline({
           scrollTrigger: {
             trigger: el,
-            start: "top "+(top-1)+"px",
+            start: "top "+(top-1 + dif)+"px",
             end: "+="+(offsetTop),
             scrub: true,
             pin: true,
@@ -372,14 +381,15 @@ $(document).ready(function(){
     new Swiper($(this)[0], {
       speed: 500,
       slidesPerView: 1,
-      spaceBetween: 18,
+      spaceBetween: 10,
       navigation: {
         nextEl: $(".slider-next", parent)[0],
         prevEl: $(".slider-prev", parent)[0],
       },
       breakpoints: {
         768: {
-          slidesPerView: 3
+          slidesPerView: 3,
+          spaceBetween: 18
         },
         580: {
           slidesPerView: 2
@@ -402,14 +412,15 @@ $(document).ready(function(){
     new Swiper($(this)[0], {
       speed: 500,
       slidesPerView: 1,
-      spaceBetween: 18,
+      spaceBetween: 10,
       navigation: {
         nextEl: $(".slider-next", parent)[0],
         prevEl: $(".slider-prev", parent)[0],
       },
       breakpoints: {
         768: {
-          slidesPerView: 3
+          slidesPerView: 3,
+          spaceBetween: 18
         },
         580: {
           slidesPerView: 2
@@ -490,14 +501,32 @@ $(document).ready(function(){
     iMasks[i] = IMask($(this)[0], { mask: '+{7}(000)000-00-00' });
   });
 
+  function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
   $("form").submit(function(e){
     var error = false;
 
-    $.each($("input[data-req]", this), function(){
+    $.each($("input[data-req], input[data-email]", this), function(){
       if ($(this).attr("type") == "text") {
-        if ($.trim($(this).val()).length < 3) {
-          $(this).addClass("error");
-          error = true;
+        if ($(this)[0].hasAttribute("data-email")) {
+          var val = $.trim($(this).val())
+          if ($(this)[0].hasAttribute("data-req")) {
+            if (!validateEmail(val)) {
+              $(this).addClass("error");
+              error = true;
+            } 
+          } else if (val.length > 0 && !validateEmail(val)) {
+            $(this).addClass("error");
+            error = true;
+          }          
+        } else {
+          if ($.trim($(this).val()).length < 3) {
+            $(this).addClass("error");
+            error = true;
+          }
         }
       } else if ($(this).attr("type") == "phone") {
         if (iMasks[$(this).attr("data-key")].unmaskedValue.length != 11) {
@@ -656,9 +685,23 @@ $(document).ready(function(){
   });
   calcAll();
 
-  // $(window).resize(function(){
-  //   calcAll();
-  // });
+  var window_refresh;
+
+  $(window).resize(function(){
+    // calcAll();
+    // $.each($(".object-tabs"), function(){
+    //   $.each($(" ul li", this), function(){
+    //     if ($(this).hasClass("active")) {
+    //       tabClicked($(this));
+    //       return;
+    //     }
+    //   })
+    // })
+    clearTimeout(window_refresh);
+    window_refresh = setTimeout(function(){
+      window.location.reload();
+    }, 500);
+  });
 
   function animTextInit () {
     $.each($(".anim-text"), function(){
@@ -785,6 +828,7 @@ $(document).ready(function(){
 
   $.each($(".slider-gallery:not(.slider-gallery-popup)"), function(){
     var parent = $(this);
+    parent.attr("data-gallery", "");
     var galleryThumbs = new Swiper($(".slider-thumbs", this)[0], {
       spaceBetween: 10,
       slidesPerView: 'auto',
@@ -830,7 +874,7 @@ $(document).ready(function(){
         swiper: galleryThumbs
       }
     });
-    popupGallery = {main: galleryMain, thumbs: galleryThumbs};
+    popupGallery = {main: galleryMain, thumbs: galleryThumbs, object: parent};
   }
 
   function loadGallery (gallery) {
@@ -852,16 +896,23 @@ $(document).ready(function(){
     }
 
     if (popupGallery != undefined) {
-      popupGallery.main.removeAllSlides();
-      popupGallery.thumbs.removeAllSlides();
-      for (var i=0; i<result.length; i++) {
-        popupGallery.main.appendSlide('<div class="swiper-slide">'+
-                                          '<img data-src="'+result[i].main+'" class="swiper-lazy" alt="">'+
-                                          '<div class="swiper-lazy-preloader"></div>'+
-                                        '</div>');
-        popupGallery.thumbs.appendSlide('<div class="swiper-slide"><img src="'+result[i].thumb+'" alt=""></div>');
+      var info = gallery.split(",");
+      if (popupGallery.object.attr("data-popup") != info[0]) {
+        popupGallery.object.attr("data-popup", info[0]);
+        popupGallery.main.removeAllSlides();
+        popupGallery.thumbs.removeAllSlides();
+        for (var i=0; i<result.length; i++) {
+          popupGallery.main.appendSlide('<div class="swiper-slide">'+
+                                            '<img data-src="'+result[i].main+'" class="swiper-lazy" alt="">'+
+                                            '<div class="swiper-lazy-preloader"></div>'+
+                                          '</div>');
+          popupGallery.thumbs.appendSlide('<div class="swiper-slide"><img src="'+result[i].thumb+'" alt=""></div>');
+        }
+        popupGallery.main.lazy.load();
       }
-      popupGallery.main.lazy.load();
+      if (info.length > 1) {
+        popupGallery.main.slideTo(parseInt(info[1]));
+      }
     }
   }
 

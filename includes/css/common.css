@@ -564,6 +564,7 @@ p {
   left: 180px;
   right: 0px;
   pointer-events: none;
+  text-align: center;
 }
 .design-el-6 {
   position: absolute;
@@ -1760,6 +1761,8 @@ form .done .wrap {
   padding: 60px 20px;
   text-align: center;
 }
+body.body-blue .message-done { background-color: rgba(76,120,157,0.1); }
+body.body-blue-2 .message-done { background-color: rgba(32,60,136,0.1); }
 .message-done .icon {
   width: 32px;
   margin: 0 auto;
@@ -3165,7 +3168,7 @@ body.body-blue-2 .border-right { border-right: 1px solid rgba(32, 60, 136, 0.15)
 .text-normal { font-weight: 400; }
 .t-1.text-normal { line-height: 1.58; }
 .t-1 + .buttons { margin-top: 25px; }
-.wrap-scroll.small-shift { margin-top: 50px; }
+.wrap-scroll.small-shift { margin-top: 30px; }
 .wrap-scroll.minimum-shift { margin-top: 30px; }
 
 .part.full { width: 100%; }
@@ -3455,3 +3458,21 @@ body.body-blue-2 .menu-page > .part > ul > li > ul { background-color: #2f447d; 
 a:not([href]) { cursor: default; }
 .menu-page ul.rounded { border-radius: 12px; }
 .menu-page > .part > ul > li.more { display: none; }
+footer .block.no-padding.white {
+  background: #ffffff;
+  background: -moz-linear-gradient(left,  rgba(22,169,55,1) 24%, rgba(255,255,255,1) 25%);
+  background: -webkit-linear-gradient(left,  rgba(22,169,55,1) 24%,rgba(255,255,255,1) 25%);
+  background: linear-gradient(to right,  rgba(22,169,55,1) 24%,rgba(255,255,255,1) 25%);
+}
+body.body-blue footer .block.no-padding.white {
+  background: #ffffff;
+  background: -moz-linear-gradient(left,  rgba(76,120,157,1) 24%, rgba(255,255,255,1) 25%);
+  background: -webkit-linear-gradient(left,  rgba(76,120,157,1) 24%,rgba(255,255,255,1) 25%);
+  background: linear-gradient(to right,  rgba(76,120,157,1) 24%,rgba(255,255,255,1) 25%);
+}
+body.body-blue-2 footer .block.no-padding.white {
+  background: #ffffff;
+  background: -moz-linear-gradient(left,  rgba(32,60,136,1) 24%, rgba(255,255,255,1) 25%);
+  background: -webkit-linear-gradient(left,  rgba(32,60,136,1) 24%,rgba(255,255,255,1) 25%);
+  background: linear-gradient(to right,  rgba(32,60,136,1) 24%,rgba(255,255,255,1) 25%);
+}
