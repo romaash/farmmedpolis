@@ -686,6 +686,7 @@ $(document).ready(function(){
   calcAll();
 
   var window_refresh;
+  var windowWidthLast = $(window).outerWidth();
 
   $(window).resize(function(){
     // calcAll();
@@ -699,7 +700,9 @@ $(document).ready(function(){
     // })
     clearTimeout(window_refresh);
     window_refresh = setTimeout(function(){
-      window.location.reload();
+      if (windowWidthLast != $(window).outerWidth()) {
+        window.location.reload();
+      }
     }, 500);
   });
 
