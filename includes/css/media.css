@@ -1,6 +1,6 @@
 @media (max-width: 1550px) {
   .design-el-5 img { max-width: 550px; }
-  .pin-type-1 p.image { margin-top: 25px; }
+  .pin-type-1 p.image { padding-top: 25px; }
   .design-el-9 {
     margin-top: 0;
     margin-bottom: -65px;
@@ -314,6 +314,7 @@
 }
 
 @media (max-width: 1024px) {
+  .pin-type-1 p.image { padding-top: 0px; }
   .wrap-scroll .flex-blocks { min-width: 1050px; }
   body.with-menu-page header.no-mask > .wrap > .part-center:before, body:not(.body-light).with-menu-page header.no-mask > .wrap > .part-center:before, body.with-menu-page header.no-mask > .wrap > .part-center > .bg.mpp, body.with-menu-page header.no-mask > .wrap > .part-center > .bg-opacity.mpp, body.with-menu-page header.no-mask > .wrap > .part-center > .bg-opacity { height: 85px; }
   header.no-mask .logo-main svg, header.no-mask + .main-menu .logo-main svg { max-height: 52px; }
