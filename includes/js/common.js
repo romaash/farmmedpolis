@@ -1233,9 +1233,11 @@ $(document).ready(function(){
   }
 
   function scrollTo (point) {
+    var dest = $("*[data-scroll-point=\""+point+"\"]").offset().top - settings.header.height + 2;
+    var way = Math.abs($("html, body").scrollTop() - dest)
     $("html, body").stop().animate({
-      scrollTop: $("*[data-scroll-point=\""+point+"\"]").offset().top - settings.header.height
-    }, 500)
+      scrollTop: dest
+    }, Math.sqrt(way*300));
   }
 });
 
@@ -1370,6 +1372,8 @@ function select_reset (el) {
   select.attr("data-selected", JSON.stringify(res));
   $(".input .value", select).text(def.text);
   calendar_control(el);
+
+  window.location = window.location.pathname;
 }
 
 
