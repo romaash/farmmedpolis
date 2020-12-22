@@ -3654,3 +3654,4 @@ body.body-blue-2 .sidebar-menu li.active sup { color: #203C88; }
 .table-3 th { padding-bottom: 15px; }
 .buttons-static { min-width: 160px; }
 .table-3 .buttons { text-align: right; }
+.layout-inside ul.list li, .layout-inside ol.list li { margin-left: -14px; }

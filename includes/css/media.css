@@ -1,5 +1,5 @@
 @media (max-width: 1550px) {
-  .number > .t-5 { line-height: 15px; }
+  .number > .t-5 { line-height: 21px; }
   .buttons-static { min-width: 140px; }
   .sidebar-menu a { 
     padding: 16px 28px;
@@ -23,10 +23,11 @@
     margin-top: 0;
     margin-bottom: -65px;
   }
+  .design-el-5 { right: -100px; }
   .design-el-7 {
-    width: 250px;
-    right: -260px;
-    bottom: 25px;
+    width: 220px;
+    right: -220px;
+    bottom: 45px;
   }
   .block .part.shop-item-desc { padding: 0 9px; }
   .layout-block-icon > .part:first-child { width: 68px; }
@@ -176,6 +177,7 @@
 }
 
 @media (max-width: 1200px) {
+  .number > .t-5 { line-height: 14px; }
   .design-el-6 {
     top: 30px;
     height: 30px;
@@ -185,7 +187,7 @@
     height: 40px;
   }
   .design-el-8 { top: -80px; }
-  .design-el-7 { bottom: 5px; }
+  .design-el-7 { bottom: 25px; }
   .shop-item > .part:not(.flex) { width: 125px; }
   .block .shop-item > .part.flex { padding-left: 10px; }
   .layout-block.page-text > .part:not(:nth-child(2)), .layout-block.page-image > .part:not(:nth-child(2)) { width: 80px; }
@@ -359,6 +361,10 @@
 }
 
 @media (max-width: 1024px) {
+  .design-el-5 {
+    left: 100px;
+    right: -100px;
+  }
   .design-el-6 {
     top: 34px;
     height: 22px;
@@ -624,7 +630,6 @@
     top: 30px;
     height: 40px;
   }
-  .layout-inside ul.list li, .layout-inside ol.list li { margin-left: -14px; }
   .table-3 td, .table-3 tr, .table-3 tbody, .table-3 {
     display: block;
     padding: 0 !important;
@@ -1079,6 +1084,7 @@
 }
 
 @media (max-width: 580px) {
+  .design-el-7 { display: none; }
   .table-2 > .row > .cell.flex { display: none; }
   .table-2 .row, .table-2 .cell {
     display: block;
@@ -1217,7 +1223,6 @@
     padding-left: 0;
     margin-right: -9px;
   }
-  .design-el-7 { display: none; }
   .layout-block-1 .part-1 { width: 100% !important; }
   .main-cart { padding: 0; }
   .slider-6 .shop-item > .part.flex .buttons { margin-bottom: -5px; }
