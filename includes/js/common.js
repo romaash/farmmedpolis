@@ -666,7 +666,7 @@ $(document).ready(function(){
     $.each($(".design-el-gc"), function(){
       var parent = $(this).closest("a");
       var parentSize = {width: parent.outerWidth(), height: parent.outerHeight()};
-      var size = Math.sqrt(parentSize.width*parentSize.width + parentSize.height*parentSize.height);
+      var size = Math.sqrt(parentSize.width*parentSize.width + parentSize.height*parentSize.height)*1.05;
       var shift = {x: parentSize.width/2-size/2, y: parentSize.height/2-size/2};
       $(this).css({
         width: size+"px", 
