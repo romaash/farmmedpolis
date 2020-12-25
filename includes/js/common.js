@@ -12,7 +12,8 @@ $(document).ready(function(){
     header: {
       paddingRight: parseInt($("header").css("padding-right")),
       height: 140
-    }
+    },
+    footerFormShift: $("footer .block > .layout-block > .part:first-child").outerHeight()
   };
 
   if (window.matchMedia("(max-width: 1024px)").matches) {
@@ -1233,7 +1234,16 @@ $(document).ready(function(){
   }
 
   function scrollTo (point) {
-    var dest = $("*[data-scroll-point=\""+point+"\"]").offset().top - settings.header.height + 10;
+    var addition = 0;
+    if (point == "form") {
+      addition = 10;
+      if (window.matchMedia("(max-width: 580px)").matches) {
+        addition = settings.footerFormShift + 80;
+      } else if (window.matchMedia("(max-width: 767px)").matches) {
+        addition = settings.footerFormShift + 50;
+      }
+    }
+    var dest = $("*[data-scroll-point=\""+point+"\"]").offset().top - settings.header.height + 10 + addition;
     var way = Math.abs($("html, body").scrollTop() - dest)
     $("html, body").stop().animate({
       scrollTop: dest

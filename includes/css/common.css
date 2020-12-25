@@ -1190,6 +1190,8 @@ form .input-placeholder.blank .placeholder {
 }
 body.body-blue .button.simple { color: #4C789D; }
 body.body-blue-2 .button.simple { color: #203C88; }
+.button.simple.dark { color: #231F20; }
+.button.simple.dark.default { cursor: default; }
 .button.simple.green {
   color: #fff;
   background-color: #5CBB47;
@@ -3721,3 +3723,21 @@ body.body-blue-2 .sidebar-menu li.active sup { color: #203C88; }
 .buttons-static { min-width: 160px; }
 .table-3 .buttons { text-align: right; }
 .layout-inside ul.list li, .layout-inside ol.list li { margin-left: -14px; }
+.vacancy-info {
+  margin-left: -9px;
+  margin-right: -9px;
+  padding-top: 16px;
+}
+.vacancy-data ul.list li {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.vacancy-info .p-2 {
+  color: #A7A7A7;
+  padding: 6px 0;
+}
+.block-card.dark .t-b {
+  color: #C4C4C4;
+  margin-top: 8px;
+}
+.block-card.dark .h4 { font-weight: 500; }
