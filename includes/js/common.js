@@ -1233,6 +1233,37 @@ $(document).ready(function(){
     window.location.hash = "";
   }
 
+  $(".upload-area a").click(function(e){
+    e.preventDefault();
+    var parent = $(this).closest(".part");
+    $("input[type=\"file\"]", parent).click();
+  });
+
+  $("input[type=\"file\"]").change(function(){
+    $("+ .upload-area", this).removeClass("empty");
+  });
+
+  var droppedFiles = false;
+
+  $(".upload-area").on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  })
+  .on('dragover dragenter', function() {
+    $(".upload-area").addClass('drag');
+  })
+  .on('dragleave dragend drop', function() {
+    $(".upload-area").removeClass('drag');
+  })
+  .on('drop', function(e) {
+    droppedFiles = e.originalEvent.dataTransfer.files;
+    $(this).removeClass("empty");
+  });
+
+  function onFileLoad () {
+
+  }
+
   function scrollTo (point) {
     var addition = 0;
     if (point == "form") {
@@ -1372,6 +1403,11 @@ function select (select, option) {
   var text = draw_select_input(result);
 
   $(".input .value", select).text(text);
+}
+
+var cf = 6*2*Math.PI;
+function setFileProgress(el, progress) {
+  el.css("stroke-dashoffset", cf-progress*cf)
 }
 
 function select_reset (el) {

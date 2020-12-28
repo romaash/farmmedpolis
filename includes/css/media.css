@@ -375,6 +375,7 @@
 }
 
 @media (max-width: 1024px) {
+  .upload-area { margin-top: 10px; }
   .design-el-5 {
     left: 100px;
     right: -100px;
