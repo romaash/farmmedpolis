@@ -1118,6 +1118,12 @@ $(document).ready(function(){
     }
   });
 
+  $(".main-menu ul li > div.h4").click(function(e){
+    e.preventDefault();
+    $(this).toggleClass("active");
+    $("+ ul", this).slideToggle();
+  });
+
   $.each($(".slider-5"), function(){
     var parent = $(this).closest(".block-slider");
     let el = $(this);

@@ -2088,12 +2088,56 @@ body.body-blue-2 .main-menu .wrap-menu { background-color: #203C88; }
 .main-menu.active .bg { background-color: rgba(0,0,0,0.8); }
 .main-menu.active { visibility: visible; }
 .main-menu .h4 { font-weight: 500; }
-.main-menu a, body.body-blue .main-menu a, body.body-blue-2 .main-menu a {
+.main-menu a, .main-menu li > div, body.body-blue .main-menu a, body.body-blue-2 .main-menu a {
   color: #fff;
   text-decoration: none;
   line-height: 2.2;
+  position: relative;
 }
 .main-menu ul + ul { margin-top: 30px; }
+.main-menu ul li > div + ul {
+  margin-left: 15px;
+  max-width: 250px;
+  display: none;
+  padding-bottom: 10px;
+}
+.main-menu ul li > div:before {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  top: 10px;
+  background: url('../img/icons/55.svg') no-repeat center center;
+  background-size: contain;
+
+  transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+
+  transition: transform 0.35s;
+  -o-transition: -o-transform 0.35s;
+  -ms-transition: -ms-transform 0.35s;
+  -moz-transition: -moz-transform 0.35s;
+  -webkit-transition: -webkit-transform 0.35s;
+}
+.main-menu ul li > div.active:before {
+  transform: none;
+  -o-transform: none;
+  -ms-transform: none;
+  -moz-transform: none;
+  -webkit-transform: none;
+}
+.main-menu ul li > div + ul > li > a {
+  display: block;
+  padding: 10px 0;
+}
+.main-menu ul li > div + ul .h5 {
+  font-weight: 400;
+  line-height: 1.2;
+}
 
 .layout-menu {
   display: flex;
