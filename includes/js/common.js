@@ -507,7 +507,7 @@ $(document).ready(function(){
     return re.test(String(email).toLowerCase());
   }
 
-  $("form").submit(function(e){
+  $("form:not(.no-event)").submit(function(e){
     var error = false;
 
     $.each($("input[data-req], input[data-email]", this), function(){
@@ -1287,6 +1287,14 @@ $(document).ready(function(){
     }, Math.sqrt(way*300));
   }
 });
+
+function onFileDelete (file) {
+  let ul = $(file).closest("ul");
+  $(file).closest("li").remove();
+  if ($("li", ul).length <= 0) {
+    ul.closest(".upload-area").addClass("empty");
+  }
+}
 
 function calendar_init () {
   var year = new Date().getFullYear();

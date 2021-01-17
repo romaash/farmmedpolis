@@ -408,7 +408,7 @@ input, button, textarea, .textarea {
   will-change: -moz-transform;
   will-change: -webkit-transform;
 }
-.header-search a, a .obj-scaler img, .button-video .title:before, .list-social li a, .link-mw {
+.header-search a, .search-item button[type="submit"], a .obj-scaler img, .button-video .title:before, .list-social li a, .link-mw {
   transition: transform 0.35s;
   -o-transition: -o-transform 0.35s;
   -ms-transition: -ms-transform 0.35s;
@@ -460,7 +460,7 @@ h2, .h2 {
   font-size: 46px;
   line-height: 1.3;
 }
-h3, .h3 {
+h3, .h3, .search-item input[type="text"] {
   font-weight: bold;
   font-size: 34px;
   line-height: 1.24;
@@ -1146,9 +1146,9 @@ form input, form textarea, form .textarea {
 }
 body.body-blue form input, body.body-blue form textarea, body.body-blue form .textarea { border-color: rgba(76, 120, 157, 0.1); }
 body.body-blue-2 form input, body.body-blue-2 form textarea, body.body-blue-2 form .textarea { border-color: rgba(32, 60, 136, 0.1); }
-form input:focus, form textarea:focus, form .textarea:focus { border-color: rgba(89,193,63,1); }
-body.body-blue form input:focus, body.body-blue form textarea:focus, body.body-blue form .textarea:focus { border-color: rgba(76,120,157,1); }
-body.body-blue-2 form input:focus, body.body-blue-2 form textarea:focus, body.body-blue-2 form .textarea:focus { border-color: rgba(32,60,136,1); }
+form input:focus, .search-item input[type="text"]:focus, form textarea:focus, form .textarea:focus { border-color: rgba(89,193,63,1); }
+body.body-blue form input:focus, body.body-blue .search-item input[type="text"]:focus, body.body-blue form textarea:focus, body.body-blue form .textarea:focus { border-color: rgba(76,120,157,1); }
+body.body-blue-2 form input:focus, body.body-blue-2 .search-item input[type="text"]:focus, body.body-blue-2 form textarea:focus, body.body-blue-2 form .textarea:focus { border-color: rgba(32,60,136,1); }
 form input.error, form input.error + .checkbox:before, form textarea.error, form .textarea.error,
 body.body-blue form input.error, body.body-blue form input.error + .checkbox:before, body.body-blue form textarea.error, body.body-blue form .textarea.error,
 body.body-blue-2 form input.error, body.body-blue-2 form input.error + .checkbox:before, body.body-blue-2 form textarea.error, body.body-blue-2 form .textarea.error { border-color: rgb(255, 24, 120); }
@@ -3872,7 +3872,30 @@ body.body-blue-2 .sidebar-menu li.active sup { color: #203C88; }
 }
 .upload-area ul.list-icon li {
   padding: 4px 0;
+  padding-right: 80px;
+  position: relative;
   padding-left: 25px;
+}
+.upload-area ul.list-icon li .delete {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -10px;
+  height: 20px;
+  line-height: 20px;
+  cursor: pointer;
+  padding-left: 13px;
+  color: #231F20;
+}
+.upload-area ul.list-icon li .delete:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 1px;
+  width: 9px;
+  background: url('../img/icons/56.svg') no-repeat center center;
+  background-size: contain;
 }
 .upload-area ul.list-icon li.loading p { color: rgba(35,31,32,0.4); }
 .upload-area ul.list-icon li.loading .icon {
@@ -3897,3 +3920,38 @@ body.body-blue-2 .sidebar-menu li.active sup { color: #203C88; }
 .upload-area ul.list-icon li:not(.loading) .icon .loader { display: none; }
 .upload-area:not(.empty) > .wrap-empty { display: none; }
 .upload-area.empty > .wrap { display: none; }
+
+.news-item { max-width: 945px; }
+.news-item a {
+  text-decoration: none;
+  color: #231F20;
+}
+.news-item a:hover { text-decoration: underline; }
+.news-item .h4 { margin-top: 10px; }
+.news-item p {
+  margin-top: 14px !important;
+  font-weight: 400;
+  color: #ABAAAA;
+}
+.news-item + .news-item { margin-top: 40px; }
+.search-item input[type="text"] {
+  border-color: #D8D8D8;
+  border-width: 1px;
+  padding: 12px 0;
+  padding-right: 40px;
+}
+.search-item {
+  margin-left: -9px;
+  margin-right: -9px;
+}
+.search-item form { position: relative; }
+.search-item button[type="submit"] {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  height: 36px;
+  width: 36px;
+  padding: 0;
+  margin-top: -18px;
+  z-index: 3;
+}

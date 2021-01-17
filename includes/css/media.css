@@ -267,6 +267,7 @@
 
 @media (min-width: 1025px) {
   .sidebar-menu li:not(.active) a:hover { background-color: rgba(22,169,55,0.025); }
+  .upload-area ul.list-icon li .delete:hover { color: #000; }
   body.body-blue .sidebar-menu li:not(.active) a:hover { background-color: rgba(76,120,157,0.025); }
   body.body-blue-2 .sidebar-menu li:not(.active) a:hover { background-color: rgba(32,60,136,0.025); }
   .menu-page a[href]:hover { background-color: rgba(0,0,0,0.05); }
@@ -344,7 +345,7 @@
     -moz-transform: rotate(30deg);
     -webkit-transform: rotate(30deg);
   }
-  .button.circle:not(.transparent):hover:after, .header-search a:hover, a:hover div.button.circle:after, .list-social li a:hover, .link-mw:hover, .button-video:hover .title:before {
+  .button.circle:not(.transparent):hover:after, .header-search a:hover, .search-item button[type="submit"]:hover, a:hover div.button.circle:after, .list-social li a:hover, .link-mw:hover, .button-video:hover .title:before {
     transform: scale(1.1);
     -o-transform: scale(1.1);
     -ms-transform: scale(1.1);
