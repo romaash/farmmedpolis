@@ -465,6 +465,10 @@ h3, .h3, .search-item input[type="text"] {
   font-size: 34px;
   line-height: 1.24;
 }
+.h4-3 {
+  font-size: 28px;
+  line-height: 1.79;
+}
 h4, .h4, .p-1 {
   font-weight: bold;
   font-size: 24px;
@@ -590,7 +594,7 @@ p {
 }
 .design-el-10 {
   position: absolute;
-  bottom: -150px;
+  bottom: -180px;
   left: 0;
   right: -70px;
   pointer-events: none;
@@ -916,6 +920,7 @@ b { font-weight: bold; }
   margin-left: 9px;
   margin-right: 9px;
   width: auto !important;
+  -webkit-mask-image: none;
 }
 
 .block-border.layout-block > .part:not(:nth-child(3n+1)),
@@ -3955,3 +3960,7 @@ body.body-blue-2 .sidebar-menu li.active sup { color: #203C88; }
   margin-top: -18px;
   z-index: 3;
 }
+.search-no { margin: 0 -9px; }
+.search-no .h4-3, .search-no p { color: rgba(35,31,32,0.5); }
+.search-no p { margin-top: 8px !important; }
+.search-no .h4-3 b { color: rgba(35,31,32,1); }
