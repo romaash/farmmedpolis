@@ -56,7 +56,8 @@ body.forced-header header {
 }
 body.forced-header header.on-back { z-index: 15; }
 body.forced-header .main {
-  position: static;
+  /*position: static;*/
+  position: relative;
 }
 /**/
 body:not(.body-light) header > .wrap > .part-center:before, header > .wrap > .part-center > .bg.mpp, header > .wrap > .part-center > .bg-opacity {
@@ -408,7 +409,7 @@ input, button, textarea, .textarea {
   will-change: -moz-transform;
   will-change: -webkit-transform;
 }
-.header-search a, .search-item button[type="submit"], a .obj-scaler img, .button-video .title:before, .list-social li a, .link-mw {
+.header-search a, .search-item button[type="reset"], a .obj-scaler img, .button-video .title:before, .list-social li a, .link-mw {
   transition: transform 0.35s;
   -o-transition: -o-transform 0.35s;
   -ms-transition: -ms-transform 0.35s;
@@ -2109,7 +2110,7 @@ body.body-blue-2 .main-menu .wrap-menu { background-color: #203C88; }
   display: none;
   padding-bottom: 10px;
 }
-.main-menu ul li > div:before {
+.main-menu ul:not(.list-icon) li > div:before {
   content: '';
   position: absolute;
   right: 0;
@@ -3950,7 +3951,7 @@ body.body-blue-2 .sidebar-menu li.active sup { color: #203C88; }
   margin-right: -9px;
 }
 .search-item form { position: relative; }
-.search-item button[type="submit"] {
+.search-item button[type="reset"] {
   position: absolute;
   right: 0;
   top: 50%;

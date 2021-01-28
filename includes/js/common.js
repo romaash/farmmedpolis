@@ -549,6 +549,13 @@ $(document).ready(function(){
     e.preventDefault();
   });
 
+  $("form").on('reset', function(e) {
+    e.preventDefault();
+    $.each($("input[type=\"text\"]", this), function(){
+      $(this).val("");
+    });
+  });
+
   $("form *[data-return-btn]").click(function(e){
     var popup = $(this).closest(".popup");
     e.preventDefault();
@@ -1239,17 +1246,24 @@ $(document).ready(function(){
     window.location.hash = "";
   }
 
+  $(".files-area input").attr("data-file-id", 0);
+  $(".files-area input")[0].addEventListener("change", onFileChange, false);
+
   $(".upload-area a").click(function(e){
     e.preventDefault();
     var parent = $(this).closest(".part");
-    $("input[type=\"file\"]", parent).click();
+    let files = $("input[type=\"file\"]:last-child", parent)[0].files;
+    if (files.length < 1) {
+      $("input[type=\"file\"]:last-child", parent).click();
+    } else {
+      let input = document.createElement('input');
+      input.type = "file";
+      input.addEventListener("change", onFileChange, false);
+      $(input).attr("data-file-id", parseInt($("input[type=\"file\"]:last-child", parent).attr("data-file-id"))+1);
+      setTimeout(function(){ $(input).click(); },50);
+      $(".files-area", parent)[0].appendChild(input);
+    }
   });
-
-  $("input[type=\"file\"]").change(function(){
-    $("+ .upload-area", this).removeClass("empty");
-  });
-
-  var droppedFiles = false;
 
   $(".upload-area").on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
     e.preventDefault();
@@ -1262,13 +1276,28 @@ $(document).ready(function(){
     $(".upload-area").removeClass('drag');
   })
   .on('drop', function(e) {
-    droppedFiles = e.originalEvent.dataTransfer.files;
+    let dFiles = e.originalEvent.dataTransfer.files;
+    var parent = $(this).closest(".part");
+
+    for (let i=0; i<dFiles.length; i++) {
+      let files = $("input[type=\"file\"]:last-child", parent)[0].files;
+      let dt = new DataTransfer();
+      dt.items.add(dFiles[i]);
+      if (i == 0 && files.length < 1) {
+        $("input[type=\"file\"]:last-child", parent)[0].files = dt.files;
+        onFileChange($("input[type=\"file\"]:last-child", parent)[0]);
+        continue;
+      }
+      let input = document.createElement('input');
+      input.type = "file";
+      $(input).attr("data-file-id", parseInt($("input[type=\"file\"]:last-child", parent).attr("data-file-id"))+1);
+      input.files = dt.files;
+      $(".files-area", parent)[0].appendChild(input);
+      onFileChange(input);
+    }
+
     $(this).removeClass("empty");
   });
-
-  function onFileLoad () {
-
-  }
 
   function scrollTo (point) {
     var addition = 0;
@@ -1290,11 +1319,38 @@ $(document).ready(function(){
 
 function onFileDelete (file) {
   let ul = $(file).closest("ul");
-  $(file).closest("li").remove();
+  let li = $(file).closest("li");
+  let parent = $(file).closest(".part");
+  let index = li.attr("data-file-id");
+  $("input[data-file-id=\""+index+"\"]", parent).remove();
+  li.remove();
   if ($("li", ul).length <= 0) {
     ul.closest(".upload-area").addClass("empty");
+    let input = document.createElement('input');
+    input.type = "file";
+    input.addEventListener("change", onFileChange, false);
+    $(input).attr("data-file-id", 0);
+    $(".files-area", parent)[0].appendChild(input);
   }
 }
+
+function onFileChange (e) {
+  let input = e;
+  if (e.files == undefined) {
+    input = e.target;
+  }
+  let parent = $(input).closest(".part");
+  let name = input.files[0].name;
+  let index = $(input).attr("data-file-id");
+  $(".upload-area .list-icon", parent).append('<li data-file-id="'+index+'">'+
+                                                '<p class="p-2">'+name+'</p>'+
+                                                '<div class="icon pos-middle">'+
+                                                  '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.9564 3.88725L10.2065 0.137344C10.119 0.0497812 9.9995 0 9.875 0H3.3125C2.53709 0 1.90625 0.630844 1.90625 1.40625V14.5938C1.90625 15.3692 2.53709 16 3.3125 16H12.6875C13.4629 16 14.0938 15.3692 14.0938 14.5938V4.21875C14.0938 4.09094 14.0401 3.97091 13.9564 3.88725ZM10.3438 1.60041L12.4933 3.75H10.8125C10.554 3.75 10.3438 3.53972 10.3438 3.28125V1.60041ZM12.6875 15.0625H3.3125C3.05403 15.0625 2.84375 14.8522 2.84375 14.5938V1.40625C2.84375 1.14778 3.05403 0.9375 3.3125 0.9375H9.40625V3.28125C9.40625 4.05666 10.0371 4.6875 10.8125 4.6875H13.1562V14.5938C13.1562 14.8522 12.946 15.0625 12.6875 15.0625Z" fill="#59C13F"/><path d="M10.8125 6.625H5.1875C4.92862 6.625 4.71875 6.83487 4.71875 7.09375C4.71875 7.35263 4.92862 7.5625 5.1875 7.5625H10.8125C11.0714 7.5625 11.2812 7.35263 11.2812 7.09375C11.2812 6.83487 11.0714 6.625 10.8125 6.625Z" fill="#59C13F"/><path d="M10.8125 8.5H5.1875C4.92862 8.5 4.71875 8.70987 4.71875 8.96875C4.71875 9.22763 4.92862 9.4375 5.1875 9.4375H10.8125C11.0714 9.4375 11.2812 9.22763 11.2812 8.96875C11.2812 8.70987 11.0714 8.5 10.8125 8.5Z" fill="#59C13F"/><path d="M10.8125 10.375H5.1875C4.92862 10.375 4.71875 10.5849 4.71875 10.8438C4.71875 11.1026 4.92862 11.3125 5.1875 11.3125H10.8125C11.0714 11.3125 11.2812 11.1026 11.2812 10.8438C11.2812 10.5849 11.0714 10.375 10.8125 10.375Z" fill="#59C13F"/><path d="M8.9375 12.25H5.1875C4.92862 12.25 4.71875 12.4599 4.71875 12.7188C4.71875 12.9776 4.92862 13.1875 5.1875 13.1875H8.9375C9.19637 13.1875 9.40625 12.9776 9.40625 12.7188C9.40625 12.4599 9.19637 12.25 8.9375 12.25Z" fill="#59C13F"/></svg>'+
+                                                '</div>'+
+                                                '<div class="delete t-3 text-normal" onclick="onFileDelete(this);">Удалить</div>'+
+                                              '</li>');
+  $(".upload-area", parent).removeClass("empty");
+  }
 
 function calendar_init () {
   var year = new Date().getFullYear();

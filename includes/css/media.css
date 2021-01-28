@@ -54,7 +54,7 @@
 
   h1, .h1 { font-size: 36px; }
   h2, .h2 { font-size: 37px; }
-  h3, .h3 { font-size: 28px; }
+  h3, .h3, .search-item input[type="text"] { font-size: 28px; }
   h4, .h4, .p-1 { font-size: 20px; }
   .h4-3 { font-size: 24px; }
   .t-5 { font-size: 16px; }
@@ -347,7 +347,7 @@
     -moz-transform: rotate(30deg);
     -webkit-transform: rotate(30deg);
   }
-  .button.circle:not(.transparent):hover:after, .header-search a:hover, .search-item button[type="submit"]:hover, a:hover div.button.circle:after, .list-social li a:hover, .link-mw:hover, .button-video:hover .title:before {
+  .button.circle:not(.transparent):hover:after, .header-search a:hover, .search-item button[type="reset"]:hover, a:hover div.button.circle:after, .list-social li a:hover, .link-mw:hover, .button-video:hover .title:before {
     transform: scale(1.1);
     -o-transform: scale(1.1);
     -ms-transform: scale(1.1);
@@ -581,7 +581,7 @@
 
   h1, .h1 { font-size: 25px; }
   h2, .h2 { font-size: 29px; }
-  h3, .h3 { font-size: 25px; }
+  h3, .h3, .search-item input[type="text"] { font-size: 25px; }
   h4, .h4, .p-1 { font-size: 18px; }
   .h4-3 { font-size: 21px; }
   .t-5 { font-size: 15px; }
@@ -1012,7 +1012,7 @@
 
   h1, .h1 { font-size: 28px; }
   h2, .h2 { font-size: 28px; }
-  h3, .h3 { font-size: 28px; }
+  h3, .h3, .search-item input[type="text"] { font-size: 28px; }
   h4, .h4, .p-1 { font-size: 20px; }
   .h4-3 { font-size: 24px; }
   .t-5 { font-size: 18px; }
