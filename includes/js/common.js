@@ -1258,6 +1258,7 @@ $(document).ready(function(){
     } else {
       let input = document.createElement('input');
       input.type = "file";
+      input.name = "files";
       input.addEventListener("change", onFileChange, false);
       $(input).attr("data-file-id", parseInt($("input[type=\"file\"]:last-child", parent).attr("data-file-id"))+1);
       setTimeout(function(){ $(input).click(); },50);
@@ -1290,6 +1291,7 @@ $(document).ready(function(){
       }
       let input = document.createElement('input');
       input.type = "file";
+      input.name = "files";
       $(input).attr("data-file-id", parseInt($("input[type=\"file\"]:last-child", parent).attr("data-file-id"))+1);
       input.files = dt.files;
       $(".files-area", parent)[0].appendChild(input);
@@ -1328,6 +1330,7 @@ function onFileDelete (file) {
     ul.closest(".upload-area").addClass("empty");
     let input = document.createElement('input');
     input.type = "file";
+    input.name = "files";
     input.addEventListener("change", onFileChange, false);
     $(input).attr("data-file-id", 0);
     $(".files-area", parent)[0].appendChild(input);
