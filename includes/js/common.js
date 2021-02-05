@@ -1247,7 +1247,9 @@ $(document).ready(function(){
   }
 
   $(".files-area input").attr("data-file-id", 0);
-  $(".files-area input")[0].addEventListener("change", onFileChange, false);
+  if ($(".files-area input").length > 0) {
+    $(".files-area input")[0].addEventListener("change", onFileChange, false);
+  }
 
   $(".upload-area a").click(function(e){
     e.preventDefault();

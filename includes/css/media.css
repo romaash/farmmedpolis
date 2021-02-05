@@ -39,6 +39,7 @@
   .layout-block-icon > .part:first-child { width: 68px; }
   .shop-item { padding: 15px 0; }
   .button.text .p-3 { line-height: 16px; }
+  nav .button.circle.text .p-3 { line-height: 22px; }
   .slider-1 .image img { height: 160px; }
   .map + .buttons {
     left: 40px;
@@ -187,6 +188,7 @@
 }
 
 @media (max-width: 1200px) {
+  nav .button.circle.text .p-3 { line-height: 16px; }
   .block-cards.type-3 .block-card {
     padding: 20px 25px;
     padding-bottom: 220px;
@@ -890,7 +892,7 @@
   .box-calendar .layout-block-3.flex:not(.skip-tablet):not(.block-border) > .part { width: 33.332%; }
   .input-select .input .value, .input-select, .input-select .input { width: 100%; }
   .layout-block.flex:not(.skip-mobile) > .part:not(.image) { width: 100%; }
-  .button.text .p-3 { line-height: 25px; }
+  .button.text .p-3, nav .button.circle.text .p-3 { line-height: 25px; }
   .layout-block-1.flex .part-1 { min-height: 0; }
   .layout-block-1.flex .part-1 .buttons { margin-top: 20px; }
   .layout-block-1.flex .part-1 { width: 100% !important; }
@@ -1177,6 +1179,7 @@
   .block .shop-item > .part.flex { padding-right: 0; }
   .slider-gallery .slider-main, .slider-gallery .slider-thumbs, .slider-5 .slider-main, .slider-5 .slider-thumbs {
     overflow: visible;
+    mask-image: none;
     -webkit-mask-image: none;
   }
   .slider-gallery .slider-next { right: 15px; }
