@@ -949,7 +949,7 @@
   .wrap-video { max-height: 55vw; }
   .slider-contols { text-align: left; }
   .slider-contols a { margin-top: -30px; }
-  .slider-next, .slider-prev { display: none; }
+  .slider-next:not(.skip-mobile), .slider-prev:not(.skip-mobile) { display: none; }
   .slider-contols {
     text-align: right;
     margin-top: 30px;
@@ -1414,7 +1414,7 @@
   .shop-item .buttons .button b {
     display: none;
   }
-  .slider-next, .slider-prev { display: none; }
+  .slider-next:not(.skip-mobile), .slider-prev:not(.skip-mobile) { display: none; }
   .block-border.vertical-center > .part { min-height: 140px; }
   .part.image.media-tablet { margin-top: 20px; }
   footer .layout-block-2.media-mob, .layout-block-2.media-mob .part {
