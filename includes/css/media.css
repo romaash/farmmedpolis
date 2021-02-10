@@ -17,7 +17,7 @@
   .table-3 td { padding: 15px 0; }
   .table-3 th { padding-bottom: 10px; }
   .layout-sidebar .part:not(.sidebar) { padding-left: 9px; }
-  .block-border.shift-right .h4:not(.price) { padding-right: 60px; }
+  .block-border.shift-right .h4:not(.price), .block-border.shift-right h4:not(.price) { padding-right: 60px; }
   .simple-block { padding: 15px 20px; }
   .design-el-11 {
     right: 0px;
@@ -149,7 +149,7 @@
     top: 20px;
     right: 20px;
   }
-  .block-border:not(.vertical-center) > .part > .h4 {
+  .block-border:not(.vertical-center) > .part > .h4, .block-border:not(.vertical-center) > .part > h4 {
     margin-right: 70px;
     max-width: 175px;
   }
@@ -243,7 +243,7 @@
     -moz-transform: none;
     -webkit-transform: none;
   }
-  .block-border:not(.type-2):not(.layout-block-2) .h4 {
+  .block-border:not(.type-2):not(.layout-block-2) .h4, .block-border:not(.type-2):not(.layout-block-2) h4 {
     padding-right: 0;
     margin-right: 0;
     max-width: 160px;
@@ -735,10 +735,11 @@
   .block > .layout-block.layout-block-3.flex:not(.skip-mobile) > .part:nth-child(3n+1) { order: 0; }
   .block > .layout-block.layout-block-3.flex:not(.skip-mobile) > .part:nth-child(3n+2) { order: 1; }
   .block > .layout-block.layout-block-3.flex:not(.skip-mobile) > .part:nth-child(3n+3) { order: 2; }
-  .block-border:not(.type-2) .h4 { max-width: 100%; }
+  .block-border:not(.type-2) .h4, .block-border:not(.type-2) h4 { max-width: 100%; }
   .block-border:not(.simple-block) p { max-width: 100%; }
   .block-border:not(.type-2):not(.simple-block).shift-right p,
-  .block-border:not(.type-2):not(.simple-block).shift-right .h4:not(.price) {
+  .block-border:not(.type-2):not(.simple-block).shift-right .h4:not(.price),
+  .block-border:not(.type-2):not(.simple-block).shift-right h4:not(.price) {
     padding-right: 60px;
     max-width: 100%;
   }
@@ -785,7 +786,7 @@
     -moz-box-shadow: 0px 6px 5px rgba(0, 0, 0, 0.05);
     -webkit-box-shadow: 0px 6px 5px rgba(0, 0, 0, 0.05);
   }
-  .quote-block .h1 { font-size: 22px; }
+  .quote-block .h1, .quote-block h1 { font-size: 22px; }
   .slider-4 .layout-block { margin-top: 20px; }
   .design-el-8 {
     position: relative;
@@ -838,7 +839,7 @@
     margin-top: 50px;
     margin-bottom: -10px;
   }
-  p.image + p, p.image + div { margin-top: 40px; }
+  p.image + p, p.image + div, p.image + h1, p.image + h2, p.image + h3, p.image + h4, p.image + h5 { margin-top: 40px; }
   .block .slider-4 .layout-block > .part {
     padding-left: 0;
     padding-right: 0;
@@ -925,7 +926,7 @@
     width: 20px;
     margin-left: -10px;
   }
-  .block-border .h4 { max-width: 100%; }
+  .block-border .h4, .block-border h4 { max-width: 100%; }
   .layout-block-1 .part-3 {
     padding-top: 300px !important;
     width: 100%;
@@ -1064,7 +1065,7 @@
     margin-top: 0 !important;
     padding: 35px 40px;
   }
-  .block-border.vertical-center .h4 { padding-right: 65px; }
+  .block-border.vertical-center .h4, .block-border.vertical-center h4 { padding-right: 65px; }
   .vertical-center .design-el-3 {
     top: 32px;
     transform: none;
@@ -1084,7 +1085,7 @@
     border-left: none;
     border-top: 1px solid rgba(196,196,196,0.4);
   }
-  .block-card .h4 { max-width: 220px; }
+  .block-card .h4, .block-card h4 { max-width: 220px; }
   .block-card {
     padding-bottom: 80px;
     min-height: 190px;
