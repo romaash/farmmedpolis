@@ -1903,7 +1903,6 @@ body.body-blue-2 .message-done { background-color: rgba(32,60,136,0.1); }
 .layout-flex .part.grow-no { flex-grow: 0; }
 .layout-flex .part.grow-little { flex-grow: 0.5; }
 
-.list-link { margin-top:  }
 .list-link a {
   color: #fff;
   text-decoration: none;
